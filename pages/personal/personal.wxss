@@ -1,4 +1,17 @@
 /* pages/personal/personal.wxss */
+
+.wxlogo {
+  width: 128rpx;
+  height: 128rpx;
+  margin: 20rpx;
+  border-radius: 50%;
+}
+
+/* .wxlogin {
+  color: #aaa;
+} */
+
+/* auto */
 .userinfo {
   display: flex;
   flex-direction: column;

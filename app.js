@@ -1,49 +1,67 @@
-import store from './store'
+import store from "./store";
+import ajax from "./api/ports"; // 引入接口
 
 //app.js
 App({
-  onLaunch: function () {
-    // 展示本地存储能力
-    var logs = wx.getStorageSync('logs') || []
-    logs.unshift(Date.now())
-    wx.setStorageSync('logs', logs)
+  onLaunch: function() {
+    console.log(wx.getStorageSync("localToken"));
+    console.log("11111111111");
 
-    // 登录
-    wx.login({
-      success: res => {
-        // 发送 res.code 到后台换取 openId, sessionKey, unionId
-      }
-    })
-
-    setTimeout(function () {
-      store.data.motto = '成功在 app.js 进行更新'
-      //这里只能用 store.update 而不是 this.update
-      store.update()
-    }, 10000)
+    // 获取本地储存token
+    let localToken = wx.getStorageSync("localToken");
 
     // 获取用户信息
-    wx.getSetting({
-      success: res => {
-        if (res.authSetting['scope.userInfo']) {
-          // 已经授权，可以直接调用 getUserInfo 获取头像昵称，不会弹框
-          wx.getUserInfo({
-            success: res => {
-              
-              // 可以将 res 发送给后台解码出 unionId
-              this.globalData.userInfo = res.userInfo
+    if (localToken) {
+      wx.getSetting({
+        success: res => {
+          if (res.authSetting["scope.userInfo"]) {
+            // 已经授权，可以直接调用 getUserInfo 获取头像昵称，不会弹框
+            wx.getUserInfo({
+              success: res => {
+                wx.login({
+                  success: response => {
+                    if (response.code) {
+                      console.log(response.code);
+                      ajax
+                        .userLogin({
+                          code: response.code,
+                          userInfo: res.userInfo
+                        })
+                        .then(resp => {
+                          console.log(resp);
 
-              // 由于 getUserInfo 是网络请求，可能会在 Page.onLoad 之后才返回
-              // 所以此处加入 callback 以防止这种情况
-              if (this.userInfoReadyCallback) {
-                this.userInfoReadyCallback(res)
+                          wx.setStorageSync("localToken", resp.data.localToken); // 存储token
+                          store.data.hasUserInfo = true; // 登录成功
+                          store.update();
+
+                          console.log(store.data.ifLogin);
+                        })
+                        .catch(err => {
+                          console.log("登录失败", err);
+                        });
+                    }
+                  }
+                });
+                // 可以将 res 发送给后台解码出 unionId
+                store.data.userInfo = res.userInfo;
+
+                // 由于 getUserInfo 是网络请求，可能会在 Page.onLoad 之后才返回
+                // 所以此处加入 callback 以防止这种情况
+                if (this.userInfoReadyCallback) {
+                  this.userInfoReadyCallback(res);
+                }
+
+                store.update();
+                // console.log(store.data.userInfo);
               }
-            }
-          })
+            });
+          }
         }
-      }
-    })
+      });
+    }
   },
   globalData: {
     userInfo: null
-  }
-})
+  },
+  ajax
+});

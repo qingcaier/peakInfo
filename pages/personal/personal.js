@@ -20,30 +20,7 @@ create(store, {
       success: res => {
         if (res.code) {
           console.log(res.code);
-          // wx.request({
-          //   url: "http://localhost:3000/miniprogram/userLogin",
-          //   method: "POST",
-          //   data: {
-          //     code: res.code,
-          //     userInfo: data
-          //   },
-          //   success(res) {
-          //     console.log(res);
-          //     //
-          //     // wx.setStorage({
-          //     //   key: ''
-          //     // })
-          //     wx.setStorageSync("localToken", res.data.localToken); // 存储token
-          //     that.store.data.hasUserInfo = true; // 登录成功
-          //     that.update();
 
-          //     console.log(that.store.data.ifLogin);
-          //   },
-          //   fail() {
-          //     // reject();
-          //     console.log("登录失败！");
-          //   }
-          // });
           console.log(app.ajax);
           app.ajax
             .userLogin({ code: res.code, userInfo: data })
@@ -108,8 +85,8 @@ create(store, {
       this.login(e.detail.userInfo);
       this.store.data.userInfo = e.detail.userInfo;
       this.update();
-      console.log("——————————————————————————————", this.store.data.userInfo);
-      console.log(this.store.data.ifLogin);
+      // console.log("——————————————————————————————", this.store.data.userInfo);
+      // console.log(this.store.data.ifLogin);
     } else {
       console.log("已拒绝");
       // 用户按下了拒绝按钮
@@ -126,10 +103,5 @@ create(store, {
         }
       });
     }
-    // app.globalData.userInfo = e.detail.userInfo;
-    // this.setData({
-    //   userInfo: e.detail.userInfo,
-    //   hasUserInfo: true
-    // });
   }
 });

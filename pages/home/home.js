@@ -10,7 +10,7 @@ create(store, {
     markers: [
       {
         id: 0,
-        iconPath: "../../public/images/地标1.png",
+        iconPath: "../../images/icon_cur_position.png",
         latitude: 23.099994,
         longitude: 113.32452,
         width: 50,

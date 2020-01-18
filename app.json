@@ -2,49 +2,26 @@
   "pages": [
     "pages/home/home",
     "pages/actList/actList",
-    "pages/message/message",
     "pages/personal/personal",
     "pages/logs/logs"
   ],
-  "permission": {
-    "scope.userLocation": {
-      "desc": "请确认授权"
-    }
-  },
   "window": {
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#fff",
     "navigationBarTitleText": "peakInfo",
     "navigationBarTextStyle": "black"
   },
-  "tabBar": {
-    "selectedColor": "#ff7700",
-    "list": [
-      {
-        "pagePath": "pages/home/home",
-        "text": "首页",
-        "iconPath": "./public/images/home.png",
-        "selectedIconPath": "./public/images/home_selected.jpg"
-      },
-      {
-        "pagePath": "pages/actList/actList",
-        "text": "活动",
-        "iconPath": "./public/images/activity.png",
-        "selectedIconPath": "./public/images/activity_selected.jpg"
-      },
-      {
-        "pagePath": "pages/message/message",
-        "text": "消息",
-        "iconPath": "",
-        "selectedIconPath": ""
-      },
-      {
-        "pagePath": "pages/personal/personal",
-        "text": "我的",
-        "iconPath": "./public/images/personal.png",
-        "selectedIconPath": "./public/images/personal_selected.jpg"
-      }
-    ]
+  "tabBar":{
+    "list":[{
+      "pagePath": "pages/home/home",
+      "text": "首页"
+    },{
+      "pagePath": "pages/actList/actList",
+      "text":"活动"
+    },{
+      "pagePath":"pages/personal/personal",
+      "text":"我的"
+    }]
   },
   "style": "v2",
   "sitemapLocation": "sitemap.json"

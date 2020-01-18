@@ -1,12 +1,6 @@
 import store from "./store";
 import ajax from "./api/ports"; // 引入接口
 
-// 引入SDK核心类
-let QQMapWX = require("./map/qqmap-wx-jssdk.min");
-let qqmapsdk = new QQMapWX({
-  key: "TFRBZ-KZZCX-GQ54B-T22GL-HDDES-ESFWM"
-});
-
 //app.js
 App({
   onLaunch: function() {
@@ -34,13 +28,13 @@ App({
                           userInfo: res.userInfo
                         })
                         .then(resp => {
-                          // console.log(resp);
+                          console.log(resp);
 
                           wx.setStorageSync("localToken", resp.data.localToken); // 存储token
                           store.data.hasUserInfo = true; // 登录成功
                           store.update();
 
-                          // console.log(store.data.ifLogin);
+                          console.log(store.data.ifLogin);
                         })
                         .catch(err => {
                           console.log("登录失败", err);
@@ -65,17 +59,9 @@ App({
         }
       });
     }
-
-    // 进入小程序地理位置授权
-    store.getUserLocation();
   },
   globalData: {
     userInfo: null
   },
-
-  // 引入请求接口
-  ajax,
-
-  // 腾讯地图
-  qqMap: qqmapsdk
+  ajax
 });

@@ -4,6 +4,7 @@
     "pages/actList/actList",
     "pages/message/message",
     "pages/personal/personal",
+    "pages/createOrder/createOrder",
     "pages/logs/logs"
   ],
   "permission": {
@@ -35,8 +36,8 @@
       {
         "pagePath": "pages/message/message",
         "text": "消息",
-        "iconPath": "",
-        "selectedIconPath": ""
+        "iconPath": "./public/images/男孩.png",
+        "selectedIconPath": "./public/images/女孩.png"
       },
       {
         "pagePath": "pages/personal/personal",
@@ -46,6 +47,6 @@
       }
     ]
   },
-  "style": "v2",
+
   "sitemapLocation": "sitemap.json"
 }

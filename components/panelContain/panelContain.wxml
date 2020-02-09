@@ -1,0 +1,19 @@
+<!-- <view class="panelContain">
+    <view class="title">
+        <view class="name">
+            <view>{{title}}</view>
+            <view>{{type}}</view>
+        </view>
+        <view class="location">
+            <view>大学城新天地</view>
+            <view>5km</view>
+        </view>
+    </view>
+    <view class="contain">
+        <slot></slot>
+        <image />
+    </view>
+</view> -->
+<view class='wx_toast_container' hidden="{{!toastShow}}">
+    <view class='wx_toast_text'>{{toastText}}</view>
+</view>

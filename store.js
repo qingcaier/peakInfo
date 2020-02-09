@@ -10,6 +10,9 @@ export default {
       return this.hasUserInfo && this.canIUse;
     }
 
+    // 用户定位
+    // userLocation: {}
+
     //   logs: [],
     //   b: {
     //     arr: [{ name: '数值项目1' }] ,
@@ -53,7 +56,7 @@ export default {
             success: response => {
               if (response.cancel) {
                 wx.showToast({
-                  title: "拒绝授权",
+                  title: "拒绝授权2",
                   icon: "none"
                 });
                 setTimeout(() => {
@@ -83,59 +86,6 @@ export default {
             }
           });
         }
-
-        // 拒绝授权后再次进入重新授权
-        // if (
-        //   res.authSetting["scope.userLocation"] != undefined &&
-        //   res.authSetting["scope.userLocation"] != true
-        // ) {
-        //   // console.log('authSetting:status:拒绝授权后再次进入重新授权', res.authSetting['scope.userLocation'])
-        //   wx.showModal({
-        //     title: "",
-        //     content: "【锋汇】需要获取你的地理位置，请确认授权",
-        //     success: function(res) {
-        //       if (res.cancel) {
-        //         wx.showToast({
-        //           title: "拒绝授权",
-        //           icon: "none"
-        //         });
-        //         setTimeout(() => {
-        //           wx.navigateBack();
-        //         }, 1500);
-        //       } else if (res.confirm) {
-        //         wx.openSetting({
-        //           success: function(dataAu) {
-        //             // console.log('dataAu:success', dataAu)
-        //             if (dataAu.authSetting["scope.userLocation"] === true) {
-        //               //再次授权，调用wx.getLocation的API
-        //               that.getLocation(dataAu);
-        //             } else {
-        //               wx.showToast({
-        //                 title: "授权失败",
-        //                 icon: "none"
-        //               });
-        //               setTimeout(() => {
-        //                 wx.navigateBack();
-        //               }, 1500);
-        //             }
-        //           }
-        //         });
-        //       }
-        //     }
-        //   });
-        // }
-        // // 初始化进入，未授权
-        // else if (res.authSetting["scope.userLocation"] == undefined) {
-        //   // console.log('authSetting:status:初始化进入，未授权', res.authSetting['scope.userLocation'])
-        //   //调用wx.getLocation的API
-        //   that.getLocation(res);
-        // }
-        // // 已授权
-        // else if (res.authSetting["scope.userLocation"]) {
-        //   // console.log('authSetting:status:已授权', res.authSetting['scope.userLocation'])
-        //   //调用wx.getLocation的API
-        //   that.getLocation(res);
-        // }
       }
     });
   },
@@ -143,23 +93,55 @@ export default {
   // 微信获得经纬度
   getLocation: function(userLocation) {
     wx.getLocation({
-      type: "wgs84",
+      type: "gcj02",
       success: res => {
-        console.log("getLocation:success", res);
-        let latitude = res.latitude;
-        let longitude = res.longitude;
-        // app.ajax
-        console.log({
-          latitude,
-          longitude
-        });
+        // console.log("getLocation:success", res);
+        // let latitude = res.latitude;
+        // let longitude = res.longitude;
+        // this.data.userLocation = {
+        //   latitude,
+        //   longitude
+        // };
+        // // app.ajax
+        // console.log("westore里存的位置", this.data.userLocation);
       },
       fail: res => {
         console.log("getLocation:fail", res);
         if (res.errMsg === "getLocation:fail auth deny") {
-          wx.showToast({
-            title: "拒绝授权",
-            icon: "none"
+          wx.showModal({
+            title: "",
+            content: "【锋汇】需要获取您的地理位置，请确认授权",
+            success: response => {
+              if (response.cancel) {
+                wx.showToast({
+                  title: "拒绝授权2",
+                  icon: "none"
+                });
+                setTimeout(() => {
+                  wx.navigateBack();
+                }, 1000);
+              } else if (response.confirm) {
+                console.log("再次授权");
+                // 拒绝授权后再次重新授权
+                wx.openSetting({
+                  success: dataAu => {
+                    console.log("dataAu: success", dataAu);
+                    if (dataAu.authSetting["scope.userLocation"] === true) {
+                      //再次授权，调用wx.getLocation的API
+                      this.getLocation(dataAu);
+                    } else {
+                      wx.showToast({
+                        title: "授权失败",
+                        icon: "none"
+                      });
+                      setTimeout(() => {
+                        wx.navigateBack();
+                      }, 1500);
+                    }
+                  }
+                });
+              }
+            }
           });
           setTimeout(() => {
             wx.navigateBack();

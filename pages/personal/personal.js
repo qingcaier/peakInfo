@@ -14,7 +14,6 @@ create(store, {
 
   // 微信登录
   login: function(data) {
-    let that = this;
     // return new Promise((resolve, reject) => {
     wx.login({
       success: res => {
@@ -51,10 +50,10 @@ create(store, {
               console.log(res);
 
               wx.setStorageSync("localToken", res.data.localToken); // 存储token
-              that.store.data.hasUserInfo = true; // 登录成功
-              that.update();
+              this.store.data.hasUserInfo = true; // 登录成功
+              this.update();
 
-              console.log(that.store.data.ifLogin);
+              console.log(this.store.data.ifLogin);
             })
             .catch(err => {
               console.log("登录失败", err);

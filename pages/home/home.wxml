@@ -1,4 +1,3 @@
 <view class="" hover-class="none" hover-stop-propagation="false" style="width: 100%; height: 100%;">
-  <map id="map" longitude="{{longitude}}" latitude=" {{latitude}}" markers="{{markers}}" scale="13" show-location style="width: 100%; height: 100%;"></map>
-  {{longitude}}
+  <map id="map" longitude="{{location.longitude}}" latitude=" {{location.latitude}}" subkey="TFRBZ-KZZCX-GQ54B-T22GL-HDDES-ESFWM" markers="{{markers}}" scale="13" show-location style="width: 100%; height: 100%;"></map>
 </view>

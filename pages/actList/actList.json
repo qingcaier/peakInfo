@@ -1,3 +1,8 @@
 {
-  "usingComponents": {}
+  "usingComponents": {
+    "we-navigator": "/WeUI/navigation-bar/navigation-bar",
+    "test-cot": "/components/panelContain/panelContain"
+  },
+  "navigationStyle": "custom",
+  "navigationBarTitleText": "UI组件库"
 }

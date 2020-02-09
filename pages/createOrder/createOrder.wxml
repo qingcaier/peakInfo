@@ -1,0 +1,69 @@
+<view class="page" xmlns:wx="http://www.w3.org/1999/xhtml">
+    <mp-form id="form" rules="{{rules}}" models="{{validateData}}">
+        <view class="form1">
+            <mp-cells ext-class="cells1">
+                <mp-cell prop="title" title="" ext-class="title">
+                    <input bindinput="formInputChange" data-field="title" class="weui-input" placeholder="写合适的标题能让更多人看到哦~" placeholder-class="plcolor" value="{{validateData.title}}" />
+                </mp-cell>
+                <mp-cell prop="" title="" ext-class="inp orderType">
+                    <picker class="weui-input select" bindchange="bindOrderTypeChange" data-fields="orderType" mode="selector" value="{{orderTypes[orderTypeIndex].value}}" range="{{orderTypes}}" range-key="{{'label'}}">
+                        <view>{{orderTypes[orderTypeIndex].label}}</view>
+                        <view class="arrow"></view>
+                    </picker>
+                </mp-cell>
+                <mp-cell prop="total_count" title="" ext-class="inp total_count">
+                    <input bindinput="formInputChange" data-field="total_count" class="weui-input" placeholder="您总共要多少元/件呢？" value="{{validateData.total_count}}" />
+                </mp-cell>
+                <mp-cell prop="current_count" title="" ext-class="inp current_count">
+                    <input bindinput="formInputChange" data-field="current_count" class="weui-input" placeholder="还需要多少元/件呢？" value="{{validateData.current_count}}" />
+                </mp-cell>
+            </mp-cells>
+            <mp-cells ext-class="cells2">
+                <mp-cell prop="" title="" ext-class="">
+                    <mp-uploader bindfail="uploadError" bindsuccess="uploadSuccess" select="{{selectFile}}" upload="{{uploadFile}}" files="{{files}}" max-count="5"></mp-uploader>
+                </mp-cell>
+            </mp-cells>
+        </view>
+        <view class="form2">
+            <mp-cells>
+                <mp-cell ext-class="location">
+                    <image class="locationImg" src="../../public/images/地标1.png" />
+                    <view class="locationText">华南理工大学好难受的很供热是一个的撒噶啥</view>
+                </mp-cell>
+                <mp-cell prop="business_name" ext-class="business_name">
+                    <picker class="weui-input select" bindchange="bindBusinessActChange" data-field="business_act" value="{{business_actIndex}}" range="{{business_acts}}" range-key="{{'title'}}">
+                        <view>{{business_acts[business_actIndex].title}}</view>
+                        <view class="arrow arrow1"></view>
+                    </picker>
+                </mp-cell>
+                <mp-cell prop="detail">
+                    <textarea class="weui-textarea" bindinput="formInputChange" data-field="detail" placeholder="请输入文本" style="height: 5em" value="{{validateData.detail}}" maxlength='500' />
+                    <view class="weui-textarea-counter">{{validateData.detail.length}}/500</view>
+                </mp-cell>
+            </mp-cells>
+            <mp-cells ext-class="">
+                <mp-cell ext-class="inp-time" prop="time" title="有效时间：">
+                    <view class="view-time">
+                        <input class="time" bindinput="formInputChange" data-field="time.day" value="{{validateData.time.day}}" />
+                        <text>天</text>
+                    </view>
+                    <!-- </mp-cell> -->
+                    <!-- <mp-cell ext-class="inp-time"> -->
+                    <view class="view-time time1">
+                        <input class="time" bindinput="formInputChange" data-field="time.hour" value="{{validateData.time.hour}}" />
+                        <text>时</text>
+                    </view>
+                    <!-- </mp-cell> -->
+                    <!-- <mp-cell ext-class="inp-time"> -->
+                    <view class="view-time time2">
+                        <input class="time" bindinput="formInputChange" data-field="time.minute" value="{{validateData.time.minute}}" />
+                        <text>分</text>
+                    </view>
+                </mp-cell>
+            </mp-cells>
+        </view>
+    </mp-form>
+    <view class="weui-btn-area">
+        <button class="weui-btn" type="warn" bindtap="submitForm">确定</button>
+    </view>
+</view>

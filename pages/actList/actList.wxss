@@ -1,1 +1,39 @@
 /* pages/actList/actList.wxss */
+
+.navigator {
+  position: relative;
+}
+
+.location {
+  position: absolute;
+  height: 64rpx;
+  width: 240rpx;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+}
+
+.locationIcon {
+  width: 240rpx;
+  height: 64rpx;
+}
+
+.location-text {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.btn {
+  height: 64rpx;
+  width: 160rpx;
+  font-size: 24rpx !important;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 60rpx;
+  /* font-size: 5rpx; */
+  color: white;
+}

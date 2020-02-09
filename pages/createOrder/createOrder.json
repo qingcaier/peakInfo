@@ -1,0 +1,8 @@
+{
+  "usingComponents": {
+    "mp-form": "/WeUI/form/form",
+    "mp-cell": "/WeUI/cell/cell",
+    "mp-cells": "/WeUI/cells/cells",
+    "mp-uploader": "/WeUI/uploader/uploader"
+  }
+}

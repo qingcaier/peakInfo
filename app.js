@@ -17,7 +17,7 @@ App({
     let localToken = wx.getStorageSync("localToken");
 
     // 获取用户信息
-    if (localToken) {
+    if (Boolean(localToken)) {
       wx.getSetting({
         success: res => {
           if (res.authSetting["scope.userInfo"]) {
@@ -34,7 +34,7 @@ App({
                           userInfo: res.userInfo
                         })
                         .then(resp => {
-                          // console.log(resp);
+                          console.log(resp);
 
                           wx.setStorageSync("localToken", resp.data.localToken); // 存储token
                           store.data.hasUserInfo = true; // 登录成功

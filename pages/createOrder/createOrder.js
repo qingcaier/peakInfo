@@ -130,7 +130,7 @@ create(store, {
       keyword: "购物",
       // filter: "category=购物",
       address_format: "short",
-      page_size: 10,
+      page_size: 20,
       // page_index: 2,
       success: res => {
         console.log(res.status, res.message);

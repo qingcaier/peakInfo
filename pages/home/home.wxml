@@ -1,3 +1,15 @@
-<view class="" hover-class="none" hover-stop-propagation="false" style="width: 100%; height: 100%;">
-  <map id="map" longitude="{{location.longitude}}" latitude=" {{location.latitude}}" subkey="TFRBZ-KZZCX-GQ54B-T22GL-HDDES-ESFWM" markers="{{markers}}" scale="13" show-location style="width: 100%; height: 100%;"></map>
+<view class="page" hover-class="none" hover-stop-propagation="false">
+  <map id="map" longitude="{{location.lng}}" latitude="{{location.lat}}" subkey="TFRBZ-KZZCX-GQ54B-T22GL-HDDES-ESFWM" markers="{{markers}}" scale="{{mapScale}}" show-location bindregionchange="regionchange" bindcallouttap="callouttap" bindmarkertap="markertap">
+    <!-- <cover-view class="createOrder-btn" bindtap="toCreateOrder">拼</cover-view> -->
+    <!-- <cover-view class="callout" hidden="{{selected}}" style="{{calloutStyle}}">
+      {{distance}}
+    </cover-view> -->
+  </map>
+  <view class="orderContain">
+    <image class="pullImg" src="../../public/images/下拉.png" />
+    <scroll-view class="orderCells" scroll-y="{{true}}">
+      <my-cell class="orderCell" wx:for="{{orderList}}" :key="index" img="{{orderList[index].img}}" title="{{orderList[index].title}}" detail="{{orderList[index].detail}}" _typeNumber="{{orderList[index]._typeNumber}}" _remainCount="{{orderList[index]._remainCount}}" _validTime="{{orderList[index]._validTime}}"></my-cell>
+    </scroll-view>
+  </view>
+  <view class="createOrder-btn" bindtap="toCreateOrder">拼</view>
 </view>

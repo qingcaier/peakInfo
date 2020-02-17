@@ -1,12 +1,17 @@
 <we-navigator back="{{false}}" background="#ff7700" title="" ext-class="navigator">
     <view class="location" slot="left">
-        <image class="locationIcon" src="../../public/images/地标1.png" mode="aspectFit" />
+        <image class="locationIcon" src="../../public/images/位置.png" mode="aspectFit" />
         <view class="location-text">{{targetLocation}}</view>
     </view>
     <button class="btn" slot="right" type="warn" size="default" bindtap="onTap">发起拼单</button>
 </we-navigator>
-<view>
-    <test-cot id="test">{{toastText}}</test-cot>
+<view class="main">
+    <view class="board">
+        <!-- <test-cot id="test">{{toastText}}</test-cot>
     <button type="primary" bindtap="showToast">showToast!</button>
-    <button type="primary" bindtap="toCreateOrder">发起拼单</button>
+    <button type="primary">发起拼单</button> -->
+        <my-cells class="orderCells" wx:for="{{actList}}" wx:for-index="idx" wx:for-item="business" wx:key="idx" businessName="{{business.business_name}}" address="{{business.address}}" _distance="{{business.distance}}">
+            <my-cell class="orderCell" wx:for="{{business.orderList}}" wx:key="index" img="{{item.img}}" title="{{item.title}}" detail="{{item.detail}}" _typeNumber="{{item._typeNumber}}" _remainCount="{{item._remainCount}}" _validTime="{{item._validTime}}"></my-cell>
+        </my-cells>
+    </view>
 </view>

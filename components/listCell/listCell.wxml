@@ -1,0 +1,14 @@
+<view class="contain">
+    <view class="imgContain">
+        <image class="img" src="{{img}}" mode="aspectFit" />
+        <view class="orderType">{{orderTypeStr}}</view>
+    </view>
+    <view class="textContain">
+        <view class="title">{{title}}</view>
+        <text class="detail">{{detail}}</text>
+    </view>
+    <view class="msgContain">
+        <view class="count">{{remainCountStr}}</view>
+        <view class="time">{{validTimeStr}}</view>
+    </view>
+</view>

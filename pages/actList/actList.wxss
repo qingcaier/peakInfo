@@ -37,3 +37,20 @@
   /* font-size: 5rpx; */
   color: white;
 }
+
+/* 商家列表及拼单列表 */
+
+.main {
+  width: 100%;
+  background-color: lightgray;
+  display: flex;
+  justify-content: center;
+}
+
+.board {
+  width: 97%;
+  margin-top: 8rpx;
+}
+
+.orderCells {
+}

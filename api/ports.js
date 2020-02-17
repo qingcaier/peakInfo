@@ -7,6 +7,15 @@ const ajax = {
   },
   createOrder: data => {
     return https._post({ url: base.createOrder, data });
+  },
+  checkNeightAct: data => {
+    return https._post({ url: base.checkNeightAct, data });
+  },
+  checkActOrder: data => {
+    return https._post({
+      url: base.checkActOrder,
+      data
+    })
   }
 };
 

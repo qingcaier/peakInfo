@@ -1,0 +1,13 @@
+<view class="board">
+    <view class="head">
+        <view class="msg">
+            <view class="name">{{businessName}}</view>
+            <view class="address">{{address}}</view>
+            <view class="distance">{{distanceStr}}</view>
+        </view>
+        <image class="img" src="../../public/images/三角下.png" mode="aspectFit" />
+    </view>
+    <scroll-view class="body">
+        <slot></slot>
+    </scroll-view>
+</view>

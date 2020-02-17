@@ -1,10 +1,7 @@
 {
   "pages": [
-<<<<<<< HEAD
-=======
     "pages/personal/personal",
     "pages/home/home",
->>>>>>> miniprogram
     "pages/actList/actList",
     "pages/home/home",
 

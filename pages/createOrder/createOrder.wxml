@@ -35,6 +35,9 @@
                     <!-- >>>>>>> miniprogram -->
 =======
                     <image class="locationImg" src="../../public/images/地标1.png" />
+<<<<<<< HEAD
+>>>>>>> miniprogram
+=======
 >>>>>>> miniprogram
                     <view class="locationText">华南理工大学</view>
                 </mp-cell>

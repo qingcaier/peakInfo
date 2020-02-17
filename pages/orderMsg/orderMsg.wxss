@@ -1,0 +1,13 @@
+.all_btn{
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 30rpx;
+}
+.showText{
+    background-color: rgba(0, 0, 0, 0.1);
+    margin: auto 0;
+    width: 100%;
+    height: 80rpx;
+    line-height: 80rpx;
+    text-align: center;
+}

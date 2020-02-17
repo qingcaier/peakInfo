@@ -1,18 +1,33 @@
-<view class="container">
-  <view class="userinfo">
+<view class="">
+  <view>
     <!-- <button wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 获取头像昵称 </button>
     <block wx:else>
       <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>
       <text class="userinfo-nickname">{{userInfo.nickName}}</text>
     </block> -->
     <!-- <block wx:if="{{!ifLogin}}"> -->
-    <block wx:if="{{!hasUserInfo}}">
+    <view class="noUser" wx:if="{{!hasUserInfo}}">
       <image class="wxlogo" src="{{wxlogo}}" />
-      <button open-type="getUserInfo" bindgetuserinfo="getUserInfo">{{wxloginText}}</button>
-    </block>
-    <block wx:else>
+      <button size="mini" type="primary" open-type="getUserInfo" bindgetuserinfo="getUserInfo">
+        {{wxloginText}}
+      </button>
+    </view>
+    <view class="userinfo" wx:else>
       <image class="userinfo-avatar" src="{{userInfo.avatarUrl}}" />
-      <text class="userinfo-nickname">{{userInfo.nickName}}</text>
-    </block>
+      <view class="info-text">
+        <text class="userinfo-nickname">{{userInfo.nickName}}</text>
+        <view class="">
+          <image wx:if="{{userInfo.gender}}" class="gender" src="{{boy}}" />
+          <image wx:else class="gender" src="{{girl}}" />
+        </view>
+        <view class="joined-order">已拼{{needUser.joined_order}}单</view>
+      </view>
+    </view>
   </view>
+  <view class="black_line"></view>
+  <view class="user_orders">
+    <view class="">我的拼单</view>
+    <view class="">{{needUser.exit_order}}</view>
+  </view>
+  <view class="black_line"></view>
 </view>

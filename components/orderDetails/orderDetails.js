@@ -43,11 +43,15 @@ Component({
 
   ready: function () {
     var getTime = this.makeTime();
-<<<<<<< HEAD
+// <<<<<<< HEAD
+// <<<<<<< HEAD
     console.log(this.properties.someData)
-=======
+// =======
     // console.log(this.properties.someData)
->>>>>>> miniprogram
+// >>>>>>> miniprogram
+// =======
+    // console.log(this.properties.someData)
+// >>>>>>> miniprogram
     this.setData({ "orderData.set_time": getTime.start });
     this.setData({ "orderData.end_time": getTime.end });
   },

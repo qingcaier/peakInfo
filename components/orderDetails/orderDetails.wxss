@@ -32,30 +32,39 @@
 .icon_image{
     width: 50rpx;
     height: 50rpx;
-<<<<<<< HEAD
+/* <<<<<<< HEAD */
+/* <<<<<<< HEAD */
     border-radius:25rpx ;
     -webkit-border-radius:25rpx ;
     -moz-border-radius:25rpx ;
     -ms-border-radius:25rpx ;
     -o-border-radius:25rpx ;
-=======
-    border-radius:50% ;
+/* ======= */
+/* ======= */
+/* >>>>>>> miniprogram */
+    /* border-radius:50% ;
     -webkit-border-radius:50% ;
     -moz-border-radius:50% ;
     -ms-border-radius:50% ;
-    -o-border-radius:50% ;
->>>>>>> miniprogram
+    -o-border-radius:50% ; */
+/* <<<<<<< HEAD */
+/* >>>>>>> miniprogram */
+/* ======= */
+/* >>>>>>> miniprogram */
 }
 .makerName{margin: auto 50rpx;}
 .success_order{margin: auto 0;}
 .picture_swiper{min-height: 600rpx;}
 .swiper-item{border: 5rpx solid chocolate;}
 .time{font-size: x-small;}
-<<<<<<< HEAD
+/* <<<<<<< HEAD */
+/* <<<<<<< HEAD */
 .all_btn{
     display: flex;
     justify-content: space-around;
     margin-bottom: 30rpx;
 }
-=======
->>>>>>> miniprogram
+/* ======= */
+/* >>>>>>> miniprogram */
+/* ======= */
+/* >>>>>>> miniprogram */

@@ -4,12 +4,17 @@ Page({
    * 页面的初始数据
    */
   data: {
-<<<<<<< HEAD
+// <<<<<<< HEAD
+// <<<<<<< HEAD
 
-=======
+// =======
     isComplete: false,//完成
     isCancel: false,//取消
->>>>>>> miniprogram
+// >>>>>>> miniprogram
+// =======
+    // isComplete: false,//完成
+    // isCancel: false,//取消
+// >>>>>>> miniprogram
 
   },
 
@@ -19,12 +24,15 @@ Page({
   onLoad: function (options) {
 
   },
-<<<<<<< HEAD
+// <<<<<<< HEAD
+// <<<<<<< HEAD
   //时间格式化
   makeTime() {
 
   },
-=======
+// =======
+// =======
+// >>>>>>> miniprogram
   //完成拼单
   complete() {
     let that = this;
@@ -80,7 +88,10 @@ Page({
       }
     })
   },
->>>>>>> miniprogram
+// <<<<<<< HEAD
+// >>>>>>> miniprogram
+// =======
+// >>>>>>> miniprogram
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

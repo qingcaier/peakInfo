@@ -28,7 +28,7 @@
             <mp-cells>
                 <mp-cell ext-class="location">
                     <image class="locationImg" src="../../public/images/地标1.png" />
-                    <view class="locationText">华南理工大学好难受的很供热是一个的撒噶啥</view>
+                    <view class="locationText">华南理工大学</view>
                 </mp-cell>
                 <mp-cell prop="business_name" ext-class="business_name">
                     <picker class="weui-input select" bindchange="bindBusinessActChange" data-field="business_act" value="{{business_actIndex}}" range="{{business_acts}}" range-key="{{'title'}}">

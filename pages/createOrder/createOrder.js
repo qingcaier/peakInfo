@@ -281,36 +281,36 @@ create(store, {
 
   // 提交表单
   submitForm() {
-    // wx.navigateTo({
-    //   url: "../orderMsg/orderMsg"
-    // });
-    this.selectComponent("#form").validate((valid, errors) => {
-      console.log("valid", valid, errors);
-      if (!valid) {
-        const firstError = Object.keys(errors);
-        if (firstError.length) {
-          this.setData({
-            error: errors[firstError[0]].message
-          });
-        }
-        wx.showToast({
-          title: errors[firstError[0]].message,
-          icon: "none"
-        });
-      } else {
-        wx.showToast({
-          title: "校验通过"
-        });
-        const form = Object.assign(
-          {},
-          this.data.validateData,
-          this.data.formData
-        );
-        console.log("提交的总表单", form);
-        app.ajax.createOrder(form).then(res => {
-          console.log(res);
-        });
-      }
+    wx.navigateTo({
+      url: "../orderMsg/orderMsg"
     });
+    // this.selectComponent("#form").validate((valid, errors) => {
+    //   console.log("valid", valid, errors);
+    //   if (!valid) {
+    //     const firstError = Object.keys(errors);
+    //     if (firstError.length) {
+    //       this.setData({
+    //         error: errors[firstError[0]].message
+    //       });
+    //     }
+    //     wx.showToast({
+    //       title: errors[firstError[0]].message,
+    //       icon: "none"
+    //     });
+    //   } else {
+    //     wx.showToast({
+    //       title: "校验通过"
+    //     });
+    //     const form = Object.assign(
+    //       {},
+    //       this.data.validateData,
+    //       this.data.formData
+    //     );
+    //     console.log("提交的总表单", form);
+    //     app.ajax.createOrder(form).then(res => {
+    //       console.log(res);
+    //     });
+    //   }
+    // });
   }
 });

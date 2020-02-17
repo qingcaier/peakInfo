@@ -3,7 +3,7 @@ Component({
   properties: {
     someData: {
       type: String,
-      value: 'dafault value'
+      value: "dafault value"
     }
   },
   /**
@@ -12,20 +12,25 @@ Component({
   data: {
     orderData: {
       title: "缺200，满500减200！！！", // 拼单标题
-      act_type: "1",//拼单类型
+      act_type: "1", //拼单类型
       total_count: "500", // 拼单总额
       current_count: "300", // 目前（发起者）的拼额
-      detail: "我已经买了300块的衣服，还差200块达到满减的条件，我们在店里面等待10分钟，想来的从速", // 拼单详情
+      detail:
+        "我已经买了300块的衣服，还差200块达到满减的条件，我们在店里面等待10分钟，想来的从速", // 拼单详情
       time: {
         // 拼单有效时长
         day: 0,
         hour: 0,
         minute: 10
       },
-      joinNumber: "1",//参与拼单的人数
+      joinNumber: "1", //参与拼单的人数
       set_time: "xxxx.xx.xx xx:xx",
       end_time: "xxxx.xx.xx xx:xx",
-      picture: ["https://res.wx.qq.com/wxdoc/dist/assets/img/0.4cb08bb4.jpg", "https://res.wx.qq.com/wxdoc/dist/assets/img/0.4cb08bb4.jpg", "https://res.wx.qq.com/wxdoc/dist/assets/img/0.4cb08bb4.jpg"]
+      picture: [
+        "https://res.wx.qq.com/wxdoc/dist/assets/img/0.4cb08bb4.jpg",
+        "https://res.wx.qq.com/wxdoc/dist/assets/img/0.4cb08bb4.jpg",
+        "https://res.wx.qq.com/wxdoc/dist/assets/img/0.4cb08bb4.jpg"
+      ]
     },
     storeData: {
       name: "以纯",
@@ -36,22 +41,12 @@ Component({
       icon: "https://res.wx.qq.com/wxdoc/dist/assets/img/0.4cb08bb4.jpg",
       name: "程序员",
       success_order: "12"
-    },
-
-
+    }
   },
 
-  ready: function () {
+  ready: function() {
     var getTime = this.makeTime();
-// <<<<<<< HEAD
-// <<<<<<< HEAD
-    console.log(this.properties.someData)
-// =======
     // console.log(this.properties.someData)
-// >>>>>>> miniprogram
-// =======
-    // console.log(this.properties.someData)
-// >>>>>>> miniprogram
     this.setData({ "orderData.set_time": getTime.start });
     this.setData({ "orderData.end_time": getTime.end });
   },
@@ -69,7 +64,7 @@ Component({
       //将毫秒数转化成下一个时间
       curren_time.setTime(parseInt(curren_time.getTime()) + millisec_offset);
       var end_time = curren_time.toLocaleString();
-      return { start: start_time, end: end_time }
-    },
+      return { start: start_time, end: end_time };
+    }
   }
-})
+});

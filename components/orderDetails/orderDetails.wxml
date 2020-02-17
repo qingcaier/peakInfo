@@ -2,18 +2,6 @@
     <view class="orderTitle">{{orderData.title}}</view>
     <view class="buy">
         买{{orderData.current_count}}
-<!-- <<<<<<< HEAD -->
-<!-- <<<<<<< HEAD -->
-        <text hidden="{{orderData.act_type=='1'}}" class="danWei">件</text>
-        <text hidden="{{orderData.act_type=='0'}}" class="danWei">元</text>
-        <view class="msg">
-            <view class="need">
-                差{{orderData.total_count-orderData.current_count}}
-                <text hidden="{{orderData.act_type=='1'}}" class="danWei">件</text>
-                <text hidden="{{orderData.act_type=='0'}}" class="danWei">元</text>
-<!-- ======= -->
-<!-- ======= -->
-<!-- >>>>>>> miniprogram -->
         <text hidden="{{orderData.act_type=='1'}}">件</text>
         <text hidden="{{orderData.act_type=='0'}}">元</text>
         <view class="msg">
@@ -21,10 +9,6 @@
                 差{{orderData.total_count-orderData.current_count}}
                 <text hidden="{{orderData.act_type=='1'}}">件</text>
                 <text hidden="{{orderData.act_type=='0'}}">元</text>
-<!-- <<<<<<< HEAD -->
-<!-- >>>>>>> miniprogram -->
-<!-- ======= -->
-<!-- >>>>>>> miniprogram -->
             </view>
             <view class="ddl">
                 有效期:

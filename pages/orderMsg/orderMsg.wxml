@@ -1,0 +1,8 @@
+<view>
+    <v-order someData="123"></v-order>
+    <view class="all_btn">
+        <button class="btn" size="mini" type="default" bindtap="onTap">完成拼单</button>
+        <button class="btn" size="mini" type="default" bindtap="onTap">修改拼单</button>
+        <button class="btn" size="mini" type="default" bindtap="onTap">取消拼单</button>
+    </view>
+</view>

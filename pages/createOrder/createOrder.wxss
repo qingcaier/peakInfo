@@ -1,5 +1,5 @@
 .page {
-  background-color: rgba(210, 210, 210, 1);
+  background-color: rgba(210, 210, 210, 0.5);
 }
 
 #form {

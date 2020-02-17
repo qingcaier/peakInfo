@@ -6,7 +6,8 @@
     "pages/message/message",
     "pages/personal/personal",
     "pages/createOrder/createOrder",
-    "pages/logs/logs"
+    "pages/logs/logs",
+    "pages/orderMsg/orderMsg"
   ],
   "permission": {
     "scope.userLocation": {
@@ -48,6 +49,5 @@
       }
     ]
   },
-
   "sitemapLocation": "sitemap.json"
 }

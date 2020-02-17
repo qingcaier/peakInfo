@@ -1,0 +1,53 @@
+<view class="order">
+    <view class="orderTitle">{{orderData.title}}</view>
+    <view class="buy">
+        买{{orderData.current_count}}
+        <text hidden="{{orderData.act_type=='1'}}" class="danWei">件</text>
+        <text hidden="{{orderData.act_type=='0'}}" class="danWei">元</text>
+        <view class="msg">
+            <view class="need">
+                差{{orderData.total_count-orderData.current_count}}
+                <text hidden="{{orderData.act_type=='1'}}" class="danWei">件</text>
+                <text hidden="{{orderData.act_type=='0'}}" class="danWei">元</text>
+            </view>
+            <view class="ddl">
+                有效期:
+                <text hidden="{{orderData.time.day=='0'}}">{{orderData.time.day}}天</text>
+                <text hidden="{{orderData.time.hour=='0'}}">{{orderData.time.hour}}小时</text>
+                <text hidden="{{orderData.time.minute=='0'}}">{{orderData.time.minute}}分钟</text>
+            </view>
+        </view>
+    </view>
+    <view class="black_line"></view>
+    <view class="storePosition">
+        <view class="name">{{storeData.name}}</view>
+        <view class="position">{{storeData.position}}</view>
+        <view class="distance">距离{{storeData.distance}}</view>
+        <view class="join">{{orderData.joinNumber}}人在团</view>
+    </view>
+    <view class="black_line"></view>
+    <view class="maker">
+        <view class="icon">
+            <image class="icon_image" mode="aspectFit" src="{{makerData.icon}}"></image>
+        </view>
+        <view class="makerName">{{makerData.name}}</view>
+        <view class="success_order">已拼{{makerData.success_order}}单</view>
+    </view>
+    <view class="detail">{{orderData.detail}}</view>
+    <view>
+        <swiper class="picture_swiper">
+            <block wx:for="{{orderData.picture}}" wx:key="*this">
+                <swiper-item>
+                    <!-- <view class="swiper-item"> -->
+                    <image mode="aspectFit" src="{{item}}"></image>
+                    <!-- </view> -->
+                </swiper-item>
+            </block>
+        </swiper>
+    </view>
+    <view class="time">有限期：{{orderData.set_time}}</view>
+    <view class="time">
+        <text decode="{{true}}" space="{{true}}">&emsp;&emsp;至：{{orderData.end_time}}</text>
+    </view>
+    <view class="black_line"></view>
+</view>

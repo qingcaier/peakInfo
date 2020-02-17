@@ -11,7 +11,7 @@ let qqmapsdk = new QQMapWX({
 App({
   onLaunch: function() {
     console.log(wx.getStorageSync("localToken"));
-    console.log("11111111111");
+    // console.log("11111111111");
 
     // 获取本地储存token
     let localToken = wx.getStorageSync("localToken");

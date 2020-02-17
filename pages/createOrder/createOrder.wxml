@@ -29,8 +29,13 @@
                 <mp-cell ext-class="location">
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
                     <image class="locationImg" src="../../public/images/位置.png" />
                     <view class="locationText">华南理工大学好难受的很供热是一个的撒噶啥</view>
+=======
+                    <image class="locationImg" src="../../public/images/地标1.png" />
+                    <view class="locationText">华南理工大学</view>
+>>>>>>> miniprogram
 =======
                     <image class="locationImg" src="../../public/images/地标1.png" />
                     <view class="locationText">华南理工大学</view>

@@ -6,14 +6,30 @@ const app = getApp();
 create(store, {
   data: {
     wxlogo: "../../public/images/微信登录.png",
+    boy: "../../public/images/男孩.png",
+    girl: "../../public/images/女孩.png",
     wxloginText: "微信登录",
-    userInfo: {},
+    userInfo: {
+      // avatarUrl: "https://wx.qlogo.cn/mmopen/vi_32/Tp8K06cGYIJLB1pUaibXuFouypKTNE9wnQGmljzoaATibSicS7eKnLnbShwv5Q1sdo8PI17AO0rq4GQfFutxTP2eA/132",
+      // city: "Guangzhou",
+      // country: "China",
+      // gender: 1,
+      // language: "zh_CN",
+      // nickName: "蔡东林",
+      // province: "Guangdong",
+    },
+    //需要后端返回的个人数据
+    needUser: {
+      joined_order: 12,
+      exit_order: 2
+
+    },
     hasUserInfo: false
     // canIUse: wx.canIUse("button.open-type.getUserInfo")
   },
 
   // 微信登录
-  login: function(data) {
+  login: function (data) {
     // return new Promise((resolve, reject) => {
     wx.login({
       success: res => {
@@ -65,18 +81,19 @@ create(store, {
   },
 
   //事件处理函数
-  bindViewTap: function() {
+  bindViewTap: function () {
     // wx.navigateTo({
     //   url: '../logs/logs'
     // })
   },
-  onLoad: function() {
+  onLoad: function () {
     if (this.store.data.ifLogin) {
       this.setData({
         userInfo: this.store.data.userInfo,
         hasUserInfo: this.store.data.ifLogin
       });
     }
+    console.log("用户", this.store.data.userInfo)
     // else if (this.store.data.canIUse) {
     //   // 由于 getUserInfo 是网络请求，可能会在 Page.onLoad 之后才返回
     //   // 所以此处加入 callback 以防止这种情况
@@ -99,7 +116,7 @@ create(store, {
     //   }
     // });
   },
-  getUserInfo: function(e) {
+  getUserInfo: function (e) {
     console.log(e);
     console.log("用户信息1", e.detail.userInfo);
     if (e.detail.userInfo) {

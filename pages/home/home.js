@@ -395,11 +395,11 @@ create(store, {
 
   // 地图视野变化事件
   regionchange(e) {
-    console.log(e);
+    // console.log(e);
     // const mapContext = wx.createMapContext("map", this);
     mapContext.getCenterLocation({
       success: res => {
-        console.log(res);
+        // console.log(res);
       },
       fail: err => {
         console.log(err);

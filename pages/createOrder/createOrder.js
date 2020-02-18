@@ -124,7 +124,7 @@ create(store, {
       uploadFile: this.uploadFile.bind(this),
       [`formData.orderType`]: this.data.orderTypes[0]
     });
-    this.getQiniuyun();
+    // this.getQiniuyun();
     // 获取周围商店
     app.qqMap.search({
       keyword: "购物",

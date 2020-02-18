@@ -2,10 +2,6 @@
   "pages": [
     "pages/home/home",
     "pages/actList/actList",
-<<<<<<< Updated upstream
-=======
-
->>>>>>> Stashed changes
     "pages/message/message",
     "pages/personal/personal",
     "pages/createOrder/createOrder",

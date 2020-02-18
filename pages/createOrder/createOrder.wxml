@@ -32,7 +32,7 @@
                     <!-- ======= -->
                     <!-- <image class="locationImg" src="../../public/images/地标1.png" /> -->
                     <!-- >>>>>>> miniprogram -->
-                    <image class="locationImg" src="../../public/images/地标1.png" />
+                    <image class="locationImg" src="../../public/images/position.png" />
                     <view class="locationText">华南理工大学</view>
                 </mp-cell>
                 <mp-cell prop="business_name" ext-class="business_name">

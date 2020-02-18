@@ -124,7 +124,7 @@ create(store, {
       uploadFile: this.uploadFile.bind(this),
       [`formData.orderType`]: this.data.orderTypes[0]
     });
-
+    this.getQiniuyun();
     // 获取周围商店
     app.qqMap.search({
       keyword: "购物",
@@ -236,7 +236,13 @@ create(store, {
         return Promise.reject("上传出错");
       });
   },
-  //七牛云上传的函数
+  //七牛云上传的token
+  getQiniuyun() {
+    app.ajax.getQiniuyun().then(res => {
+      console.log(res);
+    });
+
+  },
   // 上传文件到七牛云 没有完成
   upqiniu(req) {
     console.log(req)

@@ -16,6 +16,10 @@ const ajax = {
       url: base.checkActOrder,
       data
     })
+  },
+  //七牛云凭证
+  getQiniuyun: () => {
+    return https._get({ url: base.getqiniuyun });
   }
 };
 

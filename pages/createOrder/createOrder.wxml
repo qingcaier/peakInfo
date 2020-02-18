@@ -27,12 +27,20 @@
         <view class="form2">
             <mp-cells>
                 <mp-cell ext-class="location">
+<<<<<<< Updated upstream
                     <!-- <<<<<<< HEAD -->
                     <image class="locationImg" src="../../public/images/position.png" />
                     <!-- ======= -->
                     <!-- <image class="locationImg" src="../../public/images/地标1.png" /> -->
                     <!-- >>>>>>> miniprogram -->
+<<<<<<< HEAD
                     <image class="locationImg" src="../../public/images/position.png" />
+=======
+                    <image class="locationImg" src="../../public/images/地标1.png" />
+=======
+                    <image class="locationImg" src="../../public/images/位置.png" />
+>>>>>>> Stashed changes
+>>>>>>> d73c18c5b7d9362e6257eb70efd12ba6e96e871d
                     <view class="locationText">华南理工大学</view>
                 </mp-cell>
                 <mp-cell prop="business_name" ext-class="business_name">

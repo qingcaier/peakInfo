@@ -74,7 +74,7 @@ create(store, {
         rules: {
           required: true,
           message: "拼单总数是必填项",
-          validator: function (rule, value, param, models) {
+          validator: function(rule, value, param, models) {
             if (isNaN(value) || value <= 0) {
               return rule.message;
             }
@@ -86,7 +86,7 @@ create(store, {
         rules: {
           required: true,
           message: "您已拼了多少",
-          validator: function (rule, value, param, models) {
+          validator: function(rule, value, param, models) {
             if (isNaN(value) || value <= 0) {
               return rule.message;
             }
@@ -104,7 +104,7 @@ create(store, {
         name: "time",
         rules: [
           {
-            validator: function (rule, value, param, models) {
+            validator: function(rule, value, param, models) {
               for (let i in value) {
                 if (isNaN(value[i]) || value[i] < 0) {
                   return rule.message;
@@ -118,7 +118,7 @@ create(store, {
     ]
   },
 
-  onLoad: function () {
+  onLoad: function() {
     this.setData({
       selectFile: this.selectFile.bind(this),
       uploadFile: this.uploadFile.bind(this),
@@ -159,7 +159,7 @@ create(store, {
     console.log(this.data.validateData);
   },
 
-  bindOrderTypeChange: function (e) {
+  bindOrderTypeChange: function(e) {
     console.log("picker country code 发生选择改变，携带值为", e.detail.value);
     console.log(e);
 
@@ -170,7 +170,7 @@ create(store, {
     });
   },
 
-  bindBusinessActChange: function (e) {
+  bindBusinessActChange: function(e) {
     console.log("所选商家改变", e.detail.value);
     console.log(e);
 
@@ -241,42 +241,46 @@ create(store, {
     app.ajax.getQiniuyun().then(res => {
       console.log(res);
     });
-
   },
   // 上传文件到七牛云 没有完成
   upqiniu(req) {
-    console.log(req)
+    console.log(req);
     const config = {
-      headers: { 'Content-Type': 'multipart/form-data' }
-    }
-    let filetype = ''
-    if (req.file.type === 'image/png') {
-      filetype = 'png'
+      headers: { "Content-Type": "multipart/form-data" }
+    };
+    let filetype = "";
+    if (req.file.type === "image/png") {
+      filetype = "png";
     } else {
-      filetype = 'jpg'
+      filetype = "jpg";
     }
     // 重命名要上传的文件
-    const keyname = 'dfairy' + Date.parse(new Date()) + Math.floor(Math.random() * 100) + '.' + filetype
+    const keyname =
+      "dfairy" +
+      Date.parse(new Date()) +
+      Math.floor(Math.random() * 100) +
+      "." +
+      filetype;
     // 从后端获取上传凭证token
-    this.axios.get('/qiniuyun').then(res => {
-      console.log(res)
-      const formdata = new FormData()
-      formdata.append('file', req.file)
-      formdata.append('token', res.data.upToken)
-      formdata.append('key', keyname)
+    this.axios.get("/qiniuyun").then(res => {
+      console.log(res);
+      const formdata = new FormData();
+      formdata.append("file", req.file);
+      formdata.append("token", res.data.upToken);
+      formdata.append("key", keyname);
       // 获取到凭证之后再将文件上传到七牛云空间
       this.axios.post(this.domain, formdata, config).then(res => {
-        this.imageUrl = 'http://' + this.qiniuaddr + '/' + res.data.key
+        this.imageUrl = "http://" + this.qiniuaddr + "/" + res.data.key;
         // console.log(this.imageUrl)
-      })
-    })
+      });
+    });
   },
-  chooseImage: function (e) {
+  chooseImage: function(e) {
     var that = this;
     wx.chooseImage({
       sizeType: ["original", "compressed"], // 可以指定是原图还是压缩图，默认二者都有
       sourceType: ["album", "camera"], // 可以指定来源是相册还是相机，默认二者都有
-      success: function (res) {
+      success: function(res) {
         // 返回选定照片的本地文件路径列表，tempFilePath可以作为img标签的src属性显示图片
         that.setData({
           files: that.data.files.concat(res.tempFilePaths)
@@ -287,36 +291,36 @@ create(store, {
 
   // 提交表单
   submitForm() {
-    wx.navigateTo({
-      url: "../orderMsg/orderMsg"
+    this.selectComponent("#form").validate((valid, errors) => {
+      console.log("valid", valid, errors);
+      if (!valid) {
+        const firstError = Object.keys(errors);
+        if (firstError.length) {
+          this.setData({
+            error: errors[firstError[0]].message
+          });
+        }
+        wx.showToast({
+          title: errors[firstError[0]].message,
+          icon: "none"
+        });
+      } else {
+        wx.showToast({
+          title: "校验通过"
+        });
+        const form = Object.assign(
+          {},
+          this.data.validateData,
+          this.data.formData
+        );
+        console.log("提交的总表单", form);
+        app.ajax.createOrder(form).then(res => {
+          wx.navigateTo({
+            url: "../orderMsg/orderMsg"
+          });
+          console.log(res);
+        });
+      }
     });
-    // this.selectComponent("#form").validate((valid, errors) => {
-    //   console.log("valid", valid, errors);
-    //   if (!valid) {
-    //     const firstError = Object.keys(errors);
-    //     if (firstError.length) {
-    //       this.setData({
-    //         error: errors[firstError[0]].message
-    //       });
-    //     }
-    //     wx.showToast({
-    //       title: errors[firstError[0]].message,
-    //       icon: "none"
-    //     });
-    //   } else {
-    //     wx.showToast({
-    //       title: "校验通过"
-    //     });
-    //     const form = Object.assign(
-    //       {},
-    //       this.data.validateData,
-    //       this.data.formData
-    //     );
-    //     console.log("提交的总表单", form);
-    //     app.ajax.createOrder(form).then(res => {
-    //       console.log(res);
-    //     });
-    //   }
-    // });
   }
 });

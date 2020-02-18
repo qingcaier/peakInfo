@@ -48,6 +48,7 @@ App({
                     }
                   }
                 });
+
                 // 可以将 res 发送给后台解码出 unionId
                 store.data.userInfo = res.userInfo;
 

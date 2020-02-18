@@ -6,8 +6,9 @@
   /* border: 1rpx solid green; */
   border-radius: 12rpx;
   background-color: white;
-  justify-content: space-around;
-  margin-bottom: 5px;
+  justify-content: space-between;
+  padding: 10rpx;
+  /* margin-bottom: 5px; */
 }
 
 .imgContain {
@@ -41,7 +42,7 @@
 .textContain {
   display: flex;
   flex-direction: column;
-  width: 380rpx;
+  width: 360rpx;
   height: 170rpx;
   justify-content: space-between;
 }
@@ -64,12 +65,12 @@
 }
 
 .msgContain {
-  width: 130rpx;
+  width: 120rpx;
   height: 170rpx;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  align-items: flex-end;
+  /* align-items: flex-end; */
   font-size: 26rpx;
 }
 
@@ -79,4 +80,9 @@
 
 .time {
   color: #ffaa33;
+  /* font-weight: bold; */
+  /* word-break: keep-all; 不换行 */
+  /* white-space: nowrap; 强制在同一行内显示所有文本,直到文本结束或者遭遇 br 对象。不换行 */
+  /* overflow: hidden; 内容超出宽度时隐藏超出部分的内容 */
+  /* text-overflow: ellipsis; IE 专有属性,当对象内文本溢出时显示省略标记(...) ;需与overflow:hidden;一起使用。 */
 }

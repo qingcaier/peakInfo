@@ -25,7 +25,7 @@
     </view>
   </view>
   <view class="black_line"></view>
-  <view class="user_orders">
+  <view class="user_orders" bindtap="goMyOrder">
     <view class="">我的拼单</view>
     <view class="">{{needUser.exit_order}}</view>
   </view>

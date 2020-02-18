@@ -1,5 +1,6 @@
 {
   "usingComponents": {
     "my-cell": "/components/listCell/listCell"
-  }
+  },
+  "navigationBarTitleText": "PeakInfo"
 }

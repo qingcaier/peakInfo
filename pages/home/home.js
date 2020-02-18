@@ -235,7 +235,7 @@ create(store, {
             distance: scaleToDistance()
           })
           .then(res => {
-            console.log("附近的商家活动", res.data.data);
+            console.log("附近的商家活动", res.data);
             let NeightAct = res.data.data;
             let markersList = [];
 

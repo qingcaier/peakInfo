@@ -197,7 +197,11 @@ create(store, {
   onReady: function () {
     this.testCot = this.selectComponent("#test");
   },
-
+  newOrder() {
+    wx.navigateTo({
+      url: "../createOrder/createOrder"
+    });
+  },
   /**
    * 自定义函数
    * */

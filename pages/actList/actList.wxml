@@ -3,7 +3,7 @@
         <image class="locationIcon" src="../../public/images/position.png" mode="aspectFit" />
         <view class="location-text">{{targetLocation}}</view>
     </view>
-    <button class="btn" slot="right" type="warn" size="default" bindtap="onTap">发起拼单</button>
+    <button class="btn" slot="right" type="warn" size="default" bindtap="newOrder">发起拼单</button>
 </we-navigator>
 <view class="main">
     <view class="board">

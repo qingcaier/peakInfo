@@ -148,5 +148,11 @@ create(store, {
     //   userInfo: e.detail.userInfo,
     //   hasUserInfo: true
     // });
+  },
+  goMyOrder() {
+    console.log("myOrder")
+    wx.navigateTo({
+      url: "../myOrder/myOrder"
+    });
   }
 });

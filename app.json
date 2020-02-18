@@ -6,7 +6,9 @@
     "pages/personal/personal",
     "pages/createOrder/createOrder",
     "pages/logs/logs",
-    "pages/orderMsg/orderMsg"
+    "pages/orderMsg/orderMsg",
+    "pages/myOrder/myOrder",
+    "pages/chat/chat"
   ],
   "permission": {
     "scope.userLocation": {

@@ -5,7 +5,7 @@
             <view class="address">{{address}}</view>
             <view class="distance">{{distanceStr}}</view>
         </view>
-        <image class="img" src="../../public/images/三角下.png" mode="aspectFit" />
+        <image class="img" src="../../public/images/Inverted_triangle.png" mode="aspectFit" />
     </view>
     <scroll-view class="body">
         <slot></slot>

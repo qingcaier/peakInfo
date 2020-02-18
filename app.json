@@ -1,11 +1,9 @@
 {
   "pages": [
-    "pages/personal/personal",
     "pages/home/home",
     "pages/actList/actList",
-    "pages/home/home",
-
     "pages/message/message",
+    "pages/personal/personal",
     "pages/createOrder/createOrder",
     "pages/logs/logs",
     "pages/orderMsg/orderMsg"

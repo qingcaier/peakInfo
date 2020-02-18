@@ -6,7 +6,7 @@ const app = getApp();
 let mapContext;
 
 // 将地图比例尺转化为手机屏幕大概距离
-let scaleToDistance = function(scale) {
+let scaleToDistance = function (scale) {
   switch (scale) {
     case 3:
       return 6000000;
@@ -50,7 +50,7 @@ let scaleToDistance = function(scale) {
 };
 
 // 生成marker对象
-let createMarker = function(obj) {
+let createMarker = function (obj) {
   let calloutContent = "";
   if (obj.total_count) {
     switch (obj.act_type) {
@@ -70,7 +70,7 @@ let createMarker = function(obj) {
     act_id: obj._id,
     _distance: obj._distance,
     // isSelected: false,
-    iconPath: "../../public/images/位置.png",
+    iconPath: "../../public/images/position.png",
     latitude: obj.location.lat,
     longitude: obj.location.lng,
     width: 1,
@@ -100,7 +100,7 @@ let createMarker = function(obj) {
 };
 
 // 距离截取(保留两位小数)
-let showDistance = function(distance) {
+let showDistance = function (distance) {
   if (distance >= 1000) {
     return Math.round((Math.round(distance) / 1000) * 100) / 100 + "km";
   } else {
@@ -119,7 +119,7 @@ create(store, {
     // calloutStyle: {}
 
     // contain: {
-    //   img: "../../public/images/TIM图片20200205222618.png",
+    //   img: "../../public/images/store.png",
     //   title: "缺200，满500减200！！！",
     //   detail: "走过路过千万别错过，以纯满500减200，现差200，求拼单！！！",
 
@@ -130,7 +130,7 @@ create(store, {
 
     orderList: [
       {
-        img: "../../public/images/TIM图片20200205222618.png",
+        img: "../../public/images/store.png",
         title: "缺200，满500减200！！！",
         detail: "走过路过千万别错过，以纯满500减200，现差200，求拼单！！！",
 
@@ -139,7 +139,7 @@ create(store, {
         _validTime: 1582939162423
       },
       {
-        img: "../../public/images/TIM图片20200205222618.png",
+        img: "../../public/images/store.png",
         title: "缺200，满500减200！！！",
         detail: "走过路过千万别错过，以纯满500减200，现差200，求拼单！！！",
 
@@ -148,7 +148,7 @@ create(store, {
         _validTime: 1582939162423
       },
       {
-        img: "../../public/images/TIM图片20200205222618.png",
+        img: "../../public/images/store.png",
         title: "缺200，满500减200！！！",
         detail: "走过路过千万别错过，以纯满500减200，现差200，求拼单！！！",
 
@@ -157,7 +157,7 @@ create(store, {
         _validTime: 1582939162423
       },
       {
-        img: "../../public/images/TIM图片20200205222618.png",
+        img: "../../public/images/store.png",
         title: "缺200，满500减200！！！",
         detail: "走过路过千万别错过，以纯满500减200，现差200，求拼单！！！",
 
@@ -167,7 +167,7 @@ create(store, {
       }
     ]
   },
-  onLoad: function() {
+  onLoad: function () {
     // this.getUserLocation();
     mapContext = wx.createMapContext("map");
     // mapContext.getScale({
@@ -189,13 +189,13 @@ create(store, {
     //     console.log("附近的商家活动", res.data);
     //   });
   },
-  onShow: function() {
+  onShow: function () {
     this.getUserLocation();
   },
-  onReady: function() {},
+  onReady: function () { },
 
   // 获取当前定位并请求附近的商家活动
-  getUserLocation: function() {
+  getUserLocation: function () {
     // wx.getLocation({
     //   type: "gcj02",
     //   success: response => {
@@ -299,7 +299,7 @@ create(store, {
   },
 
   // 发起拼单跳转
-  toCreateOrder: function() {
+  toCreateOrder: function () {
     console.log("曹尼玛");
     wx.navigateTo({
       url: "../createOrder/createOrder"

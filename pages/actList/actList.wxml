@@ -1,6 +1,6 @@
 <we-navigator back="{{false}}" background="#ff7700" title="" ext-class="navigator">
     <view class="location" slot="left">
-        <image class="locationIcon" src="../../public/images/位置.png" mode="aspectFit" />
+        <image class="locationIcon" src="../../public/images/position.png" mode="aspectFit" />
         <view class="location-text">{{targetLocation}}</view>
     </view>
     <button class="btn" slot="right" type="warn" size="default" bindtap="onTap">发起拼单</button>

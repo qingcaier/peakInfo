@@ -27,18 +27,12 @@
         <view class="form2">
             <mp-cells>
                 <mp-cell ext-class="location">
-<<<<<<< HEAD
                     <!-- <<<<<<< HEAD -->
-                    <image class="locationImg" src="../../public/images/位置.png" />
+                    <image class="locationImg" src="../../public/images/position.png" />
                     <!-- ======= -->
                     <!-- <image class="locationImg" src="../../public/images/地标1.png" /> -->
                     <!-- >>>>>>> miniprogram -->
-=======
                     <image class="locationImg" src="../../public/images/地标1.png" />
-<<<<<<< HEAD
->>>>>>> miniprogram
-=======
->>>>>>> miniprogram
                     <view class="locationText">华南理工大学</view>
                 </mp-cell>
                 <mp-cell prop="business_name" ext-class="business_name">

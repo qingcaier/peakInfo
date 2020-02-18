@@ -5,9 +5,9 @@ const app = getApp();
 
 create(store, {
   data: {
-    wxlogo: "../../public/images/微信登录.png",
-    boy: "../../public/images/男孩.png",
-    girl: "../../public/images/女孩.png",
+    wxlogo: "../../public/images/weixin_logo.png",
+    boy: "../../public/images/boy.png",
+    girl: "../../public/images/girl.png",
     wxloginText: "微信登录",
     userInfo: {
       // avatarUrl: "https://wx.qlogo.cn/mmopen/vi_32/Tp8K06cGYIJLB1pUaibXuFouypKTNE9wnQGmljzoaATibSicS7eKnLnbShwv5Q1sdo8PI17AO0rq4GQfFutxTP2eA/132",

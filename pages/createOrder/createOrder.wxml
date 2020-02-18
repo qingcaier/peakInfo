@@ -15,7 +15,7 @@
                     <input bindinput="formInputChange" data-field="total_count" class="weui-input" placeholder="您总共要多少元/件呢？" value="{{validateData.total_count}}" />
                 </mp-cell>
                 <mp-cell prop="current_count" title="" ext-class="inp current_count">
-                    <input bindinput="formInputChange" data-field="current_count" class="weui-input" placeholder="还需要多少元/件呢？" value="{{validateData.current_count}}" />
+                    <input bindinput="formInputChange" data-field="current_count" class="weui-input" placeholder="您买了多少元/件呢？" value="{{validateData.current_count}}" />
                 </mp-cell>
             </mp-cells>
             <mp-cells ext-class="cells2">
@@ -27,7 +27,18 @@
         <view class="form2">
             <mp-cells>
                 <mp-cell ext-class="location">
+<<<<<<< HEAD
+                    <!-- <<<<<<< HEAD -->
+                    <image class="locationImg" src="../../public/images/位置.png" />
+                    <!-- ======= -->
+                    <!-- <image class="locationImg" src="../../public/images/地标1.png" /> -->
+                    <!-- >>>>>>> miniprogram -->
+=======
                     <image class="locationImg" src="../../public/images/地标1.png" />
+<<<<<<< HEAD
+>>>>>>> miniprogram
+=======
+>>>>>>> miniprogram
                     <view class="locationText">华南理工大学</view>
                 </mp-cell>
                 <mp-cell prop="business_name" ext-class="business_name">

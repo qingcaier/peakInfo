@@ -59,13 +59,14 @@ create(store, {
           //     console.log("登录失败！");
           //   }
           // });
-          console.log(app.ajax);
+
           app.ajax
             .userLogin({ code: res.code, userInfo: data })
             .then(res => {
               console.log(res);
 
               wx.setStorageSync("localToken", res.data.localToken); // 存储token
+              console.log(wx.getStorageSync("localToken"));
               this.store.data.hasUserInfo = true; // 登录成功
               this.update();
 

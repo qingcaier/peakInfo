@@ -34,7 +34,7 @@ App({
                           userInfo: res.userInfo
                         })
                         .then(resp => {
-                          console.log(resp);
+                          // console.log(resp);
 
                           wx.setStorageSync("localToken", resp.data.localToken); // 存储token
                           store.data.hasUserInfo = true; // 登录成功

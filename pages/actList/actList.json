@@ -1,7 +1,8 @@
 {
   "usingComponents": {
     "we-navigator": "/WeUI/navigation-bar/navigation-bar",
-    "test-cot": "/components/panelContain/panelContain"
+    "my-cells": "/components/listCells/listCells",
+    "my-cell": "/components/listCell/listCell"
   },
   "navigationStyle": "custom",
   "navigationBarTitleText": "UI组件库"

@@ -1,4 +1,4 @@
-const token = wx.getStorageSync("localToken");
+// const token = wx.getStorageSync("localToken");
 
 // 封装get请求
 function _get({ url, data }) {
@@ -12,7 +12,7 @@ function _get({ url, data }) {
     const obj = {
       url,
       header: {
-        token
+        token: wx.getStorageSync("localToken")
       },
       data,
       method: "GET",
@@ -40,7 +40,7 @@ function _post({ url, data }) {
     const obj = {
       url,
       header: {
-        token
+        token: wx.getStorageSync("localToken")
       },
       data,
       method: "POST",

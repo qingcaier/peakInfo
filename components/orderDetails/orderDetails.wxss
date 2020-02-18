@@ -1,45 +1,68 @@
-
-
-.order{margin:0 20rpx;}
-.orderTitle{
-    font-weight: bolder;
-    font-size: larger;
+.order {
+  margin: 0 20rpx;
 }
-.storePosition{
-    display: flex;
-    font-size: small;
+.orderTitle {
+  font-weight: bolder;
+  font-size: larger;
 }
-.buy{font-size: small;color: rgb(235, 193, 8);}
-.msg{display: flex;justify-content:space-between ;}
+.storePosition {
+  display: flex;
+  font-size: small;
+}
+.buy {
+  font-size: small;
+  color: rgb(235, 193, 8);
+}
+.msg {
+  display: flex;
+  justify-content: space-between;
+}
 /* .ddl{border: 1px solid tomato;display: inline;} */
-.ddl text{
-    word-break: keep-all;
-    word-wrap: break-word;
-    }
-.name{font-weight: bold;}
-.position{margin:0 50rpx}
-.join{position: absolute;right: 20rpx;}
-.black_line{
-    width: 100%;
-    height: 4rpx;
-    background-color: rgba(0, 0, 0, 0.2);
-    margin: 20rpx 0;}
-.maker{ 
-    display: flex;
-    font-size: x-small;
-   
+.ddl text {
+  word-break: keep-all;
+  word-wrap: break-word;
 }
-.icon_image{
-    width: 50rpx;
-    height: 50rpx;
-    border-radius:50% ;
-    -webkit-border-radius:50% ;
-    -moz-border-radius:50% ;
-    -ms-border-radius:50% ;
-    -o-border-radius:50% ;
+.name {
+  font-weight: bold;
 }
-.makerName{margin: auto 50rpx;}
-.success_order{margin: auto 0;}
-.picture_swiper{min-height: 600rpx;}
-.swiper-item{border: 5rpx solid chocolate;}
-.time{font-size: x-small;}
+.position {
+  margin: 0 50rpx;
+}
+.join {
+  position: absolute;
+  right: 20rpx;
+}
+.black_line {
+  width: 100%;
+  height: 4rpx;
+  background-color: rgba(0, 0, 0, 0.2);
+  margin: 20rpx 0;
+}
+.maker {
+  display: flex;
+  font-size: x-small;
+}
+.icon_image {
+  width: 50rpx;
+  height: 50rpx;
+  border-radius: 50%;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  -ms-border-radius: 50%;
+  -o-border-radius: 50%;
+}
+.makerName {
+  margin: auto 50rpx;
+}
+.success_order {
+  margin: auto 0;
+}
+.picture_swiper {
+  min-height: 600rpx;
+}
+.swiper-item {
+  border: 5rpx solid chocolate;
+}
+.time {
+  font-size: x-small;
+}

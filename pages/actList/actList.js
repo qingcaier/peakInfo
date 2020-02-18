@@ -9,11 +9,181 @@ create(store, {
    */
   data: {
     targetLocation: "华南理工大放声大哭了解过is阿的交付给添加热水学",
-    navigator_style: {
-      display: "flex",
-      "justify-content": "space-around",
-      "align-items": "center"
-    }
+
+    actList: [
+      {
+        business_name: "以纯",
+        address: "大学城新天地",
+        distance: 3666664,
+        orderList: [
+          {
+            img: "../../public/images/TIM图片20200205222618.png",
+            title: "缺200，满500减200！！！",
+            detail: "走过路过千万别错过，以纯满500减200，现差200，求拼单！！！",
+
+            _typeNumber: 1,
+            _remainCount: 200,
+            _validTime: 1582939162423
+          },
+          {
+            img: "../../public/images/TIM图片20200205222618.png",
+            title: "缺200，满500减200！！！",
+            detail: "走过路过千万别错过，以纯满500减200，现差200，求拼单！！！",
+
+            _typeNumber: 1,
+            _remainCount: 200,
+            _validTime: 1582939162423
+          },
+          {
+            img: "../../public/images/TIM图片20200205222618.png",
+            title: "缺200，满500减200！！！",
+            detail: "走过路过千万别错过，以纯满500减200，现差200，求拼单！！！",
+
+            _typeNumber: 1,
+            _remainCount: 200,
+            _validTime: 1582939162423
+          },
+          {
+            img: "../../public/images/TIM图片20200205222618.png",
+            title: "缺200，满500减200！！！",
+            detail: "走过路过千万别错过，以纯满500减200，现差200，求拼单！！！",
+
+            _typeNumber: 1,
+            _remainCount: 200,
+            _validTime: 1582939162423
+          }
+        ]
+      },
+      {
+        business_name: "以纯",
+        address: "大学城新天地",
+        distance: 3666664,
+        orderList: [
+          {
+            img: "../../public/images/TIM图片20200205222618.png",
+            title: "缺200，满500减200！！！",
+            detail: "走过路过千万别错过，以纯满500减200，现差200，求拼单！！！",
+
+            _typeNumber: 1,
+            _remainCount: 200,
+            _validTime: 1582939162423
+          },
+          {
+            img: "../../public/images/TIM图片20200205222618.png",
+            title: "缺200，满500减200！！！",
+            detail: "走过路过千万别错过，以纯满500减200，现差200，求拼单！！！",
+
+            _typeNumber: 1,
+            _remainCount: 200,
+            _validTime: 1582939162423
+          },
+          {
+            img: "../../public/images/TIM图片20200205222618.png",
+            title: "缺200，满500减200！！！",
+            detail: "走过路过千万别错过，以纯满500减200，现差200，求拼单！！！",
+
+            _typeNumber: 1,
+            _remainCount: 200,
+            _validTime: 1582939162423
+          },
+          {
+            img: "../../public/images/TIM图片20200205222618.png",
+            title: "缺200，满500减200！！！",
+            detail: "走过路过千万别错过，以纯满500减200，现差200，求拼单！！！",
+
+            _typeNumber: 1,
+            _remainCount: 200,
+            _validTime: 1582939162423
+          }
+        ]
+      },
+      {
+        business_name: "以纯",
+        address: "大学城新天地",
+        distance: 3666664,
+        orderList: [
+          {
+            img: "../../public/images/TIM图片20200205222618.png",
+            title: "缺200，满500减200！！！",
+            detail: "走过路过千万别错过，以纯满500减200，现差200，求拼单！！！",
+
+            _typeNumber: 1,
+            _remainCount: 200,
+            _validTime: 1582939162423
+          },
+          {
+            img: "../../public/images/TIM图片20200205222618.png",
+            title: "缺200，满500减200！！！",
+            detail: "走过路过千万别错过，以纯满500减200，现差200，求拼单！！！",
+
+            _typeNumber: 1,
+            _remainCount: 200,
+            _validTime: 1582939162423
+          },
+          {
+            img: "../../public/images/TIM图片20200205222618.png",
+            title: "缺200，满500减200！！！",
+            detail: "走过路过千万别错过，以纯满500减200，现差200，求拼单！！！",
+
+            _typeNumber: 1,
+            _remainCount: 200,
+            _validTime: 1582939162423
+          },
+          {
+            img: "../../public/images/TIM图片20200205222618.png",
+            title: "缺200，满500减200！！！",
+            detail: "走过路过千万别错过，以纯满500减200，现差200，求拼单！！！",
+
+            _typeNumber: 1,
+            _remainCount: 200,
+            _validTime: 1582939162423
+          }
+        ]
+      },
+      {
+        business_name: "以纯",
+        address: "大学城新天地",
+        distance: 3666664,
+        orderList: [
+          {
+            img: "../../public/images/TIM图片20200205222618.png",
+            title: "缺200，满500减200！！！",
+            detail: "走过路过千万别错过，以纯满500减200，现差200，求拼单！！！",
+
+            _typeNumber: 1,
+            _remainCount: 200,
+            _validTime: 1582939162423
+          },
+          {
+            img: "../../public/images/TIM图片20200205222618.png",
+            title: "缺200，满500减200！！！",
+            detail: "走过路过千万别错过，以纯满500减200，现差200，求拼单！！！",
+
+            _typeNumber: 1,
+            _remainCount: 200,
+            _validTime: 1582939162423
+          },
+          {
+            img: "../../public/images/TIM图片20200205222618.png",
+            title: "缺200，满500减200！！！",
+            detail: "走过路过千万别错过，以纯满500减200，现差200，求拼单！！！",
+
+            _typeNumber: 1,
+            _remainCount: 200,
+            _validTime: 1582939162423
+          },
+          {
+            img: "../../public/images/TIM图片20200205222618.png",
+            title: "缺200，满500减200！！！",
+            detail: "走过路过千万别错过，以纯满500减200，现差200，求拼单！！！",
+
+            _typeNumber: 1,
+            _remainCount: 200,
+            _validTime: 1582939162423
+          }
+        ]
+      }
+    ]
   },
 
   /**
@@ -34,13 +204,6 @@ create(store, {
 
   showToast: function() {
     this.testCot.showToast("", 2000);
-  },
-
-  // 发起拼单跳转
-  toCreateOrder: function() {
-    wx.navigateTo({
-      url: "../createOrder/createOrder"
-    });
   },
 
   /**

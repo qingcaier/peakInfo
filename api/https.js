@@ -16,11 +16,13 @@ function _get({ url, data }) {
       },
       data,
       method: "GET",
-      success: res => (res.statusCode === 200 ? resolved(res) : rejected(res)),
-      fail: err => rejected(err)
-      //   complete: () => {
-      //       wx.hideloading();
-      //   }
+      success: res => {
+        return res.statusCode === 200 ? resolved(res) : rejected(res);
+      },
+      fail: err => rejected(err),
+      complete: () => {
+        wx.hideLoading();
+      }
     };
     wx.request(obj);
   });
@@ -33,6 +35,8 @@ function _get({ url, data }) {
 
 // 封装post请求
 function _post({ url, data }) {
+  //为了用户体验，加一个loading效果
+  wx.showLoading({ title: "加载中", mask: true });
   // if (token) {
   return new Promise((resolved, rejected) => {
     // data.token = token;
@@ -50,9 +54,13 @@ function _post({ url, data }) {
         //     title: "请先授权登录！"
         //   });
         // }
+        // wx.hideLoading();
         return res.statusCode === 200 ? resolved(res) : rejected(res);
       },
-      fail: err => rejected(err)
+      fail: err => rejected(err),
+      complete: () => {
+        wx.hideLoading();
+      }
     };
     wx.request(obj);
   });

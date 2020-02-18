@@ -6,7 +6,7 @@ const app = getApp();
 let mapContext;
 
 // 将地图比例尺转化为手机屏幕大概距离
-let scaleToDistance = function (scale) {
+let scaleToDistance = function(scale) {
   switch (scale) {
     case 3:
       return 6000000;
@@ -50,7 +50,7 @@ let scaleToDistance = function (scale) {
 };
 
 // 生成marker对象
-let createMarker = function (obj) {
+let createMarker = function(obj) {
   let calloutContent = "";
   if (obj.total_count) {
     switch (obj.act_type) {
@@ -100,7 +100,7 @@ let createMarker = function (obj) {
 };
 
 // 距离截取(保留两位小数)
-let showDistance = function (distance) {
+let showDistance = function(distance) {
   if (distance >= 1000) {
     return Math.round((Math.round(distance) / 1000) * 100) / 100 + "km";
   } else {
@@ -115,6 +115,7 @@ create(store, {
     mapScale: 17,
 
     isSelected: false, // 当前是否有选中商家
+    // currentCallout: -1,
     // distance: "",
     // calloutStyle: {}
 
@@ -167,7 +168,7 @@ create(store, {
       }
     ]
   },
-  onLoad: function () {
+  onLoad: function() {
     // this.getUserLocation();
     mapContext = wx.createMapContext("map");
     // mapContext.getScale({
@@ -189,13 +190,13 @@ create(store, {
     //     console.log("附近的商家活动", res.data);
     //   });
   },
-  onShow: function () {
+  onShow: function() {
     this.getUserLocation();
   },
-  onReady: function () { },
+  onReady: function() {},
 
   // 获取当前定位并请求附近的商家活动
-  getUserLocation: function () {
+  getUserLocation: function() {
     // wx.getLocation({
     //   type: "gcj02",
     //   success: response => {
@@ -234,7 +235,7 @@ create(store, {
             distance: scaleToDistance()
           })
           .then(res => {
-            console.log("附近的商家活动", res.data.data);
+            console.log("附近的商家活动", res.data);
             let NeightAct = res.data.data;
             let markersList = [];
 
@@ -299,11 +300,26 @@ create(store, {
   },
 
   // 发起拼单跳转
-  toCreateOrder: function () {
-    console.log("曹尼玛");
+  toCreateOrder: function() {
     wx.navigateTo({
       url: "../createOrder/createOrder"
     });
+  },
+
+  // 关闭拼单列表
+  closeOrderTap() {
+    console.log(this.data.currentCallout);
+    let a = this.data.currentCallout;
+    if (this.data.isSelected) {
+      this.setData({
+        [`markers[${a}].callout.content`]: this.data.markers[
+          a
+        ].callout.content.split(" ")[0],
+        [`markers[${a}].callout.color`]: "#ffffff",
+        isSelected: false
+      });
+      // this.setData({});
+    }
   },
 
   callouttap(e) {
@@ -315,8 +331,10 @@ create(store, {
         [`markers[${e.markerId}].callout.content`]:
           calloutContent + " " + showDistance(targetAct._distance),
         [`markers[${e.markerId}].callout.color`]: "#000000",
-        isSelected: true
+        isSelected: true,
+        currentCallout: e.markerId
       });
+      console.log(this.data.currentCallout);
 
       app.ajax
         .checkActOrder({
@@ -326,15 +344,17 @@ create(store, {
         .then(res => {
           console.log(res.data);
         });
-    } else {
-      this.setData({
-        [`markers[${e.markerId}].callout.content`]: calloutContent.split(
-          " "
-        )[0],
-        [`markers[${e.markerId}].callout.color`]: "#ffffff",
-        isSelected: false
-      });
     }
+    // else {
+    //   this.setData({
+    //     [`markers[${e.markerId}].callout.content`]: calloutContent.split(
+    //       " "
+    //     )[0],
+    //     [`markers[${e.markerId}].callout.color`]: "#ffffff",
+
+    //     currentCallout: e.markerId
+    //   });
+    // }
   },
 
   markertap(e) {
@@ -369,8 +389,8 @@ create(store, {
     //   distance: targetAct._distance + "米",
     //   calloutStyle: "top: 12rpx;left: 12rpx"
     // });
-    console.log(this.data.markers);
-    console.log(targetAct);
+    // console.log(this.data.markers);
+    // console.log(targetAct);
   },
 
   // 地图视野变化事件

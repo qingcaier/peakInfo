@@ -5,10 +5,10 @@
       {{distance}}
     </cover-view> -->
   </map>
-  <view class="orderContain">
-    <image class="pullImg" src="../../public/images/down.png" />
-    <scroll-view class="orderCells" scroll-y="{{true}}">
-      <my-cell class="orderCell" wx:for="{{orderList}}" :key="index" img="{{orderList[index].img}}" title="{{orderList[index].title}}" detail="{{orderList[index].detail}}" _typeNumber="{{orderList[index]._typeNumber}}" _remainCount="{{orderList[index]._remainCount}}" _validTime="{{orderList[index]._validTime}}"></my-cell>
+  <view class="orderContain" wx:if="{{isSelected}}">
+    <image class="pullImg" src="../../public/images/down.png" bindtap="closeOrderTap" />
+    <scroll-view class="orderCells" scroll-y="{{true}}" scroll-x="{{true}}" enable-flex="{{true}}">
+      <my-cell class="orderCell" wx:for="{{orderList}}" wx:key="index" img="{{orderList[index].img}}" title="{{orderList[index].title}}" detail="{{orderList[index].detail}}" _typeNumber="{{orderList[index]._typeNumber}}" _remainCount="{{orderList[index]._remainCount}}" _validTime="{{orderList[index]._validTime}}"></my-cell>
     </scroll-view>
   </view>
   <view class="createOrder-btn" bindtap="toCreateOrder">拼</view>

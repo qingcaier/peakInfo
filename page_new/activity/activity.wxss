@@ -1,0 +1,15 @@
+/* page_new/activity/activity.wxss */
+.acti{
+    width: 90%;
+    line-height:150rpx;
+    text-align: center;
+    background-color: #c89b40;
+    margin: 5%;
+    border-radius:10rpx;
+    -webkit-border-radius:10rpx;
+    -moz-border-radius:10rpx;
+    -ms-border-radius:10rpx;
+    -o-border-radius:10rpx;
+    box-shadow:2rpx 2rpx 10rpx rgba(0, 0, 0, 0.2);
+    color: #fff;
+}

@@ -1,0 +1,25 @@
+<!-- page_new/mallHome/mallHome.wxml -->
+<view class="mall">
+    <view class="user">
+        <image class="icon" src="/public/picture/user_icon.png" />
+        <text class="name">{{user.name}}</text>
+    </view>
+    <view class="user">
+        <image class="icon" src="/public/picture/count.png" />
+        <text class="name">积分：{{user.count}}</text>
+        <view bindtap="goMyGift" class="history">兑换历史</view>
+    </view>
+    <view class="black_line"></view>
+    <view class="buildings">
+        <view class="one" wx:for="{{giftData}}" wx:key="title">
+            <view class="buildBord">
+                <view class="imgBord">
+                    <image class="img" mode="aspectFit" src="{{item.url}}"></image>
+                </view>
+                <view class="title">{{item.title}}-{{item.price}}积分</view>
+                <view class="title">库存：{{item.inventory}}个</view>
+                <button data-index="{{index}}" bindtap="getGift" class="getGift">兑换</button>
+            </view>
+        </view>
+    </view>
+</view>

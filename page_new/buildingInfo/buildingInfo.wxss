@@ -1,0 +1,44 @@
+/* page_new/buildingInfo/buildingInfo.wxss */
+.picture_swiper{
+    width: 100%;
+    height: 400rpx;
+    margin-bottom: 10rpx;
+    background-color: rgba(0, 0, 0, 0.1);
+}
+.msg{
+    width: 80%;
+    margin: 0 10%;
+    font-size: small;
+}
+.build-title{
+    display: flex;
+    width: 100%;
+    height: 60rpx;
+    line-height: 60rpx;
+    /* border: 2rpx solid tomato;  */
+}
+.name{
+    font-size: large;
+}
+.location{
+    width: 10%;
+    margin:0 2% 0 10%;
+}
+.mapPng{
+    width: 100%;
+    height: 100%;
+    /* border: 2rpx solid tomato;  */
+  
+}
+.map{
+    font-size: x-small;
+}   
+.text{
+    line-height: 60rpx;
+}
+.black_line {
+    margin:20rpx 0 ;
+    width: 100%;
+    height: 2rpx;
+    background-color: rgba(0, 0, 0, 0.2);
+  }

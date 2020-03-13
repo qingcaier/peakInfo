@@ -1,0 +1,26 @@
+<!-- page_new/buildingInfo/buildingInfo.wxml -->
+<view>
+    <swiper class="picture_swiper" indicator-dots="true">
+        <block wx:for="{{buildData.picList}}" wx:key="*this">
+            <swiper-item>
+                <!-- <view class="swiper-item"> -->
+                <image style=" width: 100%;height: 100%;margin:0 auto;" mode="aspectFit" src="{{baseUrl+item}}"></image>
+                <!-- </view> -->
+            </swiper-item>
+        </block>
+    </swiper>
+    <view class="msg">
+        <view class="build-title">
+            <text class="name">{{buildData.name}}</text>
+            <view class="location">
+                <image class="mapPng" src="../../public/picture/map.png" />
+            </view>
+            <text class="map">地图</text>
+        </view>
+        <view class="text">{{buildData.type}}</view>
+        <view class="text">{{buildData.period}}</view>
+        <view class="text">{{buildData.site}}</view>
+        <view class="black_line"></view>
+        <view class="intro">{{buildData.introduction}}</view>
+    </view>
+</view>

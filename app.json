@@ -1,5 +1,7 @@
 {
   "pages": [
+    
+    "page_new/home/home",
     "pages/home/home",
     "pages/actList/actList",
     "pages/message/message",
@@ -8,7 +10,13 @@
     "pages/logs/logs",
     "pages/orderMsg/orderMsg",
     "pages/myOrder/myOrder",
-    "pages/chat/chat"
+    "pages/chat/chat",
+    "pages/joinOrder/joinOrder",
+    "page_new/activity/activity",
+    "page_new/buildingInfo/buildingInfo",
+    "page_new/buildingList/buildingList",
+    "page_new/giftForm/giftForm",
+    "page_new/giftHistory/giftHistory"
   ],
   "permission": {
     "scope.userLocation": {

@@ -202,6 +202,12 @@ create(store, {
       url: "../createOrder/createOrder"
     });
   },
+  goJoin() {
+    console.log("mychat")
+    wx.navigateTo({
+      url: "../joinOrder/joinOrder"
+    });
+  },
   /**
    * 自定义函数
    * */

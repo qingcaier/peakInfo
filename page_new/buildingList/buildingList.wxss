@@ -1,0 +1,124 @@
+/* page_new/buildingList/buildingList.wxss */
+.page_search{
+    width: 100%;
+    height: 100%;
+}
+.page_search{
+    width: 100%;
+    height: 10%;
+    /* display: flex; *//*影响长度*/
+    /* border: 2rpx solid rebeccapurple; */
+    position: relative;
+}
+.search{
+    width: 86%;
+    height: 100rpx;
+    /* height: 100%;border: 2rpx solid green; */
+}
+.iconArea{
+    width: 10%;
+    height: 100rpx;
+    position: absolute;
+    top: 0;
+    right: 2%;
+}
+.mapPng{
+    width: 100%;
+    height: 100%;
+    /* border: 2rpx solid tomato;  */
+  
+}
+.btnArea{
+    width: 100%;
+    justify-content: space-between;
+    margin: 15rpx 0;
+    display: flex;
+}
+.select{
+    background-color: #C89B40;
+    color: #fff;
+}
+.btn{
+    font-size: 30rpx;
+}
+.location{
+    width: 100%;
+    display: flex; margin: 20rpx 0;
+}
+.black_line {
+    margin: auto 0;
+    width: 80%;
+    height: 4rpx;
+    background-color: rgba(0, 0, 0, 0.2);
+   
+  }
+  .cho{
+      margin: 0 10rpx;
+    width: 110rpx;
+    /* border: 2rpx solid tomato; */
+    text-align: center;
+    font-size: 30rpx;
+  }
+  .sin{
+    /* border: 2rpx solid tomato;  */
+    padding-top: 10rpx;
+  }
+  .nabla_top {
+    width: 0px;
+    height: 0px;
+    margin: auto 10rpx;
+    border-top: 20rpx solid black;
+    border-left: 20rpx solid transparent;
+    border-right: 20rpx solid transparent;
+}
+  .nabla_bot {
+    width: 0px;
+    height: 0px;
+    margin: auto 10rpx;
+    border-bottom: 20rpx solid black;
+    border-left: 20rpx solid transparent;
+    border-right: 20rpx solid transparent;
+}
+  .section_gap{
+      position: absolute;
+      right: 5%;
+      width: 20%;
+      background-color: #F2F2F2;
+  }
+  .radio_group{
+      /* border: 2rpx solid tomato; */
+  }
+  .radio{
+    margin: 5rpx;
+    font-size: 20rpx    ;
+  }
+  .buildings{
+      width: 100%;
+      display: flex;
+      flex-wrap:wrap
+  }
+  .one{
+      width: 50%;
+      height: 400rpx;
+      margin-bottom: 10rpx;
+  }
+  
+  .buildBord{
+      width: 90%;
+      height: 100%;
+      margin: 0 auto;
+      /* background-color: rgba(0, 0, 0, 0.05); */
+      /* border: 2rpx solid tomato; */
+      box-shadow:2px 2px 10px rgba(0, 0, 0, 0.1);
+  }
+  .imgBord{
+    width: 100%;
+    height: 85%;
+}
+  .img{
+      width: 100%;
+      height: 100%;
+  }
+  .title{
+      text-align: center;
+  }

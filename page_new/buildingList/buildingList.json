@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "mp-searchbar": "/WeUI/searchbar/searchbar"
+  },
+  "navigationBarTitleText": "历史文化"
+}

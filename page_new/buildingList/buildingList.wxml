@@ -1,32 +1,46 @@
 <!-- page_new/buildingList/buildingList.wxml -->
 <view class="page">
     <view class="page_search">
-        <mp-searchbar ext-class="search" bindselectresult="selectResult" search="{{search}}"></mp-searchbar>
+        <view class="input">
+            <input bindinput="bindKeyInput" confirm-type="search" placeholder="" />
+            <button style="padding: 0 7px;" size="mini" bindtap="search">搜索</button>
+        </view>
+        <!-- <mp-searchbar ext-class="search" bindselectresult="selectResult" search="{{search}}"></mp-searchbar> -->
         <view class="iconArea">
             <image class="mapPng" mode="" src="../../public/picture/map.png" />
         </view>
     </view>
-    <view class="btnArea">
-        <button bindtap="setBuildType" data-index="0" class="{{buildType==0?'select btn':'btn'}}" style="" size="" type="">
-            全部
-        </button>
-        <button bindtap="setBuildType" data-index="1" class="{{buildType==1?'select btn':'btn'}}" style="" size="" type="">
-            地标建筑
-        </button>
-        <button bindtap="setBuildType" data-index="2" class="{{buildType==2?'select btn':'btn'}}" style="" size="" type="">
-            名人故居
-        </button>
-        <button bindtap="setBuildType" data-index="3" class="{{buildType==3?'select btn':'btn'}}" style="" size="" type="">
-            历史民居
-        </button>
-    </view>
-    <view class="location">
-        <view class="black_line"></view>
-        <view bindtap="setRadioSee" class="cho">{{cho_position.name}}</view>
-        <view bindtap="setRadioSee" class="sin">
-            <view class="{{radioSee?'nabla_bot':'nabla_top'}}"></view>
+    <!-- <view class="my_swiper"> -->
+    <!-- 下拉菜单 -->
+    <view id="swiper-tab">
+        <view class="swiper-tab">
+            <view class="swiper-tab-list {{currentTab==0 ? 'on' : ''}}" data-current="0" bindtap="tabNav">
+                {{type}}
+                <i></i>
+            </view>
+            <view class="swiper-tab-list {{currentTab==1 ? 'on' : ''}}" data-current="1" bindtap="tabNav">
+                {{location}}
+                <i></i>
+            </view>
         </view>
+        <swiper current="{{currentTab}}" duration="1000" class="swiper-item" style='display:{{displays}}'>
+            <swiper-item style="overflow-y: scroll;">
+                <view class="location_bottom" hidden="">
+                    <view wx:for="{{nameList}}" wx:key="index" class="{{type_num == index?'slect_type':'no_choose'}}" data-num="{{index}}" bindtap="clickType" data-name=" {{item}}">
+                        {{item}}
+                    </view>
+                </view>
+            </swiper-item>
+            <swiper-item style="overflow-y: scroll;">
+                <view class="location_bottom" hidden="">
+                    <view wx:for="{{items}}" wx:key="index" class="{{location_num ==index?'slect_location':'no_choose'}}" data-num="{{index}}" bindtap="clickLocation" data-name=" {{item}}">
+                        {{item}}
+                    </view>
+                </view>
+            </swiper-item>
+        </swiper>
     </view>
+    <view class="swiper-beijing" bindtap="hideNav" style='display:{{displays}}'></view>
     <view class="section_gap" wx:if="{{radioSee}}">
         <radio-group class="radio_group" bindchange="radioChange">
             <radio class="radio" wx:for-items="{{items}}" wx:key="name" value="{{item.value}}" checked="{{item.checked}}">
@@ -38,10 +52,11 @@
         <view class="one" wx:for="{{buidings}}" wx:key="name">
             <view bindtap="goInfor" class="buildBord">
                 <view class="imgBord">
-                    <image class="img" mode="aspectFit" src="{{item.url}}"></image>
+                    <image class="img" mode="aspectFit" src="{{item.firstDisplayPic}}"></image>
                 </view>
                 <view class="title">{{item.name}}</view>
             </view>
         </view>
     </view>
+    <image src='../../public/picture/button-top.svg' class='goTop' hidden='{{!floorstatus}}' bindtap="goTop"></image>
 </view>

@@ -1,4 +1,4 @@
-// page_new/mallHome/mallHome.js
+const app = getApp();
 Page({
 
   /**
@@ -10,36 +10,47 @@ Page({
       count: "2000",
     },
     giftData: [
-      {
-        title: "指南针拼图",
-        price: "2000",
-        inventory: "20",
-        url: "http://cdn.cdlshow.xyz/gift_1.png"
-      },
-      {
-        title: "小鹿公仔 ",
-        price: "2000",
-        inventory: "20",
-        url: "http://cdn.cdlshow.xyz/gift_2.png"
-      },
-      {
-        title: "乔巴公仔 ",
-        price: "2000",
-        inventory: "20",
-        url: "http://cdn.cdlshow.xyz/gift_3.png"
-      }, {
-        title: "五羊公仔 ",
-        price: "2000",
-        inventory: "20",
-        url: "http://cdn.cdlshow.xyz/gift_4.png"
-      }
+      // {
+      //   title: "指南针拼图",
+      //   price: "2000",
+      //   inventory: "20",
+      //   url: "http://cdn.cdlshow.xyz/gift_1.png"
+      // },
+      // {
+      //   title: "小鹿公仔 ",
+      //   price: "2000",
+      //   inventory: "20",
+      //   url: "http://cdn.cdlshow.xyz/gift_2.png"
+      // },
+      // {
+      //   title: "乔巴公仔 ",
+      //   price: "2000",
+      //   inventory: "20",
+      //   url: "http://cdn.cdlshow.xyz/gift_3.png"
+      // }, {
+      //   title: "五羊公仔 ",
+      //   price: "2000",
+      //   inventory: "20",
+      //   url: "http://cdn.cdlshow.xyz/gift_4.png"
+      // }
     ]
   },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    let that = this;
+    app.ajax.getGiftList().then(
+      res => {
+        console.log(res.data.data)
+        if (!res.data.data) {
+          console.log("找不到")
+        } else {
+          that.setData({
+            giftData: res.data.data
+          })
+        }
+      }).catch(err => { console.log(err) });
   },
   getGift(e) {
     let num = e.currentTarget.dataset['index'];

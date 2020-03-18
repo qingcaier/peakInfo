@@ -14,9 +14,9 @@
         <view class="one" wx:for="{{giftData}}" wx:key="title">
             <view class="buildBord">
                 <view class="imgBord">
-                    <image class="img" mode="aspectFit" src="{{item.url}}"></image>
+                    <image class="img" mode="aspectFit" src="{{item.picture}}"></image>
                 </view>
-                <view class="title">{{item.title}}-{{item.price}}积分</view>
+                <view class="title">{{item.name}}-{{item.credit}}积分</view>
                 <view class="title">库存：{{item.inventory}}个</view>
                 <button data-index="{{index}}" bindtap="getGift" class="getGift">兑换</button>
             </view>

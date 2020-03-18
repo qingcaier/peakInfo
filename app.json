@@ -1,12 +1,12 @@
 {
   "pages": [
+    "page_new/mallHome/mallHome",
     "page_new/buildingList/buildingList",
     "page_new/home/home",
     "pages/home/home",
     "pages/actList/actList",
     "pages/message/message",
     "pages/personal/personal",
-    "pages/createOrder/createOrder",
     "pages/logs/logs",
     "pages/orderMsg/orderMsg",
     "pages/myOrder/myOrder",

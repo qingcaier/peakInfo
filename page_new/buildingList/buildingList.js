@@ -29,9 +29,12 @@ Page({
     type_num: 0,
     location_num: 0,
     floorstatus: false,
+    noMore: false,//到底标志
+    business_acts: [], // 腾讯地图接口返回的附近的商家
   },
   isShow: true,
   currentTab: 0,
+
 
   /**
    * 生命周期函数--监听页面加载
@@ -41,6 +44,26 @@ Page({
     this.getAllType()
     this.setData({
       search: this.search.bind(this)
+    });
+    // 获取周围商店
+    app.qqMap.search({
+      keyword: "购物",
+      address_format: "short",
+      page_size: 20,
+      // page_index: 2,
+      success: res => {
+        console.log(res.status, res.message);
+        console.log(res.data);
+        this.setData({
+          business_acts: res.data,
+        });
+      },
+      fail: res => {
+        console.log(res.status, res.message);
+      },
+      complete: res => {
+        console.log(res.status, res.message);
+      }
     });
   },
   //搜索建筑物,加到数组里
@@ -54,6 +77,11 @@ Page({
         } else {
           let list = that.data.buidings
           list = list.concat(res.data.data)
+          if (list.length < 10) {
+            that.setData({ noMore: true })
+          } else {
+            that.setData({ noMore: false })
+          }
           that.setData({
             buidings: list
           })
@@ -107,12 +135,18 @@ Page({
     this.setData({
       displays: "none"
     })
+    this.setData({ noMore: false })
     this.searchHistorical(newReqData)
 
   },
-  goInfor() {
+  goInfor: function (e) {
+    // console.log(e.currentTarget.dataset)
     wx.navigateTo({
-      url: '/page_new/buildingInfo/buildingInfo'
+      url: '/page_new/buildingInfo/buildingInfo',
+      success: function (res) {
+        // 通过eventChannel向被打开页面传送数据
+        res.eventChannel.emit('buildId', { ID: e.currentTarget.dataset.id })
+      }
     })
   },
   /**
@@ -126,11 +160,11 @@ Page({
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function () {
-    // console.log(this.data.buidings.length)
-    let newReqData = this.data.searchBuildData;
-    newReqData.page++;
-    this.searchHistorical(newReqData)
-
+    if (!this.data.noMore) {
+      let newReqData = this.data.searchBuildData;
+      newReqData.page++;
+      this.searchHistorical(newReqData)
+    }
   },
 
   // 下拉切换
@@ -152,9 +186,9 @@ Page({
       })
     }
   },
-
+  //选择类型
   clickType: function (e) {
-    console.log(e.target.dataset.name)
+    console.log(e.target.dataset)
     this.setData({
       type_num: e.target.dataset.num
     })
@@ -167,6 +201,7 @@ Page({
 
     let newReqData = this.data.searchBuildData;
     newReqData.page = 1;
+    newReqData.searchWord = this.data.keyWord;
     newReqData.type = this.data.type_num == 0 ? "" : this.data.nameList[this.data.type_num];
     // if (!this.data.keyWord) {
     this.setData({
@@ -174,9 +209,11 @@ Page({
       searchBuildData: newReqData
     })
     // }
+    this.setData({ noMore: false })
     this.searchHistorical(newReqData)
 
   },
+  //选择地域
   clickLocation: function (e) {
     console.log(e.target.dataset.name)
     this.setData({
@@ -190,6 +227,7 @@ Page({
     })
     let newReqData = this.data.searchBuildData;
     newReqData.page = 1;
+    newReqData.searchWord = this.data.keyWord;
     newReqData.area = this.data.location_num == 0 ? "" : this.data.items[this.data.location_num];
     // if (!this.data.keyWord) {
     this.setData({
@@ -197,6 +235,7 @@ Page({
       searchBuildData: newReqData
     })
     // }
+    this.setData({ noMore: false })
     this.searchHistorical(newReqData)
   },
   // 获取滚动条当前位置
@@ -211,7 +250,6 @@ Page({
       });
     }
   },
-
   //回到顶部
   goTop: function (e) {  // 一键回到顶部
     if (wx.pageScrollTo) {

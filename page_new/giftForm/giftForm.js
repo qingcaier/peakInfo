@@ -9,10 +9,10 @@ Page({
       count: "3888"
     },
     gift: {
-      title: "xxxxx",
-      price: "xxx",
-      inventory: "xx",
-      url: "http://cdn.cdlshow.xyz/gift_3.png"
+      // name: "xxxxx",
+      // credit: "xxx",
+      // inventory: "xx",
+      // picture: "http://cdn.cdlshow.xyz/gift_3.png"
     }
   },
 

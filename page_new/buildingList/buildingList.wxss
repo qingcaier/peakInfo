@@ -13,7 +13,7 @@
     position: relative;
 }
 .search{
-    width: 86%;
+    width: 100%;
     height: 100rpx;
     /* height: 100%;border: 2rpx solid green; */
 }
@@ -23,7 +23,7 @@
     display: flex;
     
 }
-input{
+/* input{
     width: 80%;
 height: 60rpx;
 border: 1px solid rgba(0,0,0,0.1);
@@ -32,7 +32,7 @@ margin: 0 10rpx;
 border-radius: 10rpx;
 padding: 0 10rpx;
 
-}
+} */
 .iconArea{
     width: 10%;
     height: 60rpx;
@@ -40,11 +40,21 @@ padding: 0 10rpx;
     top: 0;
     right: 2%;
 }
-.mapPng{
-    width: 100%;
-    height: 100%;
-    /* border: 2rpx solid tomato;  */
+.map_block{
+  width: 96%;
+  height: 60rpx;
+  margin: 10px auto;
+  border-bottom: 1px solid #D0D0D0;
+  line-height: 60rpx;
+  padding: 10rpx 0;
+  position: relative;
+  display: flex;
+  justify-content: space-between;
   
+}
+.go-map{
+  /* position: absolute;
+  right: 1%; */
 }
 .btnArea{
     width: 100%;
@@ -148,6 +158,7 @@ padding: 0 10rpx;
   /*下拉菜单  */
 #swiper-tab {
     width: 100%;
+    z-index: 999;
     position: relative;
   }
    
@@ -238,7 +249,7 @@ padding: 0 10rpx;
     }
   }
    
-  .swiper-beijing {
+  .swiper-bg {
     width: 100%;
     height: 200%;
     background: #000;
@@ -338,4 +349,14 @@ padding: 0 10rpx;
     background: rgba(0,0,0,.3);
     right: 30rpx;
     border-radius: 50%;
+  }
+  .no-more{
+    width: 100%;
+    font-size: 30rpx;
+    text-align: center;
+    height: 50rpx;
+    line-height: 50rpx;
+    margin: 0 auto;
+    color: rgba(0,0,0,0.1);
+    
   }

@@ -1,5 +1,6 @@
 {
   "pages": [
+    "pages/chat/chat",
     "page_new/mallHome/mallHome",
     "page_new/buildingList/buildingList",
     "page_new/home/home",
@@ -10,7 +11,6 @@
     "pages/logs/logs",
     "pages/orderMsg/orderMsg",
     "pages/myOrder/myOrder",
-    "pages/chat/chat",
     "pages/joinOrder/joinOrder",
     "page_new/activity/activity",
     "page_new/buildingInfo/buildingInfo",

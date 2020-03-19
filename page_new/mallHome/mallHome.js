@@ -42,7 +42,7 @@ Page({
     let that = this;
     app.ajax.getGiftList().then(
       res => {
-        console.log(res.data.data)
+        // console.log(res.data.data)
         if (!res.data.data) {
           console.log("找不到")
         } else {

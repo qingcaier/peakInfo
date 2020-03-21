@@ -171,6 +171,7 @@ create(store, {
     ]
   },
   onLoad: function() {
+    // this.getUserLocation();
     mapContext = wx.createMapContext("map");
 
     this.getUserLocation();
@@ -188,7 +189,12 @@ create(store, {
     // this.getUserLocation();
   },
   onReady: function() {},
-
+  goJoin() {
+    console.log("mychat");
+    wx.navigateTo({
+      url: "../joinOrder/joinOrder"
+    });
+  },
   // 获取当前定位并请求附近的商家活动
   getUserLocation: function() {
     // wx.getLocation({

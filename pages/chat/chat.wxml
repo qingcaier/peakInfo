@@ -1,70 +1,33 @@
-<!-- pages/chat/chat.wxml -->
-<view class="news" bindtap='outbtn'>
-  <view class="chat-notice" wx:if="{{userInfo}}">系统消息: 欢迎 {{ userInfo.nickName }} 加入群聊</view>
-  <view class="historycon">
-    <scroll-view scroll-y="true" class="history" scroll-top="{{scrollTop}}">
-      <block wx:for="{{newslist}}" wx:key="index">
-        <!-- 历史消息 -->
-        <!-- <view class="chat-news">
-              <view style="text-align: left;padding-left: 20rpx;">
-                  <image class='new_img' src="{{item.avatarUrl? item.avatarUrl:'images/avator.png'}}"></image>
-                  <text class="name">{{ item.nickName }}{{item.date}}</text>
-              </view>
-              <view class='you_left'>
-                  <block wx:if="{{item.type=='text'}}">      
-                    <view class='new_txt'>{{item.content}}</view>
-                  </block>
-                  <block wx:if="{{item.type=='image'}}">      
-                    <image class="selectImg" src="{{item.images}}"></image> 
-                  </block>
-              </view>
-          </view> -->
-        <view>{{item.date}}</view>
-        <!-- 自己的消息 -->
-        <view class="chat-news" wx:if="{{item.nickName == userInfo.nickName}}">
-          <view style="text-align: right;padding-right: 20rpx;">
-            <text class="name">{{ item.nickName }}</text>
-            <image class='new_img' src="{{userInfo.avatarUrl}}"></image>
-          </view>
-          <view class='my_right'>
-            <block wx:if="{{item.type=='text'}}">
-              <view class='new_txt'>{{item.content}}</view>
-            </block>
-            <block wx:if="{{item.type=='image'}}">
-              <image class="selectImg" src="{{item.images}}" data-src="{{item.images}}" lazy-load="true" bindtap="previewImg"></image>
-            </block>
+<view class='homeView'>
+  <scroll-view scroll-y style="height:500px;" scroll-top='{{scrolltop}}'>
+    <view class='listView'>
+      <block wx:for="{{serverMsg}}" wx:key='*this'>
+        <!--  -->
+        <view wx:if="{{item.user_id!=myInfo.userId}}" class='leftView'>
+          <view class='name'>{{item.name}}</view>
+          <view class='imgmsgleft'>
+            <view>
+              <!-- 我这用的是自己另一个服务的图片 -->
+              <image class='touimg' src='{{item.avatarUrl}}'></image>
+            </view>
+            <view>{{item.msg}}</view>
           </view>
         </view>
-        <!-- 别人的消息 -->
-        <view class="chat-news" wx:else>
-          <view style="text-align: left;padding-left: 20rpx;">
-            <image class='new_img' src="{{item.avatarUrl? item.avatarUrl:'images/avator.png'}}"></image>
-            <text class="name">{{ item.nickName }}</text>
-          </view>
-          <view class='you_left'>
-            <block wx:if="{{item.type=='text'}}">
-              <view class='new_txt'>{{item.content}}</view>
-            </block>
-            <block wx:if="{{item.type=='image'}}">
-              <image class="selectImg" src="{{item.images}}" data-src="{{item.images}}" lazy-load="true" bindtap="previewImg"></image>
-            </block>
+        <view wx:else class='rightView'>
+          <view class='name'>{{item.name}}</view>
+          <view class='imgmsg'>
+            <view>{{item.msg}}</view>
+            <view>
+              <!-- 我这用的是自己另一个服务的图片 -->
+              <image class='touimg' src='{{item.avatarUrl}}'></image>
+            </view>
           </view>
         </view>
       </block>
-    </scroll-view>
-  </view>
-</view>
-<view id="flag"></view>
-<!-- 聊天输入 -->
-<view class="message">
-  <form bindreset="cleanInput" class="sendMessage">
-    <input type="text" placeholder="请输入聊天内容.." value="{{massage}}" bindinput='bindChange'></input>
-    <view class="add" bindtap='increase'>+</view>
-    <button type="primary" bindtap='send' formType="reset" size="small" button-hover="blue">
-      发送
-    </button>
-  </form>
-  <view class='increased {{aniStyle?"slideup":"slidedown"}}' wx:if="{{increase}}">
-    <view class="image" bindtap='chooseImage'>相册</view>
+    </view>
+  </scroll-view>
+  <view class='sendView'>
+    <input bindinput='sendTextBind' placeholder="输入聊天内容" value='{{sendText}}' />
+    <button bindtap='sendBtn' type="primary">发送</button>
   </view>
 </view>

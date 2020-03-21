@@ -9,13 +9,12 @@ let qqmapsdk = new QQMapWX({
 
 //app.js
 App({
-  onLaunch: function() {
+  onLaunch: function () {
     console.log(wx.getStorageSync("localToken"));
     // console.log("11111111111");
-
     // 获取本地储存token
     let localToken = wx.getStorageSync("localToken");
-
+    console.log(localToken);
     // 获取用户信息
     if (Boolean(localToken)) {
       wx.getSetting({
@@ -28,6 +27,8 @@ App({
                   success: response => {
                     if (response.code) {
                       console.log(response.code);
+                      //聊天用到
+                      this.globalData.userInfo = res.userInfo;
                       ajax
                         .userLogin({
                           code: response.code,

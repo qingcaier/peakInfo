@@ -11,7 +11,7 @@
     </view>
     <scroll-view class="orderCells" scroll-y="{{true}}" scroll-x="{{true}}" enable-flex="{{true}}">
       <my-cell class="orderCell" wx:if="{{orderList}}" wx:for="{{orderList}}" wx:key="index" img="{{orderList[index].img}}" title="{{orderList[index].title}}" detail="{{orderList[index].detail}}" _typeNumber="{{orderList[index]._typeNumber}}" _remainCount="{{orderList[index]._remainCount}}" _validTime="{{orderList[index]._validTime}}"></my-cell>
-      <text class="empty">暂时没有更多有效拼单哦~</text>
+      <text bindtap="goJoin" class="empty">暂时没有更多有效拼单哦~</text>
     </scroll-view>
   </view>
   <view class="createOrder-btn" bindtap="toCreateOrder">拼</view>

@@ -154,7 +154,12 @@ create(store, {
   onReady: function() {
     // this.testCot = this.selectComponent("#test");
   },
-
+  goJoin() {
+    console.log("mychat");
+    wx.navigateTo({
+      url: "../joinOrder/joinOrder"
+    });
+  },
   /**
    * 自定义函数
    * */

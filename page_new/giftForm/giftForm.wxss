@@ -1,0 +1,83 @@
+/* page_new/giftForm/giftForm.wxss */
+.one{
+    width: 100%;
+    height: 450rpx;
+    margin-bottom: 10rpx;
+    /* font-size: x-small; */
+}
+
+.buildBord{
+    width: 50%;
+    height: 100%;
+    margin: 0 auto;
+    box-shadow:2px 2px 10px rgba(0, 0, 0, 0.1);
+}
+.imgBord{
+  width: 100%;
+  height: 85%;
+}
+.img{
+    width: 100%;
+    height: 100%;
+}
+.title{
+    text-align: center;
+}
+.user{
+    width: 100%;
+    line-height: 70rpx;
+    margin: 10rpx 0;
+    display: flex;
+    text-align: center;
+    position: relative;
+}
+.name{
+    margin: 0 30rpx;
+}
+.icon{
+    width: 70rpx;
+    height: 70rpx;
+}
+.black_line {
+    margin: 20rpx 0;
+    width: 100%;
+    height: 2rpx;
+    background-color: rgba(0, 0, 0, 0.2);
+}
+.form{
+    width: 90%;
+    margin: 0 auto;
+}
+.table{
+    margin-top: 15rpx;
+}
+.key{
+    /* text-align: center; */
+    line-height: 70rpx;
+
+}
+.input{
+    border: 1rpx solid black;
+    border-radius: 20rpx;
+    margin: auto 0;
+    padding: 10rpx 15rpx;    
+    width: 60%;
+
+
+}
+.one-input{
+    display: flex;
+margin: 20rpx 0;
+height: 70rpx;
+
+}
+.btn{
+    bottom: 10%;
+    margin: 0 auto;
+}
+.sure{
+    color: #fff;
+background-color: #CC9933;
+width: 300rpx;
+margin-top: 150rpx;
+}

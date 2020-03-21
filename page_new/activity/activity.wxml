@@ -1,0 +1,6 @@
+<!-- page_new/activity/activity.wxml -->
+<view class="">
+    <view bindtap="selectActivity" data-index="0" class="acti">文化打卡</view>
+    <view bindtap="selectActivity" data-index="1" class="acti">密探寻宝</view>
+    <view bindtap="selectActivity" data-index="2" class="acti">文化拼图</view>
+</view>

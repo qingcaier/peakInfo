@@ -1,153 +1,122 @@
-// pages/chat/chat.js
-const app = getApp()
-var websocket = require('../../utils/websocket.js');
-var utils = require('../../utils/util.js');
+var app = getApp();
 Page({
-
-  /**
-   * 页面的初始数据
-   */
   data: {
-     newslist:[],
-     userInfo: {},
-     scrollTop: 0,
-     increase:false,//图片添加区域隐藏
-     aniStyle: true,//动画效果
-     message:"",
-     previewImgList:[]
+
+    myInfo: {
+      userId: 1,
+      name: "呵呵",
+      img: 'https://g.csdnimg.cn/static/user-reg-year/2x/3.png'
+    },
+    socket_open: false,//判断连接是否打开
+    sendText: "",//发送的消息
+    serverMsg: [],//接受的服务端的消息
+    userInfo: {
+      userId: 2,
+      name: "呵呵",
+      img: 'https://wx.qlogo.cn/mmopen/vi_32/Tp8K06cGYIJLB1pUaibXuFouypKTNE9wnQGmljzoaATibSicS7eKnLnbShwv5Q1sdo8PI17AO0rq4GQfFutxTP2eA/132'
+    },//app.appData.userInfo,
+    scrolltop: 999,
+    order_id: "111",
+    chatId: "5e738b26813b0022bc86cfcf"
   },
-  /**
-   * 生命周期函数--监听页面加载
-   */
-  onLoad: function () {
-    var that = this
-    if (app.globalData.userInfo) {
-      this.setData({
-        userInfo: app.globalData.userInfo
-      })
+
+  /**输入内容 */
+  sendTextBind: function (e) {
+    this.setData({
+      sendText: e.detail.value
+    });
+    // console.log(this.data.sendText);
+  },
+  /**发送消息 */
+  sendBtn: function (e) {
+    var msgJson = {
+      user: {
+        id: this.data.userInfo.userId,//app.appData.userInfo.userId, //唯一ID区分身份
+        name: this.data.userInfo.name, //显示用姓名
+        img: this.data.userInfo.img, //显示用头像
+      },
+      order_id: this.data.order_id,
+      msg: this.data.sendText,//发送的消息
+      chatId: this.data.chatId,
+      justConnect: false
     }
-    //调通接口
-    websocket.connect(this.data.userInfo, function (res) {
-      // console.log(JSON.parse(res.data))
-      var list = []
-      list = that.data.newslist
-      list.push(JSON.parse(res.data))
+    //发送消息
+    console.log('发送消息事件！', msgJson);
+    this.send_socket_message(JSON.stringify(msgJson));
+    this.setData({
+      sendText: ""//发送消息后，清空文本框
+    });
+  },
+  onLoad: function (options) {
+    // app.login();
+    // this.setData({
+    //     userInfo: app.appData.userInfo
+    // });
+    //初始化
+    this.wssInit();
+  },
+  wssInit() {
+    var that = this;
+    //建立连接
+    wx.connectSocket({
+      url: 'ws://localhost:3001'//app.appData.socket
+    })
+    //监听WebSocket连接打开事件。
+    wx.onSocketOpen(function (res) {
+      console.log('WebSocket连接已打开！');
       that.setData({
-        newslist: list
-      })
-    })
-  },
-  // 页面卸载
-  onUnload(){
-    wx.closeSocket();
-    wx.showToast({
-      title: '连接已断开~',
-      icon: "none",
-      duration: 2000
-    })
-  },
-  //事件处理函数
-  send: function () {
-    var flag = this
-    if (this.data.message.trim() == ""){
-      wx.showToast({
-        title: '消息不能为空哦~',
-        icon: "none",
-        duration: 2000
-      })
-    }else {
-      setTimeout(function(){
-        flag.setData({
-          increase: false
-        })
-      },500)
-      websocket.send('{ "content": "' + this.data.message + '", "date": "' + utils.formatTime(new Date()) + '","type":"text", "nickName": "' + this.data.userInfo.nickName + '", "avatarUrl": "' + this.data.userInfo.avatarUrl+'" }')     
-      this.bottom()
-    }
-  },
-  //监听input值的改变
-  bindChange(res) {
-    this.setData({
-      message : res.detail.value
-    })
-  },
-  cleanInput(){
-    //button会自动清空，所以不能再次清空而是应该给他设置目前的input值
-    this.setData({
-      message: this.data.message
-    })
-  },
-  increase() {
-    this.setData({
-      increase: true,
-      aniStyle: true
-    })
-  },
-  //点击空白隐藏message下选框
-  outbtn(){
-    this.setData({
-      increase: false,
-      aniStyle: true
-    })
-  },
-  chooseImage() {
-    var that = this
-    wx.chooseImage({
-      count: 1, // 默认9
-      sizeType: ['original', 'compressed'], // 可以指定是原图还是压缩图，默认二者都有
-      sourceType: ['album', 'camera'], // 可以指定来源是相册还是相机，默认二者都有
-      success: function (res) {
-        // 返回选定照片的本地文件路径列表，tempFilePath可以作为img标签的src属性显示图片
-        var tempFilePaths = res.tempFilePaths
-        // console.log(tempFilePaths)
-        wx.uploadFile({
-          url: 'http://192.168.137.91/index/index/upload', //仅为示例，非真实的接口地址
-          filePath: tempFilePaths[0],
-          name: 'file',
-          headers: {
-            'Content-Type': 'form-data'
-          },
-          success: function (res) {
-            if (res.data){
-              that.setData({
-                increase: false
-              })
-              websocket.send('{"images":"'+ res.data +'","date":"'+utils.formatTime(new Date())+'","type":"image","nickName":"'+that.data.userInfo.nickName+'","avatarUrl":"'+that.data.userInfo.avatarUrl+'"}')
-              that.bottom()
-            }
-          }
-        })   
-       
+        socket_open: true
+      });
+      var msgJson = {
+        user: {
+          id: that.data.userInfo.userId,//app.appData.userInfo.userId, //唯一ID区分身份
+          name: that.data.userInfo.name, //显示用姓名
+          img: that.data.userInfo.img, //显示用头像
+        },
+        order_id: that.data.order_id,
+        msg: "欢迎来参加拼单讨论",//发送的消息
+        chatId: that.data.chatId,
+        justConnect: true
       }
-    })
+      //发送消息
+      console.log('发送消息事件！', msgJson);
+      that.send_socket_message(JSON.stringify(msgJson));
+    });
+    //监听WebSocket接受到服务器的消息事件。
+    wx.onSocketMessage(function (res) {
+      var server_msg = JSON.parse(res.data);
+      console.log('收到：', server_msg);
+      if (server_msg.state == 200) {
+        var msgnew = that.data.serverMsg;
+        if (server_msg.data.msgInfor) {
+          msgnew = msgnew.concat(server_msg.data.msgInfor);
+        }
+        if (!that.data.chatId) {
+          that.setData({
+            chatId: server_msg.data._id
+          });
+        }
+        that.setData({
+          serverMsg: msgnew,
+          scrolltop: msgnew.length * 100
+        });
+        console.log("消息链：", that.data.serverMsg);
+      }
+    });
+    //监听WebSocket错误。
+    wx.onSocketError(function (res) {
+      console.log('WebSocket连接打开失败，请检查！', res)
+    });
+
+
   },
-  //图片预览
-  previewImg(e){
-    var that = this
-    //必须给对应的wxml的image标签设置data-set=“图片路径”，否则接收不到
-    var res = e.target.dataset.src
-    var list = this.data.previewImgList //页面的图片集合数组
-    
-    //判断res在数组中是否存在，不存在则push到数组中, -1表示res不存在
-    if (list.indexOf(res) == -1 ) {
-        this.data.previewImgList.push(res)
-    }
-    wx.previewImage({
-      current: res, // 当前显示图片的http链接
-      urls: that.data.previewImgList // 需要预览的图片http链接列表
-    })
-    
-  },
-  //聊天消息始终显示最底端
-  bottom: function () {
-    var query = wx.createSelectorQuery()
-    query.select('#flag').boundingClientRect()
-    query.selectViewport().scrollOffset()
-    query.exec(function (res) {
-      wx.pageScrollTo({
-        scrollTop: res[0].bottom  // #the-id节点的下边界坐标  
+  send_socket_message: function (msg) {
+    //socket_open，连接打开的回调后才会为true，然后才能发送消息
+    if (this.data.socket_open) {
+      console.log("send: ", msg)
+      wx.sendSocketMessage({
+        data: msg
       })
-      res[1].scrollTop // 显示区域的竖直滚动位置  
-    })
-  },  
+    }
+  }
 })

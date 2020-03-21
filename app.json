@@ -1,5 +1,6 @@
 {
   "pages": [
+    "pages/remActRouter/remActRouter",
     "pages/home/home",
     "pages/actList/actList",
     "pages/message/message",
@@ -8,7 +9,13 @@
     "pages/logs/logs",
     "pages/orderMsg/orderMsg",
     "pages/myOrder/myOrder",
-    "pages/chat/chat"
+    "pages/chat/chat",
+    "pages/culture/culture",
+    "pages/cultureMap/cultureMap",
+    "pages/cultureClock/cultureClock",
+    "pages/cultureTask/cultureTask",
+    "pages/culturePuzzle/culturePuzzle",
+    "pages/puzzlePage/puzzlePage"
   ],
   "permission": {
     "scope.userLocation": {

@@ -1,0 +1,194 @@
+/* pages/home/home.wxss */
+
+page {
+  height: 100%;
+  /* width: 50%; */
+}
+
+.page {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+#map {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.flex-board {
+  width: 650rpx;
+  padding: 20rpx 30rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-radius: 10rpx;
+  position: absolute;
+  bottom: 15px;
+  background-color: #ffffff;
+  /* overflow: hidden; */
+}
+
+.btnArea {
+  width: 180rpx;
+  height: 70rpx;
+  padding: 5rpx 12rpx;
+  background-color: #990033;
+  display: flex;
+
+  position: absolute;
+  top: 11px;
+  left: 22rpx;
+
+  border-radius: 8rpx;
+
+  align-items: center;
+  justify-content: space-around;
+}
+
+.dakaImg {
+  width: 55rpx;
+  height: 55rpx;
+  /* background-color: #990033; */
+}
+
+.btnText {
+  /* background-color: #990033; */
+  color: #ffffff;
+  font-size: 26rpx;
+}
+
+.myTask {
+  top: 120rpx;
+  z-index: 100;
+}
+
+.photo {
+  top: 120rpx;
+  z-index: 10;
+}
+
+.photoBoard {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 30rpx;
+}
+
+.photoContain {
+  box-sizing: border-box;
+  width: 90%;
+  height: 500rpx;
+  border: 1rpx solid red;
+}
+
+.matchPhoto {
+  width: 100%;
+  height: 100%;
+}
+
+.header {
+  margin-bottom: 80rpx;
+  text-align: center;
+}
+
+.headTitle {
+  font-size: 36rpx;
+  display: block;
+  margin-bottom: 15rpx;
+}
+
+.taskInfor {
+  display: block;
+  margin-top: 30rpx;
+  font-size: 26rpx;
+  text-align: left;
+}
+
+.taskBoard {
+  display: flex;
+  height: 90%;
+  flex-direction: column;
+  align-items: center;
+}
+
+.ext {
+  align-self: flex-end;
+  font-size: 26rpx;
+  margin-top: 30rpx;
+  margin-bottom: 30rpx;
+}
+
+.extPoint {
+  color: red;
+}
+
+.contain {
+  height: 60%;
+  z-index: 10;
+}
+
+.question {
+  top: 120rpx;
+  z-index: 15;
+}
+
+.questionBoard {
+  display: flex;
+  flex-direction: column;
+  height: 90%;
+}
+
+.pullImg {
+  width: 40rpx;
+  height: 40rpx;
+  top: 20rpx;
+  right: 30rpx;
+  position: absolute;
+}
+
+.backImg {
+  width: 40rpx;
+  height: 40rpx;
+  top: 20rpx;
+  left: 30rpx;
+  position: absolute;
+}
+
+.btn {
+  width: 160rpx;
+  height: 80rpx;
+  line-height: 80rpx;
+
+  margin-top: 10rpx;
+  margin-bottom: 60rpx;
+  /* margin-bottom: 15px; */
+  /* background-color: red; */
+}
+
+.submitArea {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.submit {
+  margin-top: 50rpx;
+  background-color: #990033;
+  color: #ffffff;
+}
+
+.successMsg {
+  width: 100%;
+  margin-top: 50rpx;
+  color: #ff0000;
+  /* font-size: 24rpx; */
+  text-align: center;
+}
+
+.board {
+  width: 100%;
+  height: 80%;
+}

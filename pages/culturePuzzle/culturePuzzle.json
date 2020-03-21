@@ -1,0 +1,11 @@
+{
+  "usingComponents": {
+    "my-board": "/components/detailBoard/detailBoard",
+    "my-clockCell": "/components/clockCell/clockCell",
+    "my-line": "/components/line/line",
+    "my-questionCell": "/components/questionCell/questionCell",
+    "my-miniDetailCell": "/components/miniDetailBoard/miniDetailBoard",
+    "mp-gallery": "/WeUI/gallery/gallery"
+  },
+  "navigationBarTitleText": "文化拼图"
+}

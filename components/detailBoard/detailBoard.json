@@ -1,0 +1,7 @@
+{
+  "component": true,
+  "usingComponents": {
+    "my-line": "/components/line/line",
+    "mp-gallery": "/WeUI/gallery/gallery"
+  }
+}

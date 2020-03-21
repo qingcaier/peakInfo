@@ -1,0 +1,10 @@
+<view class="board">
+    <view class="header">
+        <image class="img" src="../../public/images/girl.png" />
+        <my-line style="width: 100%"></my-line>
+    </view>
+    <text class="msg name">{{name}}</text>
+    <text class="msg type">{{type}}</text>
+    <text class="msg period">{{period}}</text>
+    <text class="msg site">{{site}}</text>
+</view>

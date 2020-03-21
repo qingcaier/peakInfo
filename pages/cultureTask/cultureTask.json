@@ -1,0 +1,11 @@
+{
+  "usingComponents": {
+    "my-board": "/components/detailBoard/detailBoard",
+    "my-taskCell": "/components/taskCell/taskCell",
+    "my-line": "/components/line/line",
+    "my-questionCell": "/components/questionCell/questionCell",
+    "my-miniDetailCell": "/components/miniDetailBoard/miniDetailBoard",
+    "mp-gallery": "/WeUI/gallery/gallery"
+  },
+  "navigationBarTitleText": "密探寻宝"
+}

@@ -1,0 +1,19 @@
+.routerContain {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 800rpx;
+  justify-content: space-around;
+}
+
+.routerContain__item {
+  box-sizing: border-box;
+  width: 94%;
+  height: 180rpx;
+  padding: 50rpx;
+  background-color: #c89b40;
+  color: #ffffff;
+  font-size: 36rpx;
+  border-radius: 8px;
+}

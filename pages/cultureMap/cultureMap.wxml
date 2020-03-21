@@ -1,0 +1,14 @@
+<view class="page" style="width: 100%;height:100%;" hover-class="none" hover-stop-propagation="false">
+    <map id="map" longitude="{{location.lng}}" latitude="{{location.lat}}" subkey="TFRBZ-KZZCX-GQ54B-T22GL-HDDES-ESFWM" markers="{{markers}}" scale="{{mapScale}}" show-location="{{true}}" bindregionchange="regionchange" bindcallouttap="callouttap" bindmarkertap="markertap" enable-zoom="{{!false}}" enable-scroll="{{!false}}">
+        <!-- <cover-view class="createOrder-btn" bindtap="toCreateOrder">拼</cover-view> -->
+        <!-- <cover-view class="callout" hidden="{{selected}}" style="{{calloutStyle}}">
+      {{distance}}
+    </cover-view> -->
+    </map>
+    <view class="contain" hidden="{{!isSelected}}">
+        <view class="pull">
+            <image class="pullImg" src="../../public/images/down.png" bindtap="closeBuildingDetailTap" />
+        </view>
+        <my-board class="board" name="{{building_detail.name}}" type="{{building_detail.type}}" period="{{building_detail.period}}" site="{{building_detail.site}}" introduction="{{building_detail.introduction}}" picList="{{building_detail.picList}}" isNeedWrap="{{true}}"></my-board>
+    </view>
+</view>

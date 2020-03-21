@@ -1,0 +1,57 @@
+.board {
+  box-sizing: border-box;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.scrollBoard {
+  display: flex;
+  flex-direction: column;
+}
+
+.name {
+  width: 80%;
+  font-size: 40rpx;
+  /* font-weight: bold; */
+}
+
+.msg {
+  font-size: 20rpx;
+  margin-top: 7.5px;
+}
+
+.site {
+  /* margin-bottom: 7.5px; */
+}
+
+.fengexian {
+  display: flex;
+  font-size: 24rpx;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.intro {
+  margin-top: 18px;
+}
+
+.pic {
+  margin-top: 18px;
+}
+
+.introduction {
+  font-size: 26rpx;
+  margin-top: 18px;
+}
+
+.swiper {
+  width: 100%;
+  height: 240px;
+  margin-top: 18px;
+}
+
+.swiper-image {
+  width: 100%;
+}

@@ -1,0 +1,14 @@
+<view class="questionBoard">
+    <text class="title">{{num+1}}.\t{{title}}</text>
+    <radio-group class="choices" bindchange="onSelect">
+        <label wx:for="{{choices}}" wx:key="index">
+            <view class="choice">
+                <radio class="checkbox" value="{{index}}" color="#990033"></radio>
+                <view class="option">
+                    <text class="choiceText" style="color:{{item.color}}">{{item.text}}</text>
+                    <text class="errMsg" hidden="{{!showErrMsg}}">{{item.errMsg}}</text>
+                </view>
+            </view>
+        </label>
+    </radio-group>
+</view>

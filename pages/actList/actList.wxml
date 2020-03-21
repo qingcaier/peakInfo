@@ -10,8 +10,11 @@
         <!-- <test-cot id="test">{{toastText}}</test-cot>
     <button type="primary" bindtap="showToast">showToast!</button>
     <button type="primary">发起拼单</button> -->
-        <my-cells class="orderCells" wx:for="{{actList}}" wx:for-index="idx" wx:for-item="business" wx:key="idx" businessName="{{business.business_name}}" address="{{business.address}}" _distance="{{business.distance}}">
+        <my-cells id="actCells" class="orderCells" wx:for="{{actList}}" wx:for-index="idx" wx:for-item="business" wx:key="idx" businessName="{{business.business_name}}" address="{{business.address}}" _distance="{{business.distance}}" bindgetMore="onGetMore" data-actId="{{business.act_id}}">
             <my-cell class="orderCell" wx:for="{{business.orderList}}" wx:key="index" img="{{item.img}}" title="{{item.title}}" detail="{{item.detail}}" _typeNumber="{{item._typeNumber}}" _remainCount="{{item._remainCount}}" _validTime="{{item._validTime}}"></my-cell>
+            <view class="empty" wx:if="{{business.orderList.length === 0 || isMore[idx]}}">
+                暂时没有更多拼单了~
+            </view>
         </my-cells>
     </view>
 </view>

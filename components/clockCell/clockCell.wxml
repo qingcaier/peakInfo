@@ -1,0 +1,11 @@
+<view class="contain" bindtap="onTap">
+    <view class="imgContain">
+        <image class="img" src="{{img}}" mode="aspectFit" />
+    </view>
+    <view class="textContain">
+        <view class="text name">{{name}}</view>
+        <text class="text detail type">{{type}}</text>
+        <text class="text detail period">{{period}}</text>
+        <text class="text detail site">{{site}}</text>
+    </view>
+</view>

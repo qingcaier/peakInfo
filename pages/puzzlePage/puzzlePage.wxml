@@ -1,0 +1,9 @@
+<view class="puzzleContain">
+    <my-puzzle id="puzzle" bindmyevent="onMyEvent"></my-puzzle>
+    <view class="puzzleContain__successToast">
+        <text class="puzzleContain__successText" wx:if="{{isShowSuccessTip}}">{{successTip}}</text>
+    </view>
+    <view class="puzzleContain__building">
+        <my-miniDetailCell name="{{building_detail.name}}" type="{{building_detail.type}}" period="{{building_detail.period}}" site="{{building_detail.site}}"></my-miniDetailCell>
+    </view>
+</view>

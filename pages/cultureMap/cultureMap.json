@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "my-board": "/components/detailBoard/detailBoard"
+  },
+  "navigationBarTitleText": "历史文化"
+}

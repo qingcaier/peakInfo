@@ -1,14 +1,17 @@
-<view class="page" hover-class="none" hover-stop-propagation="false">
-  <map id="map" longitude="{{location.lng}}" latitude="{{location.lat}}" subkey="TFRBZ-KZZCX-GQ54B-T22GL-HDDES-ESFWM" markers="{{markers}}" scale="{{mapScale}}" show-location bindregionchange="regionchange" bindcallouttap="callouttap" bindmarkertap="markertap">
+<view class="page" style="width: 100%;height:{{mapSize}}%;" hover-class="none" hover-stop-propagation="false">
+  <map id="map" longitude="{{location.lng}}" latitude="{{location.lat}}" subkey="TFRBZ-KZZCX-GQ54B-T22GL-HDDES-ESFWM" markers="{{markers}}" scale="{{mapScale}}" show-location="{{true}}" bindregionchange="regionchange" bindcallouttap="callouttap" bindmarkertap="markertap" enable-zoom="{{!isSelected}}" enable-scroll="{{!isSelected}}">
     <!-- <cover-view class="createOrder-btn" bindtap="toCreateOrder">拼</cover-view> -->
     <!-- <cover-view class="callout" hidden="{{selected}}" style="{{calloutStyle}}">
       {{distance}}
     </cover-view> -->
   </map>
   <view class="orderContain" wx:if="{{isSelected}}">
-    <image class="pullImg" src="../../public/images/down.png" bindtap="closeOrderTap" />
+    <view>
+      <image class="pullImg" src="../../public/images/down.png" bindtap="closeOrderTap" />
+    </view>
     <scroll-view class="orderCells" scroll-y="{{true}}" scroll-x="{{true}}" enable-flex="{{true}}">
-      <my-cell class="orderCell" wx:for="{{orderList}}" wx:key="index" img="{{orderList[index].img}}" title="{{orderList[index].title}}" detail="{{orderList[index].detail}}" _typeNumber="{{orderList[index]._typeNumber}}" _remainCount="{{orderList[index]._remainCount}}" _validTime="{{orderList[index]._validTime}}"></my-cell>
+      <my-cell class="orderCell" wx:if="{{orderList}}" wx:for="{{orderList}}" wx:key="index" img="{{orderList[index].img}}" title="{{orderList[index].title}}" detail="{{orderList[index].detail}}" _typeNumber="{{orderList[index]._typeNumber}}" _remainCount="{{orderList[index]._remainCount}}" _validTime="{{orderList[index]._validTime}}"></my-cell>
+      <text class="empty">暂时没有更多有效拼单哦~</text>
     </scroll-view>
   </view>
   <view class="createOrder-btn" bindtap="toCreateOrder">拼</view>

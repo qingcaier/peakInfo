@@ -1,0 +1,6 @@
+<view style='height:{{HEIGHT}}px;width:{{WIDTH}}px;' bindtouchstart='onTouchStart' bindtouchmove='onTouchMove' bindtouchend='onTouchEnd'>
+    <view wx:for="{{imgPoints}}" wx:for-item="items" wx:key="index">
+        <view class='tui-puzzle-li' wx:for="{{items}}" wx:for-item="list" wx:key="items" style="top:{{list.y * height}}px;left:{{list.x * width}}px;background:url('{{imgUrl}}') no-repeat {{-(list.px * width)}}px {{-(list.py * height)}}px/{{WIDTH}}px {{HEIGHT}}px;width:{{width}}px;height:{{height}}px;"></view>
+    </view>
+    <view class='tui-puzzle-li' style="top:{{currentY}}px;left:{{currentX}}px;background:url('{{imgUrl}}') no-repeat  {{-(currentPX * width)}}px {{-(currentPY * height)}}px/{{WIDTH}}px {{HEIGHT}}px;width:{{width}}px;height:{{height}}px;display:{{status ? 'block' : 'none'}};z-index:1000;"></view>
+</view>

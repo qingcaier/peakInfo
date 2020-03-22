@@ -1,0 +1,7 @@
+<view class="routerContain">
+    <block wx:for="{{router}}" wx:key="index">
+        <view class="routerContain__item" bindtap="routeTo" data-routerpath="{{item.routerPath}}">
+            {{item.routerName}}
+        </view>
+    </block>
+</view>

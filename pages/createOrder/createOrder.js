@@ -130,6 +130,10 @@ create(store, {
       keyword: "购物",
       // filter: "category=购物",
       address_format: "short",
+      location: {
+        latitude: 23.612472,
+        longitude: 116.30525
+      },
       page_size: 20,
       // page_index: 2,
       success: res => {

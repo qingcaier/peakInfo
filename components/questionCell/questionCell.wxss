@@ -1,0 +1,63 @@
+.questionBoard {
+  width: 100%;
+  /* height: 300rpx; */
+  margin-bottom: 20rpx;
+}
+
+.title {
+  /* width: 100%;
+  height: 300rpx;
+  border: 1rpx solid red; */
+}
+
+.choices {
+}
+
+.choice {
+  display: flex;
+  margin-top: 15rpx;
+}
+
+.checkbox {
+}
+
+.option {
+  /* display: flex;
+  flex-direction: column; */
+}
+
+.choiceText {
+  display: block;
+}
+
+.errMsg {
+  color: red;
+  font-size: 24rpx;
+}
+
+/* radio {
+  display: none;
+} */
+/* 未选中的 背景样式*/
+/* radio .wx-radio-input {
+  height: 36rpx;
+  width: 36rpx;
+  border-radius: 50%;
+  background: transparent;
+} */
+/* 选中后的 背景样式 */
+/* radio .wx-radio-input.wx-radio-input-checked {
+  border: none;
+} */
+/* 选中后的 对勾样式 */
+/* radio .wx-radio-input.wx-radio-input-checked::before {
+  border-radius: 50%;
+  width: 36rpx;
+  height: 36rpx;
+  line-height: 36rpx;
+  text-align: center;
+  font-size: 36rpx;
+  color: #fff;
+  background: #33c9ff;
+  border: 6rpx solid #33c9ff;
+}  */

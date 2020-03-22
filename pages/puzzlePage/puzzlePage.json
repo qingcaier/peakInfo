@@ -1,0 +1,7 @@
+{
+  "usingComponents": {
+    "my-puzzle": "/components/puzzle/puzzle",
+    "my-miniDetailCell": "/components/miniDetailBoard/miniDetailBoard"
+  },
+  "navigationBarTitleText": "文化拼图"
+}

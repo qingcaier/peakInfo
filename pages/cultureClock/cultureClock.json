@@ -1,0 +1,9 @@
+{
+  "usingComponents": {
+    "my-board": "/components/detailBoard/detailBoard",
+    "my-clockCell": "/components/clockCell/clockCell",
+    "my-line": "/components/line/line",
+    "my-questionCell": "/components/questionCell/questionCell"
+  },
+  "navigationBarTitleText": "文化点打卡"
+}

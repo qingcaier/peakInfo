@@ -1,0 +1,29 @@
+<view class="page" style="width: 100%;height:100%;" hover-class="none" hover-stop-propagation="false">
+    <map id="map" longitude="{{location.lng}}" latitude="{{location.lat}}" subkey="TFRBZ-KZZCX-GQ54B-T22GL-HDDES-ESFWM" markers="{{markers}}" scale="{{mapScale}}" show-location="{{true}}" bindregionchange="regionchange" bindcallouttap="callouttap" bindmarkertap="markertap" enable-zoom="{{!false}}" enable-scroll="{{!false}}">
+        <!-- <cover-view class="createOrder-btn" bindtap="toCreateOrder">拼</cover-view> -->
+        <!-- <cover-view class="callout" hidden="{{selected}}" style="{{calloutStyle}}">
+      {{distance}}
+    </cover-view> -->
+    </map>
+    <view class="btnArea" bindtap="setMyPuzzle" hover-class="none">
+        <image class="dakaImg" src="../../public/images/home.png"></image>
+        <text class="btnText">我的拼图</text>
+    </view>
+    <view class="flex-board myPuzzle" wx:if="{{isSelectedMyPuzzle}}">
+        <view class="header">
+            <text class="head">我的拼图</text>
+            <image class="pullImg" src="../../public/images/down.png" bindtap="closeMyPuzzleTap" />
+        </view>
+        <my-line style="width: 100%;"></my-line>
+        <scroll-view class="clockBoard" scroll-y="{{true}}" enable-flex="{{true}}">
+            <block wx:for="{{myPuzzle}}" wx:key="index">
+                <my-clockCell img="{{item.icon}}" name="{{item.name}}" type="{{item.type}}" period="{{item.period}}" site="{{item.site}}" bindonClick="toDetail" data-buildingid="{{item.dataID}}"></my-clockCell>
+                <my-line style="width: 100%"></my-line>
+            </block>
+        </scroll-view>
+    </view>
+    <view class="flex-board contain" hidden="{{!isMarkerTap}}">
+        <image class="pullImg" src="../../public/images/down.png" bindtap="closeBuildingDetailTap" />
+        <my-board class="board" style="height: 100%" isNeedWrap="{{isMarkerTap}}" name="{{building_detail.name}}" type="{{building_detail.type}}" period="{{building_detail.period}}" site="{{building_detail.site}}" introduction="{{building_detail.introduction}}" picList="{{building_detail.picList}}"></my-board>
+    </view>
+</view>

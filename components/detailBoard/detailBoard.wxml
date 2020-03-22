@@ -1,0 +1,25 @@
+<view class="board">
+    <text class="name" style="width:{{isNeedWrap?80:100}}%">{{name}}</text>
+    <scroll-view class="scrollBoard" scroll-y="{{true}}" enable-flex="{{true}}">
+        <text class="msg type">{{type}}</text>
+        <text class="msg period">{{period}}</text>
+        <text class="msg site">{{site}}</text>
+        <view class="fengexian intro">
+            简介
+            <my-line style="width: 580rpx"></my-line>
+        </view>
+        <text class="introduction">{{introduction}}</text>
+        <view class="fengexian pic">
+            相册
+            <my-line style="width: 580rpx"></my-line>
+        </view>
+        <swiper class="swiper" indicator-dots="{{true}}" autoplay="{{true}}" interval="{{5000}}" duration="{{500}}" circular="{{true}}">
+            <block wx:for="{{picList}}" wx:key="index">
+                <swiper-item>
+                    <image class="swiper-image" src="{{item}}" mode="aspectFit" bindtap="showGallery" />
+                </swiper-item>
+            </block>
+        </swiper>
+        <mp-gallery img-urls="{{picList}}" show="{{isShowGallery}}"></mp-gallery>
+    </scroll-view>
+</view>

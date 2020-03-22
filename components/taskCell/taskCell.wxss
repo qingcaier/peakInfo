@@ -1,0 +1,92 @@
+.contain {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: 180rpx;
+  border-radius: 12rpx;
+  background-color: white;
+
+  box-sizing: border-box;
+
+  padding: 10rpx 10rpx 10rpx 10rpx;
+
+  /* margin-bottom: 5px; */
+}
+
+.imgContain {
+  width: 160rpx;
+  height: 160rpx;
+  /* border: 1rpx solid blue; */
+  border-radius: 12rpx;
+  position: relative;
+  /* margin-left: 15rpx; */
+}
+
+.img {
+  width: 100%;
+  height: 100%;
+  border-radius: 12rpx;
+}
+
+.textContain {
+  /* height: 100rpx; */
+  /* width: 50%; */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin-left: 20rpx;
+}
+
+.name {
+  font-size: 28rpx;
+  margin-bottom: 15rpx;
+}
+
+.text {
+  /* word-break: keep-all; 不换行 */
+  /* white-space: nowrap; 强制在同一行内显示所有文本,直到文本结束或者遭遇 br 对象。不换行 */
+  /* overflow: hidden; 内容超出宽度时隐藏超出部分的内容 */
+  /* text-overflow: ellipsis; IE 专有属性,当对象内文本溢出时显示省略标记(...) ;需与overflow:hidden;一起使用。 */
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+  /* font-size: 20rpx; */
+}
+
+.detail {
+  font-size: 20rpx;
+}
+
+.msgContain {
+  width: 160rpx;
+  height: 160rpx;
+  font-size: 20rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* justify-content: space-around; */
+}
+
+.stateText {
+  width: 100%;
+  height: 40%;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  color: red;
+  margin-top: 10rpx;
+  margin-bottom: 25rpx;
+}
+
+.point {
+  width: 100%;
+  height: 40%;
+  display: flex;
+  justify-content: center;
+}
+/* font-weight: bold; */
+/* word-break: keep-all; 不换行 */
+/* white-space: nowrap; 强制在同一行内显示所有文本,直到文本结束或者遭遇 br 对象。不换行 */
+/* overflow: hidden; 内容超出宽度时隐藏超出部分的内容 */
+/* text-overflow: ellipsis; IE 专有属性,当对象内文本溢出时显示省略标记(...) ;需与overflow:hidden;一起使用。 */

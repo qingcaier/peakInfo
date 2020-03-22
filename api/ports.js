@@ -11,11 +11,14 @@ const ajax = {
   checkNeightAct: data => {
     return https._post({ url: base.checkNeightAct, data });
   },
+  checkActByDistance: data => {
+    return https._post({ url: base.checkActByDistance, data });
+  },
   checkActOrder: data => {
     return https._post({
       url: base.checkActOrder,
       data
-    })
+    });
   },
   //七牛云凭证
   getQiniuyun: () => {

@@ -6,7 +6,7 @@ const app = getApp();
 let mapContext;
 
 // 将地图比例尺转化为手机屏幕大概距离
-let scaleToDistance = function (scale) {
+let scaleToDistance = function(scale) {
   switch (scale) {
     case 3:
       return 6000000;
@@ -50,7 +50,7 @@ let scaleToDistance = function (scale) {
 };
 
 // 生成marker对象
-let createMarker = function (obj) {
+let createMarker = function(obj) {
   let calloutContent = "";
   if (obj.total_count) {
     switch (obj.act_type) {
@@ -100,7 +100,7 @@ let createMarker = function (obj) {
 };
 
 // 距离截取(保留两位小数)
-let showDistance = function (distance) {
+let showDistance = function(distance) {
   if (distance >= 1000) {
     return Math.round((Math.round(distance) / 1000) * 100) / 100 + "km";
   } else {
@@ -110,9 +110,11 @@ let showDistance = function (distance) {
 
 create(store, {
   data: {
-    location: {},
+    location: {}, // 地图中心定位
+    userLocation: {}, // 用户定位
     markers: [],
     mapScale: 17,
+    mapSize: 100, // 地图尺寸（百分比）
 
     isSelected: false, // 当前是否有选中商家
     // currentCallout: -1,
@@ -168,40 +170,33 @@ create(store, {
       }
     ]
   },
-  onLoad: function () {
+  onLoad: function() {
     // this.getUserLocation();
     mapContext = wx.createMapContext("map");
-    // mapContext.getScale({
+
+    this.getUserLocation();
+    // mapContext.setCenterOffset({
+    //   offset: [0.3, 0.25],
     //   success: res => {
-    //     console.log("地图比例", res);
+    //     console.log(res);
     //   },
-    //   fail: res => {
-    //     console.log("地图比例失败", res);
+    //   fail: err => {
+    //     console.log(err);
     //   }
     // });
-    // console.log(this.data);
-    // console.log(this.data.location);
-    // app.ajax
-    //   .checkNeightAct({
-    //     location: this.data.location,
-    //     distance: scaleToDistance()
-    //   })
-    //   .then(res => {
-    //     console.log("附近的商家活动", res.data);
-    //   });
   },
-  onShow: function () {
-    this.getUserLocation();
+  onShow: function() {
+    // this.getUserLocation();
   },
-  onReady: function () { },
+  onReady: function() {},
   goJoin() {
-    console.log("mychat")
+    console.log("mychat");
     wx.navigateTo({
       url: "../joinOrder/joinOrder"
     });
   },
   // 获取当前定位并请求附近的商家活动
-  getUserLocation: function () {
+  getUserLocation: function() {
     // wx.getLocation({
     //   type: "gcj02",
     //   success: response => {
@@ -223,20 +218,17 @@ create(store, {
         // this.store.data.userLocation = { latitude, longitude }; // 将当前位置存在westore
         // this.update();
 
+        let currentLocation = res.result.location;
+
         this.setData({
-          location: {
-            lat: res.result.location.lat,
-            lng: res.result.location.lng
-          }
+          location: currentLocation,
+          userLocation: currentLocation
         });
 
         // 请求附近的商家活动
         app.ajax
           .checkNeightAct({
-            location: {
-              lng: res.result.location.lng,
-              lat: res.result.location.lat
-            },
+            location: currentLocation,
             distance: scaleToDistance()
           })
           .then(res => {
@@ -305,7 +297,7 @@ create(store, {
   },
 
   // 发起拼单跳转
-  toCreateOrder: function () {
+  toCreateOrder: function() {
     wx.navigateTo({
       url: "../createOrder/createOrder"
     });
@@ -314,14 +306,15 @@ create(store, {
   // 关闭拼单列表
   closeOrderTap() {
     console.log(this.data.currentCallout);
-    let a = this.data.currentCallout;
+    let a = this.data.currentCallout; // 取出地图气泡里的内容
     if (this.data.isSelected) {
       this.setData({
         [`markers[${a}].callout.content`]: this.data.markers[
           a
-        ].callout.content.split(" ")[0],
+        ].callout.content.split(" ")[0], // 关闭拼单列表去掉距离
         [`markers[${a}].callout.color`]: "#ffffff",
-        isSelected: false
+        isSelected: false,
+        mapSize: 100
       });
       // this.setData({});
     }
@@ -337,9 +330,52 @@ create(store, {
           calloutContent + " " + showDistance(targetAct._distance),
         [`markers[${e.markerId}].callout.color`]: "#000000",
         isSelected: true,
-        currentCallout: e.markerId
+        currentCallout: e.markerId,
+        mapSize: 50,
+
+        location: {
+          lat: targetAct.latitude,
+          lng: targetAct.longitude
+        }
       });
       console.log(this.data.currentCallout);
+
+      // wx.chooseLocation({
+      //   longitude: targetAct.longitude,
+      //   latitude: targetAct.latitude,
+      //   success: res => {
+      //     console.log(res);
+      //     // mapContext.
+      //   },
+      //   fail: err => {
+      //     console.log(err);
+      //   }
+      // });
+
+      // mapContext.moveToLocation({
+      //   longitude: targetAct.longitude,
+      //   latitude: targetAct.latitude,
+      //   success: res => {
+      //     console.log(res);
+      //     // mapContext.
+      //   },
+      //   fail: err => {
+      //     console.log(err);
+      //   }
+      // });
+      // mapContext.translateMarker({
+      //   markerId: e.markerId,
+      //   destination: {
+      //     longitude: this.data.location.lng,
+      //     latitude: this.data.location.lat
+      //   },
+      //   success: res => {
+      //     console.log(res);
+      //   },
+      //   fail: err => {
+      //     console.log(err);
+      //   }
+      // });
 
       app.ajax
         .checkActOrder({
@@ -348,6 +384,23 @@ create(store, {
         })
         .then(res => {
           console.log(res.data);
+          let orderList = [];
+          for (let i of res.data.data) {
+            let orderItem = {};
+            orderItem.img = i.picture[0] || "../../public/images/store.png";
+            orderItem.title = i.title;
+            orderItem.detail = i.detail;
+            orderItem._typeNumber = i.act_type;
+            orderItem._remainCount =
+              i.total_count - i.participant_id.current_count;
+            orderItem._validTime = i.remain_time;
+
+            orderList.push(orderItem);
+          }
+
+          this.setData({
+            orderList: orderList
+          });
         });
     }
     // else {
@@ -400,11 +453,63 @@ create(store, {
 
   // 地图视野变化事件
   regionchange(e) {
-    // console.log(e);
+    console.log(e);
+    if (e.type !== "end") {
+      return;
+    }
+    if (e.causedBy === "update") {
+      return;
+    }
     // const mapContext = wx.createMapContext("map", this);
-    mapContext.getCenterLocation({
+    mapContext.getScale({
       success: res => {
-        // console.log(res);
+        console.log(res);
+
+        mapContext.getCenterLocation({
+          success: response => {
+            console.log(response);
+            if (res.scale === 18 && res.scale === 3) {
+              return;
+            }
+
+            // this.setData({
+            //   location: {
+            //     lng: response.longitude,
+            //     lat: response.latitude
+            //   }
+            // })
+
+            app.ajax
+              .checkNeightAct({
+                location: {
+                  lng: response.longitude,
+                  lat: response.latitude
+                },
+                distance: scaleToDistance(res.scale)
+              })
+              .then(resp => {
+                console.log(resp);
+                console.log("附近的商家活动", resp.data);
+                let NeightAct = resp.data.data;
+                let markersList = [];
+
+                for (let i in NeightAct) {
+                  let marker = {};
+                  marker = createMarker(NeightAct[i]);
+                  marker.id = Number(i);
+                  markersList.push(marker);
+                }
+                console.log(markersList);
+                this.setData({
+                  markers: markersList
+                });
+              });
+            // });
+          },
+          fail: err => {
+            console.log(err);
+          }
+        });
       },
       fail: err => {
         console.log(err);
@@ -414,4 +519,6 @@ create(store, {
       // }
     });
   }
+
+  // debounceChange()
 });

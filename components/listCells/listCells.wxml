@@ -5,9 +5,9 @@
             <view class="address">{{address}}</view>
             <view class="distance">{{distanceStr}}</view>
         </view>
-        <image class="img" src="../../public/images/Inverted_triangle.png" mode="aspectFit" />
+        <image class="img" src="../../public/images/Inverted_triangle.png" mode="aspectFit" bindtap="onTap" />
     </view>
-    <scroll-view class="body">
+    <scroll-view class="body" enable-flex="{{true}}">
         <slot></slot>
     </scroll-view>
 </view>

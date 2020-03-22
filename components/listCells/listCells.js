@@ -7,9 +7,7 @@ Component({
   },
 
   data: {
-    // business_name: "以纯",
-    // type: 0
-    // orderType: ""
+    isClicked: false
   },
 
   properties: {
@@ -37,5 +35,13 @@ Component({
 
   methods: {
     // showOrderType(type) {}
+    onTap: function() {
+      this.setData({
+        isClicked: !this.data.isClicked
+      });
+      let myEventDetail = { isClicked: this.data.isClicked };
+      let myEventOption = {};
+      this.triggerEvent("getMore", myEventDetail, myEventOption);
+    }
   }
 });

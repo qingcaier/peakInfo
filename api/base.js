@@ -9,7 +9,7 @@ const base = {
   getSingleDetail: baseUrl + "/api/getSingleDetail",
   checkMap: baseUrl + "/api/checkMap",
   getGiftList: baseUrl + "/api/getGiftList",
-  getAllType: baseUrl + "/api/getAllType",
+  getAllType: baseUrl + "/api/getAllType"
 };
 
 export default base;

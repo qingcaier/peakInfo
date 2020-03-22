@@ -1,0 +1,24 @@
+.puzzleContain {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.puzzleContain__successToast {
+  width: 80%;
+  height: 60px;
+  text-align: center;
+  line-height: 60px;
+}
+
+.puzzleContain__successText {
+  color: red;
+  font-size: 30rpx;
+}
+
+.puzzleContain__building {
+  width: 80%;
+}

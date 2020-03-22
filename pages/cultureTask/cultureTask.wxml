@@ -1,0 +1,74 @@
+<view class="page" style="width: 100%;height:100%;" hover-class="none" hover-stop-propagation="false">
+    <map id="map" longitude="{{location.lng}}" latitude="{{location.lat}}" subkey="TFRBZ-KZZCX-GQ54B-T22GL-HDDES-ESFWM" markers="{{markers}}" scale="{{mapScale}}" show-location="{{true}}" bindregionchange="regionchange" bindcallouttap="callouttap" bindmarkertap="markertap" enable-zoom="{{!false}}" enable-scroll="{{!false}}">
+        <!-- <cover-view class="createOrder-btn" bindtap="toCreateOrder">拼</cover-view> -->
+        <!-- <cover-view class="callout" hidden="{{selected}}" style="{{calloutStyle}}">
+      {{distance}}
+    </cover-view> -->
+    </map>
+    <view class="btnArea" bindtap="setMyTasks" hover-class="none">
+        <image class="dakaImg" src="../../public/images/home.png"></image>
+        <text class="btnText">我的任务</text>
+    </view>
+    <view class="flex-board myTask" wx:if="{{isSelectedMyClock}}">
+        <view class="header">
+            <text class="headTitle">我的任务</text>
+            <my-line style="width: 100%"></my-line>
+            <image class="pullImg" src="../../public/images/down.png" bindtap="closeMyClockTap" />
+            <text class="taskInfor" decode="{{true}}">&emsp;&emsp;{{tasks.taskInfor}}</text>
+        </view>
+        <my-line style="width: 100%;"></my-line>
+        <scroll-view class="taskBoard" scroll-y="{{true}}" enable-flex="{{true}}">
+            <block wx:for="{{tasks.buildingData}}" wx:key="index">
+                <my-taskCell img="{{item.icon}}" name="{{item.name}}" site="{{item.site}}" _point="{{item.point}}" _state="{{item.state}}" bindonClick="toDetail" data-buildingid="{{item.dataID}}"></my-taskCell>
+                <my-line style="align-self: flex-end; width: 80%"></my-line>
+            </block>
+            <view class="ext">
+                <text class="extText">全部完成额外奖励：</text>
+                <text class="extPoint">{{tasks.extraPoint}}积分</text>
+            </view>
+        </scroll-view>
+    </view>
+    <view class="flex-board contain" hidden="{{!isMarkerTap}}">
+        <!-- <image class="pullImg" src="../../public/images/down.png" bindtap="closeBuildingDetailTap" />
+        <button class="btn" type="warn" bindtap="getQuestion" hidden="{{!isCalloutTap}}">打卡</button>
+        <my-line style="width: 100%;margin-bottom: 20rpx" wx:if="{{isCalloutTap}}"></my-line>
+        <my-board class="board" style="height: {{isCalloutTap ? 75 : 100}}%" isNeedWrap="{{!isCalloutTap}}" name="{{building_detail.name}}" type="{{building_detail.type}}" period="{{building_detail.period}}" site="{{building_detail.site}}" introduction="{{building_detail.introduction}}" picList="{{building_detail.picList}}"></my-board> -->
+        <image class="pullImg" src="../../public/images/down.png" bindtap="closeBuildingDetailTap" />
+        <my-board class="board" style="height: 100%" isNeedWrap="{{isMarkerTap}}" name="{{building_detail.name}}" type="{{building_detail.type}}" period="{{building_detail.period}}" site="{{building_detail.site}}" introduction="{{building_detail.introduction}}" picList="{{building_detail.picList}}"></my-board>
+    </view>
+    <view class="flex-board photo" hidden="{{!isCalloutTap}}">
+        <text class="headTitle">定向拍照</text>
+        <image class="pullImg" src="../../public/images/down.png" bindtap="closeBuildingDetailTap" />
+        <my-line style="width: 100%;"></my-line>
+        <scroll-view class="photoBoard" scroll-y="{{false}}" enable-flex="{{true}}">
+            <view class="photoContain">
+                <image class="matchPhoto" src="{{matchPhoto}}" mode="aspectFit" bindtap="showGallery" />
+            </view>
+            <my-miniDetailCell name="{{building_detail.name}}" type="{{building_detail.type}}" period="{{building_detail.period}}" site="{{building_detail.site}}"></my-miniDetailCell>
+            <view class="submitArea">
+                <button class="btn submit" bindtap="submitPhoto">拍照</button>
+            </view>
+        </scroll-view>
+    </view>
+    <view class="flex-board question" wx:if="{{showQuestion}}">
+        <view class="header">
+            <image class="backImg" src="../../public/images/down.png" bindtap="backTap" />
+            <text class="head">答题赢积分</text>
+        </view>
+        <my-line style="width: 100%;margin-bottom: 20rpx"></my-line>
+        <scroll-view class="questionBoard" scroll-y="{{true}}" enable-flex="{{true}}">
+            <block wx:for="{{building_detail.question}}" wx:for-item="question" wx:for-index="idx" wx:key="idx">
+                <my-questionCell num="{{idx}}" title="{{question.title}}" _choices="{{question.choices}}" _answer="{{question.answer}}" bindgetUserAnswer="getUserAnswer" data-index="{{idx}}"></my-questionCell>
+                <!-- <my-questionCell class="questionItem"></my-questionCell> -->
+                <!-- <my-questionCell num="{{2}}" title="{{building_detail.question[0].title}}" choices="{{building_detail.question[0].choices}}"></my-questionCell> -->
+            </block>
+            <view class="submitArea">
+                <button class="btn submit" type="warn" disabled="{{!isAnswerRight}}" bindtap="submitClock" wx:if="{{!isAnswerQuestion}}">
+                    完成
+                </button>
+                <text class="successMsg" wx:else>**完全正确，打卡成功，获得20点积分**</text>
+            </view>
+        </scroll-view>
+    </view>
+    <mp-gallery img-urls="{{[matchPhoto]}}" show="{{isShowGallery}}"></mp-gallery>
+</view>

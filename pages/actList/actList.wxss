@@ -7,14 +7,14 @@
 .location {
   position: absolute;
   height: 64rpx;
-  width: 240rpx;
+  width: 480rpx;
   display: flex;
   align-items: center;
   overflow: hidden;
 }
 
 .locationIcon {
-  width: 240rpx;
+  width: 64rpx;
   height: 64rpx;
 }
 
@@ -52,5 +52,11 @@
   margin-top: 8rpx;
 }
 
-.orderCells {
+.orderCell {
+  margin: 8px;
+}
+
+.empty {
+  margin-top: 8px;
+  margin-bottom: 8px;
 }

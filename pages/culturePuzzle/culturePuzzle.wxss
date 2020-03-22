@@ -1,0 +1,89 @@
+/* pages/home/home.wxss */
+
+page {
+  height: 100%;
+  /* width: 50%; */
+}
+
+.page {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+#map {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.flex-board {
+  width: 650rpx;
+  padding: 20rpx 30rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-radius: 10rpx;
+  position: absolute;
+  bottom: 15px;
+  background-color: #ffffff;
+  /* overflow: hidden; */
+}
+
+.btnArea {
+  width: 180rpx;
+  height: 70rpx;
+  padding: 5rpx 12rpx;
+  background-color: #990033;
+  display: flex;
+
+  position: absolute;
+  top: 11px;
+  left: 22rpx;
+
+  border-radius: 8rpx;
+
+  align-items: center;
+  justify-content: space-around;
+}
+
+.dakaImg {
+  width: 55rpx;
+  height: 55rpx;
+  /* background-color: #990033; */
+}
+
+.btnText {
+  /* background-color: #990033; */
+  color: #ffffff;
+  font-size: 26rpx;
+}
+
+.myPuzzle {
+  top: 120rpx;
+  z-index: 100;
+}
+
+.header {
+  margin-bottom: 30rpx;
+  text-align: center;
+}
+
+.contain {
+  height: 60%;
+  z-index: 10;
+}
+
+.pullImg {
+  width: 40rpx;
+  height: 40rpx;
+  top: 20rpx;
+  right: 30rpx;
+  position: absolute;
+}
+
+.board {
+  width: 100%;
+  height: 80%;
+}

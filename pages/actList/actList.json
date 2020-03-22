@@ -5,5 +5,7 @@
     "my-cell": "/components/listCell/listCell"
   },
   "navigationStyle": "custom",
-  "navigationBarTitleText": "UI组件库"
+  "navigationBarTitleText": "UI组件库",
+
+  "enablePullDownRefresh": true
 }

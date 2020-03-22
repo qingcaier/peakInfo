@@ -1,0 +1,15 @@
+<view class="contain" bindtap="onTap">
+    <view class="imgContain">
+        <image class="img" src="{{img}}" mode="aspectFit" />
+    </view>
+    <view class="textContain">
+        <view class="text name">{{name}}</view>
+        <text class="text detail site">{{site}}</text>
+    </view>
+    <view class="msgContain">
+        <view class="stateText">
+            <text hidden="{{!state}}">{{stateText}}</text>
+        </view>
+        <view class="point" style="color: {{state? 'grey': 'red'}}">{{point}}</view>
+    </view>
+</view>

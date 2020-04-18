@@ -1,35 +1,26 @@
 {
   "pages": [
-<<<<<<< HEAD
-    "pages/remActRouter/remActRouter",
-=======
-    "pages/chat/chat",
-    "page_new/mallHome/mallHome",
-    "page_new/buildingList/buildingList",
     "page_new/home/home",
->>>>>>> e47d88a2ae1960bc881a3bdbf2f43d144b1576c5
     "pages/home/home",
     "pages/actList/actList",
     "pages/message/message",
     "pages/personal/personal",
-    "pages/logs/logs",
     "pages/orderMsg/orderMsg",
     "pages/myOrder/myOrder",
-<<<<<<< HEAD
     "pages/chat/chat",
-    "pages/culture/culture",
+    "pages/remActRouter/remActRouter",
     "pages/cultureMap/cultureMap",
     "pages/cultureClock/cultureClock",
     "pages/cultureTask/cultureTask",
     "pages/culturePuzzle/culturePuzzle",
-    "pages/puzzlePage/puzzlePage"
-=======
+    "pages/puzzlePage/puzzlePage",
     "pages/joinOrder/joinOrder",
-    "page_new/activity/activity",
     "page_new/buildingInfo/buildingInfo",
     "page_new/giftHistory/giftHistory",
-    "page_new/giftForm/giftForm"
->>>>>>> e47d88a2ae1960bc881a3bdbf2f43d144b1576c5
+    "page_new/giftForm/giftForm",
+    "page_new/mallHome/mallHome",
+    "page_new/buildingList/buildingList",
+    "page_new/login/login"
   ],
   "permission": {
     "scope.userLocation": {

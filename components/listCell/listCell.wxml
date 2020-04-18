@@ -1,4 +1,4 @@
-<view class="contain">
+<view class="contain" bindtap="onClick">
     <view class="imgContain">
         <image class="img" src="{{img}}" mode="aspectFit" />
         <view class="orderType">{{orderTypeStr}}</view>

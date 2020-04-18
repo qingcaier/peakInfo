@@ -1,7 +1,6 @@
 const app = getApp();
 Page({
-
-  /** 
+  /**
    * 页面的初始数据
    */
   data: {
@@ -26,7 +25,7 @@ Page({
       //   23.119602593316
       // ],
       // "question": []
-    }
+    },
   },
 
   /**
@@ -34,30 +33,48 @@ Page({
    */
   onLoad: function (options) {
     let _this = this;
-    const eventChannel = this.getOpenerEventChannel()
-    eventChannel.on('buildId', function (data) {
-      // console.log(data);
+    const eventChannel = this.getOpenerEventChannel();
+    eventChannel.on("buildId", function (data) {
+      console.log(data);
       _this.setData({
-        idFromFather: data.ID
+        idFromFather: data.ID,
       });
-      _this.findBuildingById(data.ID)
-    })
+      _this.findBuildingById(data.ID);
+    });
   },
   findBuildingById(id) {
     var that = this;
-    // console.log(id);
-    id = id.replace(/ /g, '')
-    app.ajax.getSingleDetail({ dataID: id }).then(
-      res => {
+    console.log(id);
+    id = id.replace(/ /g, "");
+    app.ajax
+      .getSingleDetail({ dataID: id })
+      .then((res) => {
         // console.log({ dataID: id }, res.data.data)
         if (!res.data.data) {
-          console.log("找不到")
+          console.log("找不到");
         } else {
           that.setData({
-            buildData: res.data.data
-          })
+            buildData: res.data.data,
+          });
         }
-      }).catch(err => { console.log(err) });
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   },
 
-})
+  // 跳转到该建筑物所在位置的地图
+  toBuildingMap(e) {
+    console.log(e);
+    wx.navigateTo({
+      url: "../../pages/cultureMap/cultureMap",
+      success: (res) => {
+        // 通过eventChannel向被打开页面传送数据
+        res.eventChannel.emit("buildId", {
+          ID: this.data.idFromFather,
+          location: this.data.buildData.location,
+        });
+      },
+    });
+  },
+});

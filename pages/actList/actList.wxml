@@ -6,15 +6,18 @@
     <!-- <button class="btn" slot="right" type="warn" size="default" bindtap="newOrder">发起拼单</button> -->
 </we-navigator>
 <view class="main">
-    <view class="board">
+    <view class="board" wx:if="{{refresh}}">
         <!-- <test-cot id="test">{{toastText}}</test-cot>
     <button type="primary" bindtap="showToast">showToast!</button>
     <button type="primary">发起拼单</button> -->
         <my-cells id="actCells" class="orderCells" wx:for="{{actList}}" wx:for-index="idx" wx:for-item="business" wx:key="idx" businessName="{{business.business_name}}" address="{{business.address}}" _distance="{{business.distance}}" bindgetMore="onGetMore" data-actId="{{business.act_id}}">
-            <my-cell bindtap="goJoin" class="orderCell" wx:for="{{business.orderList}}" wx:key="index" img="{{item.img}}" title="{{item.title}}" detail="{{item.detail}}" _typeNumber="{{item._typeNumber}}" _remainCount="{{item._remainCount}}" _validTime="{{item._validTime}}"></my-cell>
+            <my-cell bindtap="goJoin" wx:if="{{business.orderList.length !== 0}}" class="orderCell" wx:for="{{business.orderList}}" wx:key="index" img="{{item.img}}" title="{{item.title}}" detail="{{item.detail}}" _typeNumber="{{item._typeNumber}}" _remainCount="{{item._remainCount}}" _validTime="{{item._validTime}}" data-orderid="{{item.order_id}}"></my-cell>
             <view class="empty" wx:if="{{business.orderList.length === 0 || isMore[idx]}}">
                 暂时没有更多拼单了~
             </view>
         </my-cells>
+        <text class="main__bottom" wx:if="{{noMoreAct}}" decode="{{true}}">
+            &nbsp;——&nbsp;·&nbsp;——&nbsp;我是有底线的&nbsp;——&nbsp;·&nbsp;——&nbsp;
+        </text>
     </view>
 </view>

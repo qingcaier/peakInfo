@@ -29,30 +29,30 @@ class func {
   // 将地图比例尺转化为手机屏幕大概距离
   scaleToDistance(scale) {
     switch (scale) {
-      case 3:
-        return 6000000;
-      case 4:
-        return 3000000;
-      case 5:
-        return 1200000;
-      case 6:
-        return 600000;
-      case 7:
-        return 300000;
-      case 8:
-        return 300000;
-      case 9:
-        return 120000;
-      case 10:
-        return 60000;
-      case 11:
-        return 30000;
-      case 12:
-        return 12000;
-      case 13:
-        return 6000;
-      case 14:
-        return 3000;
+      // case 3:
+      //   return 6000000;
+      // case 4:
+      //   return 3000000;
+      // case 5:
+      //   return 1200000;
+      // case 6:
+      //   return 600000;
+      // case 7:
+      //   return 300000;
+      // case 8:
+      //   return 300000;
+      // case 9:
+      //   return 120000;
+      // case 10:
+      //   return 60000;
+      // case 11:
+      //   return 30000;
+      // case 12:
+      //   return 12000;
+      // case 13:
+      //   return 6000;
+      // case 14:
+      //   return 3000;
       case 15:
         return 1200;
       case 16:
@@ -66,7 +66,8 @@ class func {
       case 20:
         return 60;
       default:
-        return 20000000;
+        // return 20000000;
+        return 1000;
     }
   }
 
@@ -85,8 +86,8 @@ class func {
    * */
 
   handleObjArr(longArr, shortArr, id) {
-    return longArr.map(item => {
-      let objIndex = shortArr.findIndex(item1 => item1[id] === item[id]);
+    return longArr.map((item) => {
+      let objIndex = shortArr.findIndex((item1) => item1[id] === item[id]);
       if (objIndex !== -1) {
         return shortArr[objIndex];
       } else return item;
@@ -126,11 +127,11 @@ class func {
     }
   }
 
-  updateImg(filePath, uptoken) {
+  uploadImg(filePath, uptoken) {
     return new Promise((resolve, reject) => {
       qiniuUploader.upload(
         filePath,
-        res => {
+        (res) => {
           // 每个文件上传成功后,处理相关的事情
           // 其中 info 是文件上传成功后，服务端返回的json，形式如
           // {
@@ -144,7 +145,7 @@ class func {
           wx.hideLoading();
           resolve(result);
         },
-        error => {
+        (error) => {
           console.log("error: " + error);
           wx.hideLoading();
           reject(error);
@@ -156,13 +157,13 @@ class func {
           // key: "customFileName.jpg", // [非必须]自定义文件 key。如果不设置，默认为使用微信小程序 API 的临时文件名
           // // 以下方法三选一即可，优先级为：uptoken > uptokenURL > uptokenFunc
 
-          uptoken: uptoken // 由其他程序生成七牛 uptoken
+          uptoken: uptoken, // 由其他程序生成七牛 uptoken
           // uptokenURL: "UpTokenURL.com/uptoken", // 从指定 url 通过 HTTP GET 获取 uptoken，返回的格式必须是 json 且包含 uptoken 字段，例如： {"uptoken": "[yourTokenString]"}
           // uptokenFunc: function() {
           //   return "[yourTokenString]";
           // }
         },
-        res => {
+        (res) => {
           console.log("上传进度", res.progress);
           console.log("已经上传的数据长度", res.totalBytesSent);
           console.log("预期需要上传的数据总长度", res.totalBytesExpectedToSend);
@@ -181,7 +182,7 @@ class func {
   }
 
   // 防抖函数
-  static bounce = function(func, time) {
+  static bounce = function (func, time) {
     // let delayTime = time;
     // setTimeout()
   };

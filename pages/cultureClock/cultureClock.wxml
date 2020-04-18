@@ -17,16 +17,16 @@
         <my-line style="width: 100%;"></my-line>
         <scroll-view class="clockBoard" scroll-y="{{true}}" enable-flex="{{true}}">
             <block wx:for="{{myClock}}" wx:key="index">
-                <my-clockCell img="{{item.icon}}" name="{{item.name}}" type="{{item.type}}" period="{{item.period}}" site="{{item.site}}" bindonClick="toDetail" data-buildingid="{{item.dataID}}"></my-clockCell>
+                <my-clockCell img="{{item.icon}}" name="{{item.name}}" type="{{item.type}}" period="{{item.period}}" site="{{item.site}}" bindonClick="toDetail" data-buildingid="{{item._id}}"></my-clockCell>
                 <my-line style="width: 100%"></my-line>
             </block>
         </scroll-view>
     </view>
     <view class="flex-board contain" hidden="{{!(isMarkerTap || isCalloutTap)}}">
         <image class="pullImg" src="../../public/images/down.png" bindtap="closeBuildingDetailTap" />
-        <button class="btn" type="warn" bindtap="getQuestion" hidden="{{!isMarkerTap}}">打卡</button>
-        <my-line style="width: 100%;margin-bottom: 20rpx" wx:if="{{isMarkerTap}}"></my-line>
-        <my-board class="board" style="height: {{isMarkerTap ? 75 : 100}}%" isNeedWrap="{{!isMarkerTap}}" name="{{building_detail.name}}" type="{{building_detail.type}}" period="{{building_detail.period}}" site="{{building_detail.site}}" introduction="{{building_detail.introduction}}" picList="{{building_detail.picList}}"></my-board>
+        <button class="btn" type="warn" bindtap="getQuestion" hidden="{{!isCalloutTap}}">打卡</button>
+        <my-line style="width: 100%;margin-bottom: 20rpx" wx:if="{{isCalloutTap}}"></my-line>
+        <my-board class="board" bindtoGuide="toGuide" style="height: {{isCalloutTap ? 75 : 100}}%" isNeedWrap="{{!isCalloutTap}}" name="{{building_detail.name}}" type="{{building_detail.type}}" period="{{building_detail.period}}" site="{{building_detail.site}}" _introduction="{{building_detail.introduction}}" picList="{{building_detail.picList}}"></my-board>
     </view>
     <view class="flex-board question" wx:if="{{showQuestion}}">
         <view class="header">

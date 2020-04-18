@@ -12,17 +12,82 @@ function _get({ url, data }) {
     const obj = {
       url,
       header: {
-        token: wx.getStorageSync("localToken")
+        token: wx.getStorageSync("localToken"),
       },
       data,
       method: "GET",
-      success: res => {
-        return res.statusCode === 200 ? resolved(res) : rejected(res);
+      success: (res) => {
+        let status = res.data.state.status;
+        if (status === 403) {
+          wx.showModal({
+            title: "",
+            content: "请先登录！",
+            confirmText: "去登录",
+
+            success: (response) => {
+              if (response.cancel) {
+                wx.showToast({
+                  title: "登录：已取消",
+                  icon: "none",
+                });
+                // setTimeout(() => {
+                //   // wx.navigateBack();
+                //   wx.navigateBack({
+                //     delta: 3
+                //   });
+                // }, 1000);
+              } else if (response.confirm) {
+                console.log("1111");
+                // 拒绝授权后再次重新授权
+                wx.navigateTo({
+                  url: "/page_new/login/login",
+                });
+              }
+            },
+          });
+        } else if (status === 404) {
+          wx.showModal({
+            title: "",
+            content: "登录已过期！",
+            confirmText: "去登录",
+            success: (response) => {
+              if (response.cancel) {
+                wx.showToast({
+                  title: "登录：已取消",
+                  icon: "none",
+                });
+                // setTimeout(() => {
+                //   wx.navigateBack();
+                // }, 1000);
+              } else if (response.confirm) {
+                // 拒绝授权后再次重新授权
+                wx.navigateTo({
+                  url: "/page_new/login/login",
+                  success: (res) => {
+                    console.log(res);
+                  },
+                  fail: (err) => {
+                    console.log(err);
+                  },
+                });
+              }
+            },
+          });
+        } else {
+          wx.hideLoading();
+          return status === 200 ? resolved(res) : rejected(res);
+        }
       },
-      fail: err => rejected(err),
+      fail: (err) => {
+        wx.showToast({
+          title: err,
+          icon: "none",
+        });
+        // rejected(err);
+      },
       complete: () => {
         wx.hideLoading();
-      }
+      },
     };
     wx.request(obj);
   });
@@ -44,23 +109,82 @@ function _post({ url, data }) {
     const obj = {
       url,
       header: {
-        token: wx.getStorageSync("localToken")
+        token: wx.getStorageSync("localToken"),
       },
       data,
       method: "POST",
-      success: res => {
-        // if (res.statusCode === 400) {
-        //   wx.showToast({
-        //     title: "请先授权登录！"
-        //   });
-        // }
-        // wx.hideLoading();
-        return res.statusCode === 200 ? resolved(res) : rejected(res);
+      success: (res) => {
+        let status = res.data.state.status;
+        if (status === 403) {
+          wx.showModal({
+            title: "",
+            content: "请先登录！",
+            confirmText: "去登录",
+
+            success: (response) => {
+              if (response.cancel) {
+                wx.showToast({
+                  title: "登录：已取消",
+                  icon: "none",
+                });
+                // setTimeout(() => {
+                //   // wx.navigateBack();
+                //   wx.navigateBack({
+                //     delta: 3
+                //   });
+                // }, 1000);
+              } else if (response.confirm) {
+                console.log("1111");
+                // 拒绝授权后再次重新授权
+                wx.navigateTo({
+                  url: "/page_new/login/login",
+                });
+              }
+            },
+          });
+        } else if (status === 404) {
+          wx.showModal({
+            title: "",
+            content: "登录已过期！",
+            confirmText: "去登录",
+            success: (response) => {
+              if (response.cancel) {
+                wx.showToast({
+                  title: "登录：已取消",
+                  icon: "none",
+                });
+                // setTimeout(() => {
+                //   wx.navigateBack();
+                // }, 1000);
+              } else if (response.confirm) {
+                // 拒绝授权后再次重新授权
+                wx.navigateTo({
+                  url: "/page_new/login/login",
+                  success: (res) => {
+                    console.log(res);
+                  },
+                  fail: (err) => {
+                    console.log(err);
+                  },
+                });
+              }
+            },
+          });
+        } else {
+          wx.hideLoading();
+          return status === 200 ? resolved(res) : rejected(res);
+        }
       },
-      fail: err => rejected(err),
+      fail: (err) => {
+        wx.showToast({
+          title: err,
+          icon: "none",
+        });
+        // rejected(err);
+      },
       complete: () => {
         wx.hideLoading();
-      }
+      },
     };
     wx.request(obj);
   });
@@ -73,5 +197,5 @@ function _post({ url, data }) {
 
 export default {
   _get,
-  _post
+  _post,
 };

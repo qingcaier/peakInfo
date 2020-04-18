@@ -1,19 +1,21 @@
 .contain {
   display: flex;
   align-items: center;
-  width: 100%;
+  width: 700rpx;
   height: 200rpx;
-  /* border: 1rpx solid green; */
+  /* border: 1rpx solid lightgray; */
   border-radius: 12rpx;
   background-color: white;
   justify-content: space-between;
   padding: 10rpx;
+  box-sizing: border-box;
   /* margin-bottom: 5px; */
+  box-shadow: 5rpx 5rpx 2rpx #888888;
 }
 
 .imgContain {
-  width: 170rpx;
-  height: 170rpx;
+  width: 160rpx;
+  height: 160rpx;
   /* border: 1rpx solid blue; */
   border-radius: 12rpx;
   position: relative;
@@ -43,12 +45,14 @@
   display: flex;
   flex-direction: column;
   width: 360rpx;
-  height: 170rpx;
-  justify-content: space-between;
+  height: 160rpx;
+  font-size: 28rpx;
+  /* justify-content: space-between; */
 }
 
 .title {
   font-weight: bold;
+  margin-bottom: 10rpx;
   word-break: keep-all; /* 不换行 */
   white-space: nowrap; /* 强制在同一行内显示所有文本,直到文本结束或者遭遇 br 对象。不换行 */
   overflow: hidden; /* 内容超出宽度时隐藏超出部分的内容 */
@@ -60,26 +64,34 @@
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 3;
   overflow: hidden;
-
-  font-size: 28rpx;
 }
 
 .msgContain {
   width: 120rpx;
-  height: 170rpx;
+  height: 160rpx;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  /* align-items: flex-end; */
+  align-items: center;
   font-size: 26rpx;
 }
 
 .count {
+  width: 100%;
+  height: 50rpx;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
   color: #ffaa33;
 }
 
 .time {
   color: #ffaa33;
+  width: 100%;
+  height: 50rpx;
+  display: flex;
+  flex-direction: column;
+  /* align-items: flex-end; */
   /* font-weight: bold; */
   /* word-break: keep-all; 不换行 */
   /* white-space: nowrap; 强制在同一行内显示所有文本,直到文本结束或者遭遇 br 对象。不换行 */

@@ -12,7 +12,7 @@
     <view class="msg">
         <view class="build-title">
             <text class="name">{{buildData.name}}</text>
-            <view class="location">
+            <view class="location" bindtap="toBuildingMap">
                 <image class="mapPng" src="../../public/picture/map.png" />
             </view>
             <text class="map">地图</text>

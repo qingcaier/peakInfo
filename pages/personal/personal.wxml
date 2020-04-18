@@ -6,13 +6,14 @@
       <text class="userinfo-nickname">{{userInfo.nickName}}</text>
     </block> -->
     <!-- <block wx:if="{{!ifLogin}}"> -->
-    <view class="noUser" wx:if="{{!hasUserInfo}}">
+    <!-- <view class="noUser" wx:if="{{!hasUserInfo}}">
       <image class="wxlogo" src="{{wxlogo}}" />
       <button size="mini" type="primary" open-type="getUserInfo" bindgetuserinfo="getUserInfo">
         {{wxloginText}}
       </button>
-    </view>
-    <view class="userinfo" wx:else>
+    </view> -->
+    <!-- <view class="userinfo" wx:else> -->
+    <view class="userinfo">
       <image class="userinfo-avatar" src="{{userInfo.avatarUrl}}" />
       <view class="info-text">
         <text class="userinfo-nickname">{{userInfo.nickName}}</text>

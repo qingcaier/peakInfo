@@ -1,4 +1,9 @@
 /* pages/actList/actList.wxss */
+page {
+  width: 100%;
+  height: 100%;
+  background-color: lightgray;
+}
 
 .navigator {
   position: relative;
@@ -42,14 +47,19 @@
 
 .main {
   width: 100%;
-  background-color: lightgray;
+  /* height: 100%; */
+  /* background-color: lightgray; */
   display: flex;
   justify-content: center;
 }
 
 .board {
   width: 97%;
+  /* height: 100%; */
   margin-top: 8rpx;
+  /* display: flex;
+  flex-direction: column;
+  align-items: center; */
 }
 
 .orderCell {
@@ -59,4 +69,15 @@
 .empty {
   margin-top: 8px;
   margin-bottom: 8px;
+}
+
+.main__bottom {
+  display: block;
+  width: 100%;
+  text-align: center;
+  color: gray;
+  font-size: 28rpx;
+  margin-bottom: 15rpx;
+  /* position: sticky;
+  bottom: 10rpx; */
 }

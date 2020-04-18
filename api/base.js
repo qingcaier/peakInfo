@@ -1,15 +1,31 @@
-const baseUrl = "http://localhost:3000/miniprogram";
+const baseUrl = "http://192.168.101.45:3000/miniprogram";
 const base = {
+  checkLogin: baseUrl + "/checkLogin",
   userlogin: baseUrl + "/userLogin",
   createOrder: baseUrl + "/api/createOrder",
   checkNeightAct: baseUrl + "/api/checkNeightAct",
+  checkActByDistance: baseUrl + "/api/checkActByDistance",
   checkActOrder: baseUrl + "/api/checkActOrder",
   getqiniuyun: baseUrl + "/api/qiniuyun", //七牛云凭证
   searchHistoricalData: baseUrl + "/api/searchHistoricalData",
+  getAllType: baseUrl + "/api/getAllType",
   getSingleDetail: baseUrl + "/api/getSingleDetail",
   checkMap: baseUrl + "/api/checkMap",
+  getPunchFinish: baseUrl + "/api/getPunchFinish",
+  getJigsawFinish: baseUrl + "/api/getJigsawFinish",
+  getPunchList: baseUrl + "/api/getPunchList",
+  finishPunch: baseUrl + "/api/finishPunch",
+  getTaskMap: baseUrl + "/api/getTaskMap",
+  getTaskList: baseUrl + "/api/getTaskList",
+  getMappingPic: baseUrl + "/api/getMappingPic",
+  finishMapping: baseUrl + "/api/finishMapping",
+  finishHuntTrea: baseUrl + "/api/finishHuntTrea",
+  getJigsawList: baseUrl + "/api/getJigsawList",
+  finishJigsaw: baseUrl + "/api/finishJigsaw",
+  getUserCredit: baseUrl + "/api/getUserCredit",
   getGiftList: baseUrl + "/api/getGiftList",
-  getAllType: baseUrl + "/api/getAllType"
+  getExcHistory: baseUrl + "/api/getExcHistory",
+  exchangeGift: baseUrl + "/api/exchangeGift",
 };
 
 export default base;

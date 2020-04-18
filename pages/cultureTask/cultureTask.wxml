@@ -34,7 +34,7 @@
         <my-line style="width: 100%;margin-bottom: 20rpx" wx:if="{{isCalloutTap}}"></my-line>
         <my-board class="board" style="height: {{isCalloutTap ? 75 : 100}}%" isNeedWrap="{{!isCalloutTap}}" name="{{building_detail.name}}" type="{{building_detail.type}}" period="{{building_detail.period}}" site="{{building_detail.site}}" introduction="{{building_detail.introduction}}" picList="{{building_detail.picList}}"></my-board> -->
         <image class="pullImg" src="../../public/images/down.png" bindtap="closeBuildingDetailTap" />
-        <my-board class="board" style="height: 100%" isNeedWrap="{{isMarkerTap}}" name="{{building_detail.name}}" type="{{building_detail.type}}" period="{{building_detail.period}}" site="{{building_detail.site}}" introduction="{{building_detail.introduction}}" picList="{{building_detail.picList}}"></my-board>
+        <my-board class="board" style="height: 100%" isNeedWrap="{{isMarkerTap}}" name="{{building_detail.name}}" type="{{building_detail.type}}" period="{{building_detail.period}}" site="{{building_detail.site}}" _introduction="{{building_detail.introduction}}" picList="{{building_detail.picList}}"></my-board>
     </view>
     <view class="flex-board photo" hidden="{{!isCalloutTap}}">
         <text class="headTitle">定向拍照</text>

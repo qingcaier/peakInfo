@@ -20,7 +20,7 @@
             </mp-cells>
             <mp-cells ext-class="cells2">
                 <mp-cell prop="" title="" ext-class="">
-                    <mp-uploader bindfail="uploadError" bindsuccess="uploadSuccess" select="{{selectFile}}" upload="{{uploadFile}}" files="{{files}}" max-count="5"></mp-uploader>
+                    <mp-uploader title="上传图片" bindfail="uploadError" bindsuccess="uploadSuccess" select="{{selectFile}}" bindselect="selectImg" upload="{{uploadFile}}" files="{{files}}" max-count="5"></mp-uploader>
                 </mp-cell>
             </mp-cells>
         </view>
@@ -28,7 +28,7 @@
             <mp-cells>
                 <mp-cell ext-class="location">
                     <image class="locationImg" src="../../public/images/position.png" />
-                    <view class="locationText">华南理工大学</view>
+                    <view class="locationText">{{userAddress}}</view>
                 </mp-cell>
                 <mp-cell prop="business_name" ext-class="business_name">
                     <picker class="weui-input select" bindchange="bindBusinessActChange" data-field="business_act" value="{{business_actIndex}}" range="{{business_acts}}" range-key="{{'title'}}">

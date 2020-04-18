@@ -76,9 +76,9 @@ export default {
                         title: "授权失败",
                         icon: "none"
                       });
-                      setTimeout(() => {
-                        wx.navigateBack();
-                      }, 1500);
+                      // setTimeout(() => {
+                      //   wx.navigateBack();
+                      // }, 1500);
                     }
                   }
                 });

@@ -1,53 +1,12 @@
 import store from "../../store.js";
 import create from "../../utils/create.js";
 
+const Func = require("../../public/util/func");
+const func = new Func();
+
 const app = getApp();
 
 let mapContext;
-
-// 将地图比例尺转化为手机屏幕大概距离
-let scaleToDistance = function(scale) {
-  switch (scale) {
-    case 3:
-      return 6000000;
-    case 4:
-      return 3000000;
-    case 5:
-      return 1200000;
-    case 6:
-      return 600000;
-    case 7:
-      return 300000;
-    case 8:
-      return 300000;
-    case 9:
-      return 120000;
-    case 10:
-      return 60000;
-    case 11:
-      return 30000;
-    case 12:
-      return 12000;
-    case 13:
-      return 6000;
-    case 14:
-      return 3000;
-    case 15:
-      return 1200;
-    case 16:
-      return 600;
-    case 17:
-      return 300;
-    case 18:
-      return 300;
-    case 19:
-      return 120;
-    case 20:
-      return 60;
-    default:
-      return 20000000;
-  }
-};
 
 // 生成marker对象
 let createMarker = function(obj) {
@@ -69,15 +28,22 @@ let createMarker = function(obj) {
     // id: 0,
     act_id: obj._id,
     _distance: obj._distance,
+    actLocation: {
+      lng: obj.loc[0],
+      lat: obj.loc[1]
+    },
+    calloutContent: calloutContent,
+    // calloutContent_select: `${calloutContent} ${showDistance(obj._distance)}`,
     // isSelected: false,
     iconPath: "../../public/images/position.png",
-    latitude: obj.location.lat,
-    longitude: obj.location.lng,
+
+    latitude: obj.loc[1],
+    longitude: obj.loc[0],
     width: 1,
     height: 1,
     // zIndex: 1000,
     callout: {
-      content: calloutContent,
+      content: ` ${calloutContent} `,
       color: "#ffffff",
       fontSize: 15,
       borderRadius: 10,
@@ -98,6 +64,14 @@ let createMarker = function(obj) {
     // }
   };
 };
+
+// // 生成markers
+// let createMarkers = function(objArr){
+//   let markers = [];
+//   for(let i in objArr){
+
+//   }
+// };
 
 // 距离截取(保留两位小数)
 let showDistance = function(distance) {
@@ -140,161 +114,281 @@ create(store, {
         _typeNumber: 1,
         _remainCount: 200,
         _validTime: 1582939162423
-      },
-      {
-        img: "../../public/images/store.png",
-        title: "缺200，满500减200！！！",
-        detail: "走过路过千万别错过，以纯满500减200，现差200，求拼单！！！",
-
-        _typeNumber: 1,
-        _remainCount: 200,
-        _validTime: 1582939162423
-      },
-      {
-        img: "../../public/images/store.png",
-        title: "缺200，满500减200！！！",
-        detail: "走过路过千万别错过，以纯满500减200，现差200，求拼单！！！",
-
-        _typeNumber: 1,
-        _remainCount: 200,
-        _validTime: 1582939162423
-      },
-      {
-        img: "../../public/images/store.png",
-        title: "缺200，满500减200！！！",
-        detail: "走过路过千万别错过，以纯满500减200，现差200，求拼单！！！",
-
-        _typeNumber: 1,
-        _remainCount: 200,
-        _validTime: 1582939162423
       }
     ]
   },
-  onLoad: function() {
+  onLoad: async function() {
+    // onLoad: function() {
     // this.getUserLocation();
     mapContext = wx.createMapContext("map");
 
-    this.getUserLocation();
-    // mapContext.setCenterOffset({
-    //   offset: [0.3, 0.25],
-    //   success: res => {
-    //     console.log(res);
-    //   },
-    //   fail: err => {
-    //     console.log(err);
-    //   }
-    // });
-  },
-  onShow: function() {
-    // this.getUserLocation();
-  },
-  onReady: function() {},
-  goJoin() {
-    console.log("mychat");
-    wx.navigateTo({
-      url: "../joinOrder/joinOrder"
+    let userLocation = await this.getUserLocation();
+    this.setData({
+      userLocation: userLocation
     });
-  },
-  // 获取当前定位并请求附近的商家活动
-  getUserLocation: function() {
-    // wx.getLocation({
-    //   type: "gcj02",
-    //   success: response => {
-    //     console.log("为什么没有");
-    //     var latitude = response.latitude;
-    //     var longitude = response.longitude;
 
-    // 获取自身位置（地址逆解析）
-    app.qqMap.reverseGeocoder({
-      // location: {
-      //   latitude,
-      //   longitude
-      // },
-      ger_poi: 1,
+    let markers = await this.getNeightAct(userLocation);
+
+    console.log(markers);
+
+    // 开启实时位置监听
+    wx.startLocationUpdate({
       success: res => {
-        console.log(res.status, res.message);
-        console.log(res.result);
-
-        // this.store.data.userLocation = { latitude, longitude }; // 将当前位置存在westore
-        // this.update();
-
-        let currentLocation = res.result.location;
-
-        this.setData({
-          location: currentLocation,
-          userLocation: currentLocation
-        });
-
-        // 请求附近的商家活动
-        app.ajax
-          .checkNeightAct({
-            location: currentLocation,
-            distance: scaleToDistance()
-          })
-          .then(res => {
-            console.log("附近的商家活动", res.data);
-            let NeightAct = res.data.data;
-            let markersList = [];
-
-            for (let i in NeightAct) {
-              let marker = {};
-              marker = createMarker(NeightAct[i]);
-              marker.id = Number(i);
-              markersList.push(marker);
-            }
-            console.log(markersList);
-            this.setData({
-              markers: markersList
-            });
-          });
+        console.log(res);
       },
-      fail: res => {
-        console.log(res.status, res.message);
-      },
-      complete: res => {
-        console.log(res.status, res.message);
+      fail: err => {
+        console.log(err);
       }
     });
 
-    // // 获取周围商店
-    // app.qqMap.search({
-    //   keyword: "购物",
-    //   // filter: "category=购物",
-    //   address_format: "short",
-    //   page_size: 20,
-    //   // page_index: 2,
+    // 监听位置变化
+    wx.onLocationChange(async res => {
+      console.log(res);
+      let userCurrentLocation = {
+        lat: res.latitude,
+        lng: res.longitude
+      };
 
-    //   location: { longitude: 113.269852, latitude: 23.11841 },
-    //   success: function(res) {
-    //     console.log(res.status, res.message);
-    //     console.log(res.data);
-    //   },
-    //   fail: function(res) {
-    //     console.log(res.status, res.message);
-    //   },
-    //   complete: function(res) {
-    //     console.log(res.status, res.message);
-    //   }
-    // });
+      let preLocation = this.data.userCurrentLocation;
+      let preScale = this.data.mapScale;
 
-    // // 地址解析
-    // app.qqMap.geocoder({
-    //   address: "北京路",
-    //   region: "广州市",
-    //   success: res => {
-    //     console.log(res.status, res.message);
-    //     console.log(res.result);
-    //   },
-    //   fail: res => {
-    //     console.log(res);
-    //   },
-    //   complete: res => {
-    //     console.log(res);
-    //   }
-    // });
-    // }
-    // });
+      if (func.getDistance(userCurrentLocation, preLocation) > 50) {
+        await this.getNeightAct(userCurrentLocation, preScale);
+      }
+
+      // let mapMarkers = this.data.markers;
+
+      // for (let i in mapMarkers) {
+      //   if (i.state && i.point) {
+      //     let targetBuildingLocation = {
+      //       lat: mapMarkers[i].latitude,
+      //       lng: mapMarkers[i].longitude
+      //     };
+
+      //     if (
+      //       func.getDistance(userCurrentLocation, targetBuildingLocation) <=
+      //       this.data.effectDistance
+      //     ) {
+      //       this.setData({
+      //         userLocation: userCurrentLocation,
+      //         [`markers[${i}].callout`]: callout
+      //       });
+      //     } else {
+      //       this.setData({
+      //         userLocation: userCurrentLocation,
+      //         [`markers[${i}].callout`]: null
+      //       });
+      //     }
+      //   }
+      // }
+    });
   },
+  onShow: async function() {
+    // this.getUserLocation();
+    // let userLocation = await this.getUserLocation();
+
+    // let markers = await this.getNeightAct(userLocation);
+
+    // console.log(markers);
+
+    // this.setData({
+    //   userLocation: userLocation
+    // });
+    this.refreshMap();
+  },
+  onReady: function() {},
+
+  onHide: function() {
+    this.setData({
+      isSelected: false,
+      mapSize: 100,
+      currentCallout: -1
+    });
+  },
+
+  // 刷新地图
+  refreshMap: function(causedType) {
+    mapContext.getScale({
+      success: res => {
+        console.log(res);
+
+        mapContext.getCenterLocation({
+          success: async response => {
+            console.log(response);
+
+            let centerLocation = {
+                lng: response.longitude,
+                lat: response.latitude
+              },
+              scale = res.scale;
+            if (causedType === "scale") {
+              if (scale === 18 || scale === 3) {
+                return;
+              }
+            }
+            let markers = await this.getNeightAct(centerLocation, scale);
+
+            console.log("region", markers);
+
+            // this.setData({
+            //   markers: markers,
+            //   // location: centerLocation,
+            //   mapScale: scale
+            // });
+
+            // let markersList = await this.getMarkers(centerLocation, scale);
+          },
+          fail: err => {
+            console.log(err);
+          }
+        });
+      },
+      fail: err => {
+        console.log(err);
+      }
+      // complete: response => {
+      //   console.log(response);
+      // }
+    });
+  },
+
+  // 获取用户当前位置经纬度
+  getUserLocation: function() {
+    return new Promise((resolve, reject) => {
+      // 获取自身位置（地址逆解析）
+      app.qqMap.reverseGeocoder({
+        // location: {
+        //   latitude,
+        //   longitude
+        // },
+        ger_poi: 1,
+        success: res => {
+          console.log(res.status, res.message);
+          console.log(res.result);
+
+          // this.store.data.userLocation = { latitude, longitude }; // 将当前位置存在westore
+          // this.update();
+
+          let currentLocation = res.result.location;
+
+          resolve(currentLocation);
+        },
+        fail: err => {
+          console.log(err.status, err.message);
+          reject(err);
+        },
+        complete: res => {
+          // console.log(res.status, res.message);
+        }
+      });
+    });
+  },
+
+  // 获取附近的商家活动
+  getNeightAct(currentLocation, scale) {
+    return new Promise((resolve, reject) => {
+      // 请求附近的商家活动
+      app.ajax
+        .checkNeightAct({
+          location: currentLocation,
+          distance: func.scaleToDistance(scale)
+        })
+        .then(res => {
+          console.log("附近的商家活动", res.data);
+          let NeightAct = res.data.data;
+          console.log(NeightAct);
+
+          let markersList = [];
+
+          for (let i in NeightAct) {
+            let marker = {};
+            marker = createMarker(NeightAct[i]);
+            marker.id = Number(i);
+            marker.distance = func.getDistance(
+              this.data.userLocation,
+              marker.actLocation
+            );
+            markersList.push(marker);
+          }
+          console.log(markersList);
+          this.setData({
+            markers: markersList,
+            location: currentLocation
+            // mapScale: scale // 添加会触发regionchange死循环
+          });
+          resolve(markersList);
+        })
+        .catch(err => {
+          reject(err);
+        });
+    });
+  },
+
+  // 返回小程序首页
+  backToIndex(e) {
+    console.log(e);
+    console.log("2111");
+    wx.redirectTo({
+      url: "/page_new/home/home"
+    });
+  },
+
+  // 参与拼单
+  goJoin(e) {
+    console.log(e);
+    let order_id = e.currentTarget.dataset.orderid;
+    wx.navigateTo({
+      url: "../joinOrder/joinOrder",
+      success: res => {
+        // 通过eventChannel向被打开页面传送数据
+        res.eventChannel.emit("acceptDataFromOpenerPage", {
+          data: {
+            order_id
+          }
+        });
+      }
+    });
+  },
+
+  // // 获取周围商店
+  // app.qqMap.search({
+  //   keyword: "购物",
+  //   // filter: "category=购物",
+  //   address_format: "short",
+  //   page_size: 20,
+  //   // page_index: 2,
+
+  //   location: { longitude: 113.269852, latitude: 23.11841 },
+  //   success: function(res) {
+  //     console.log(res.status, res.message);
+  //     console.log(res.data);
+  //   },
+  //   fail: function(res) {
+  //     console.log(res.status, res.message);
+  //   },
+  //   complete: function(res) {
+  //     console.log(res.status, res.message);
+  //   }
+  // });
+
+  // // 地址解析
+  // app.qqMap.geocoder({
+  //   address: "北京路",
+  //   region: "广州市",
+  //   success: res => {
+  //     console.log(res.status, res.message);
+  //     console.log(res.result);
+  //   },
+  //   fail: res => {
+  //     console.log(res);
+  //   },
+  //   complete: res => {
+  //     console.log(res);
+  //   }
+  // });
+  // }
+  // });
+  // },
 
   // 发起拼单跳转
   toCreateOrder: function() {
@@ -307,36 +401,43 @@ create(store, {
   closeOrderTap() {
     console.log(this.data.currentCallout);
     let a = this.data.currentCallout; // 取出地图气泡里的内容
+    let targetAct = this.data.markers[a];
     if (this.data.isSelected) {
       this.setData({
-        [`markers[${a}].callout.content`]: this.data.markers[
-          a
-        ].callout.content.split(" ")[0], // 关闭拼单列表去掉距离
+        mapSize: 100,
+        [`markers[${a}].callout.content`]: ` ${targetAct.calloutContent} `,
+        // this.data.markers[
+        //   a
+        // ].callout.content.split(" ")[0], // 关闭拼单列表去掉距离
         [`markers[${a}].callout.color`]: "#ffffff",
         isSelected: false,
-        mapSize: 100
+        currentCallout: -1
       });
       // this.setData({});
     }
   },
 
   callouttap(e) {
+    let idx = e.markerId;
+    let targetAct = this.data.markers.filter(item => item.id === idx)[0];
+    let preIdx = this.data.currentCallout;
+    if (preIdx === idx) {
+      return;
+    }
     console.log(e);
-    let targetAct = this.data.markers.filter(item => item.id === e.markerId)[0];
-    let calloutContent = this.data.markers[e.markerId].callout.content;
+    // let calloutContent = this.data.markers[e.markerId].callout.content;
     if (!this.data.isSelected) {
       this.setData({
-        [`markers[${e.markerId}].callout.content`]:
-          calloutContent + " " + showDistance(targetAct._distance),
-        [`markers[${e.markerId}].callout.color`]: "#000000",
+        [`markers[${idx}].callout.content`]: ` ${
+          targetAct.calloutContent
+        }  ${showDistance(targetAct.distance)} `,
+        // calloutContent + " " + showDistance(targetAct._distance),
+        [`markers[${idx}].callout.color`]: "#000000",
         isSelected: true,
-        currentCallout: e.markerId,
+        currentCallout: idx,
         mapSize: 50,
 
-        location: {
-          lat: targetAct.latitude,
-          lng: targetAct.longitude
-        }
+        location: targetAct.actLocation
       });
       console.log(this.data.currentCallout);
 
@@ -380,13 +481,15 @@ create(store, {
       app.ajax
         .checkActOrder({
           act_id: targetAct.act_id,
-          order_state: 0 // 有效拼单
+          order_state: 0, // 有效拼单
+          firstOrder: false
         })
         .then(res => {
           console.log(res.data);
           let orderList = [];
           for (let i of res.data.data) {
             let orderItem = {};
+            orderItem.order_id = i._id;
             orderItem.img = i.picture[0] || "../../public/images/store.png";
             orderItem.title = i.title;
             orderItem.detail = i.detail;
@@ -415,42 +518,6 @@ create(store, {
     // }
   },
 
-  markertap(e) {
-    console.log(e);
-    // let targetAct = this.data.markers.filter(item => item.id === e.markerId)[0];
-    // let calloutContent = this.data.markers[e.markerId].callout.content;
-    // if (!this.data.isSelected) {
-    //   this.setData({
-    //     [`markers[${e.markerId}].callout.content`]:
-    //       calloutContent + " " + showDistance(targetAct._distance),
-    //     isSelected: true
-    //   });
-
-    //   app.ajax
-    //     .checkActOrder({
-    //       act_id: targetAct.act_id,
-    //       order_state: 0 // 有效拼单
-    //     })
-    //     .then(res => {
-    //       console.log(res.data);
-    //     });
-    // } else {
-    //   this.setData({
-    //     [`markers[${e.markerId}].callout.content`]: calloutContent.split(
-    //       " "
-    //     )[0],
-    //     isSelected: false
-    //   });
-    // }
-    // this.setData({
-    //   selected: false,
-    //   distance: targetAct._distance + "米",
-    //   calloutStyle: "top: 12rpx;left: 12rpx"
-    // });
-    // console.log(this.data.markers);
-    // console.log(targetAct);
-  },
-
   // 地图视野变化事件
   regionchange(e) {
     console.log(e);
@@ -460,64 +527,8 @@ create(store, {
     if (e.causedBy === "update") {
       return;
     }
-    // const mapContext = wx.createMapContext("map", this);
-    mapContext.getScale({
-      success: res => {
-        console.log(res);
 
-        mapContext.getCenterLocation({
-          success: response => {
-            console.log(response);
-            if (res.scale === 18 && res.scale === 3) {
-              return;
-            }
-
-            // this.setData({
-            //   location: {
-            //     lng: response.longitude,
-            //     lat: response.latitude
-            //   }
-            // })
-
-            app.ajax
-              .checkNeightAct({
-                location: {
-                  lng: response.longitude,
-                  lat: response.latitude
-                },
-                distance: scaleToDistance(res.scale)
-              })
-              .then(resp => {
-                console.log(resp);
-                console.log("附近的商家活动", resp.data);
-                let NeightAct = resp.data.data;
-                let markersList = [];
-
-                for (let i in NeightAct) {
-                  let marker = {};
-                  marker = createMarker(NeightAct[i]);
-                  marker.id = Number(i);
-                  markersList.push(marker);
-                }
-                console.log(markersList);
-                this.setData({
-                  markers: markersList
-                });
-              });
-            // });
-          },
-          fail: err => {
-            console.log(err);
-          }
-        });
-      },
-      fail: err => {
-        console.log(err);
-      }
-      // complete: response => {
-      //   console.log(response);
-      // }
-    });
+    this.refreshMap(e.causedBy);
   }
 
   // debounceChange()

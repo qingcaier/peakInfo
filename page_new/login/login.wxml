@@ -1,0 +1,11 @@
+<view class="bg">
+    <image class="bg__image" mode="heightFix" src="../../public/picture/home_bg.png"></image>
+    <view class="bg__loginButton">
+        <!-- <image class="wxlogo" src="{{wxlogo}}" /> -->
+        <!-- <view> -->
+        <button class="btn" open-type="getUserInfo" bindgetuserinfo="getUserInfo">
+            {{wxloginText}}
+        </button>
+        <!-- </view> -->
+    </view>
+</view>

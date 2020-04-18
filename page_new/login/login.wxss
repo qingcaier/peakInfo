@@ -1,0 +1,43 @@
+/* page_new/home/home.wxss */
+.bg {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+}
+.bg__image {
+  position: absolute; /*此处不用，图片不加载*/
+
+  width: 100%;
+  height: 100%;
+}
+
+.bg__loginButton {
+  width: 300rpx;
+  height: 300rpx;
+  position: absolute;
+  /* z-index: 100; */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  /* background-color: rgba(0, 0, 0, 0.1); */
+  bottom: 50px;
+}
+
+.wxlogo {
+  width: 125rpx;
+  height: 125rpx;
+  margin: 20rpx;
+  border-radius: 50%;
+  background-color: #ffffff;
+}
+
+.btn {
+  background-color: #cc9933;
+  width: 80%;
+  height: 80rpx;
+  margin-bottom: 10%;
+  font-size: 30rpx;
+  color: #fff;
+}

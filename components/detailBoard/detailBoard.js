@@ -1,13 +1,13 @@
 Component({
   behaviors: [],
 
-  // options: {
-  //   multipleSlots: true,
-  //   pureDataPattern: /^_/
-  // },
+  options: {
+    multipleSlots: true,
+    pureDataPattern: /^_/,
+  },
 
   data: {
-    isShowGallery: false
+    isShowGallery: false,
   },
 
   properties: {
@@ -15,14 +15,14 @@ Component({
     type: String,
     period: String,
     site: String,
-    introduction: String,
+    _introduction: String,
     picList: Array,
     icon: String,
     location: Array,
     isNeedWrap: {
       type: Boolean,
-      default: false
-    }
+      default: false,
+    },
   },
 
   observers: {
@@ -42,13 +42,25 @@ Component({
     //     orderTypeStr: orderType
     //   });
     // },
+    _introduction: function () {
+      let introduction = this.data._introduction || "暂无简介";
+      this.setData({
+        introduction,
+      });
+    },
   },
 
   methods: {
     showGallery() {
       this.setData({
-        isShowGallery: true
+        isShowGallery: true,
       });
-    }
-  }
+    },
+
+    toGuide: function () {
+      let myEventDetail = {};
+      let myEventOption = {};
+      this.triggerEvent("toGuide", myEventDetail, myEventOption);
+    },
+  },
 });

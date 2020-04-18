@@ -15,15 +15,15 @@
             <image class="pullImg" src="../../public/images/down.png" bindtap="closeMyPuzzleTap" />
         </view>
         <my-line style="width: 100%;"></my-line>
-        <scroll-view class="clockBoard" scroll-y="{{true}}" enable-flex="{{true}}">
+        <scroll-view class="puzzleBoard" scroll-y="{{true}}" enable-flex="{{true}}">
             <block wx:for="{{myPuzzle}}" wx:key="index">
                 <my-clockCell img="{{item.icon}}" name="{{item.name}}" type="{{item.type}}" period="{{item.period}}" site="{{item.site}}" bindonClick="toDetail" data-buildingid="{{item.dataID}}"></my-clockCell>
                 <my-line style="width: 100%"></my-line>
             </block>
         </scroll-view>
     </view>
-    <view class="flex-board contain" hidden="{{!isMarkerTap}}">
+    <!-- <view class="flex-board contain" hidden="{{!isMarkerTap}}">
         <image class="pullImg" src="../../public/images/down.png" bindtap="closeBuildingDetailTap" />
-        <my-board class="board" style="height: 100%" isNeedWrap="{{isMarkerTap}}" name="{{building_detail.name}}" type="{{building_detail.type}}" period="{{building_detail.period}}" site="{{building_detail.site}}" introduction="{{building_detail.introduction}}" picList="{{building_detail.picList}}"></my-board>
-    </view>
+        <my-board class="board" style="height: 100%" isNeedWrap="{{isMarkerTap}}" name="{{building_detail.name}}" type="{{building_detail.type}}" period="{{building_detail.period}}" site="{{building_detail.site}}" _introduction="{{building_detail.introduction}}" picList="{{building_detail.picList}}"></my-board>
+    </view> -->
 </view>

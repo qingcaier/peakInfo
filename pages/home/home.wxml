@@ -1,3 +1,9 @@
+<we-navigator back="{{true}}" background="#ffffff" title="线下拼购" ext-class="navigator" bindback="backToIndex">
+  <!-- <view class="location" slot="left" bindtap="backToIndex">
+        <image class="locationIcon" src="../../public/images/position.png" mode="aspectFit" />
+      </view> -->
+  <!-- <button class="btn" slot="right" type="warn" size="default" bindtap="newOrder">发起拼单</button> -->
+</we-navigator>
 <view class="page" style="width: 100%;height:{{mapSize}}%;" hover-class="none" hover-stop-propagation="false">
   <map id="map" longitude="{{location.lng}}" latitude="{{location.lat}}" subkey="TFRBZ-KZZCX-GQ54B-T22GL-HDDES-ESFWM" markers="{{markers}}" scale="{{mapScale}}" show-location="{{true}}" bindregionchange="regionchange" bindcallouttap="callouttap" bindmarkertap="markertap" enable-zoom="{{!isSelected}}" enable-scroll="{{!isSelected}}">
     <!-- <cover-view class="createOrder-btn" bindtap="toCreateOrder">拼</cover-view> -->
@@ -10,8 +16,10 @@
       <image class="pullImg" src="../../public/images/down.png" bindtap="closeOrderTap" />
     </view>
     <scroll-view class="orderCells" scroll-y="{{true}}" scroll-x="{{true}}" enable-flex="{{true}}">
-      <my-cell class="orderCell" wx:if="{{orderList}}" wx:for="{{orderList}}" wx:key="index" img="{{orderList[index].img}}" title="{{orderList[index].title}}" detail="{{orderList[index].detail}}" _typeNumber="{{orderList[index]._typeNumber}}" _remainCount="{{orderList[index]._remainCount}}" _validTime="{{orderList[index]._validTime}}"></my-cell>
-      <text bindtap="goJoin" class="empty">暂时没有更多有效拼单哦~</text>
+      <block wx:for="{{orderList}}" wx:key="index">
+        <my-cell bindtap="goJoin" class="orderCell" wx:if="{{orderList}}" img="{{item.img}}" title="{{item.title}}" detail="{{item.detail}}" _typeNumber="{{item._typeNumber}}" _remainCount="{{item._remainCount}}" _validTime="{{item._validTime}}" data-orderid="{{item.order_id}}"></my-cell>
+      </block>
+      <text class="empty">暂时没有更多有效拼单哦~</text>
     </scroll-view>
   </view>
   <view class="createOrder-btn" bindtap="toCreateOrder">拼</view>

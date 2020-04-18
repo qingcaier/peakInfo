@@ -29,49 +29,49 @@ create(store, {
     },
 
     successTip: "**拼图成功，获得50点积分**",
-    isShowSuccessTip: false
+    isShowSuccessTip: false,
   },
-  onLoad: function() {
+  onLoad: function () {
     const eventChannel = this.getOpenerEventChannel();
-    eventChannel.on("acceptDataFromOpenerPage", data => {
+    eventChannel.on("acceptDataFromOpenerPage", (data) => {
       console.log("参数参数", data);
       this.setData({
-        building_detail: data.building_detail
+        building_detail: data.building_detail,
       });
+
+      this.puzzle = this.selectComponent("#puzzle");
+
+      let imagePath = data.building_detail.picList[1];
+      this.puzzle.getImage(imagePath);
     });
-
-    this.puzzle = this.selectComponent("#puzzle");
-
-    let imagePath = this.data.building_detail.picList[1];
-    this.puzzle.getImage(imagePath);
   },
-  onShow: function() {},
-  onReady: function() {},
+  onShow: function () {},
+  onReady: function () {},
 
   onMyEvent(e) {
     console.log("拼图成功时触发", e);
     if (e.detail.isSuccess) {
-      // app.ajax.XXXX({
-      //   dataID: this.data.currentBuildingId,
-      //   RorWType: this.data.answerToBoolean,
-      //   credit: 20
-      // }).then(res => {
-      //   console.log(res);
-      //   let result = res.data.state;
+      app.ajax
+        .finishJigsaw({
+          dataID: this.data.building_detail._id,
+          credit: app.globalData.credit,
+        })
+        .then((res) => {
+          console.log(res);
+          let result = res.data.state;
 
-      let result = {
-        status: 200,
-        msg: "成功！"
-      };
-      if (result.status === 200) {
-        this.setData({
-          isShowSuccessTip: true
+          // let result = {
+          //   status: 200,
+          //   msg: "成功！"
+          // };
+          if (result.status === 200) {
+            this.setData({
+              isShowSuccessTip: true,
+            });
+          }
         });
-      }
-
-      // })
     }
-  }
+  },
 
   // debounceChange()
 });

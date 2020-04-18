@@ -1,6 +1,8 @@
 {
   "usingComponents": {
+    "we-navigator": "/WeUI/navigation-bar/navigation-bar",
     "my-cell": "/components/listCell/listCell"
   },
-  "navigationBarTitleText": "PeakInfo"
+
+  "navigationStyle": "custom"
 }

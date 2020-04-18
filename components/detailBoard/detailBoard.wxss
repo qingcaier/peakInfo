@@ -43,7 +43,13 @@
 
 .introduction {
   font-size: 26rpx;
-  margin-top: 18px;
+  /* margin-top: 9px; */
+}
+
+.introduction_empty {
+  color: lightgray;
+  font-size: 26rpx;
+  /* margin-top: 9px; */
 }
 
 .swiper {

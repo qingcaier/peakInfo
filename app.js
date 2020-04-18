@@ -4,12 +4,26 @@ import ajax from "./api/ports"; // 引入接口
 // 引入SDK核心类
 let QQMapWX = require("./map/qqmap-wx-jssdk.min");
 let qqmapsdk = new QQMapWX({
-  key: "TFRBZ-KZZCX-GQ54B-T22GL-HDDES-ESFWM"
+  key: "TFRBZ-KZZCX-GQ54B-T22GL-HDDES-ESFWM",
 });
 
 //app.js
 App({
   onLaunch: function () {
+    // const res = wx.getStorageInfoSync();
+    // console.log(res.keys);
+    // console.log(res.currentSize);
+    // console.log(res.limitSize);
+
+    // let a = wx.getStorageSync("localActList");
+    // console.log(a);
+
+    // let b = wx.getStorageSync("localBuildingDetailList");
+    // console.log(b);
+
+    // 启动小程序时清除上次缓存，以保证数据为最新数据
+    wx.removeStorageSync("localBuildingDetailList");
+
     console.log(wx.getStorageSync("localToken"));
     // console.log("11111111111");
     // 获取本地储存token
@@ -18,13 +32,13 @@ App({
     // 获取用户信息
     if (Boolean(localToken)) {
       wx.getSetting({
-        success: res => {
-          if (res.authSetting["scope.userInfo"]) {
+        success: (resp) => {
+          if (resp.authSetting["scope.userInfo"]) {
             // 已经授权，可以直接调用 getUserInfo 获取头像昵称，不会弹框
             wx.getUserInfo({
-              success: res => {
+              success: (res) => {
                 wx.login({
-                  success: response => {
+                  success: (response) => {
                     if (response.code) {
                       console.log(response.code);
                       //聊天用到
@@ -32,9 +46,9 @@ App({
                       ajax
                         .userLogin({
                           code: response.code,
-                          userInfo: res.userInfo
+                          userInfo: res.userInfo,
                         })
-                        .then(resp => {
+                        .then((resp) => {
                           // console.log(resp);
 
                           wx.setStorageSync("localToken", resp.data.localToken); // 存储token
@@ -43,11 +57,11 @@ App({
 
                           // console.log(store.data.ifLogin);
                         })
-                        .catch(err => {
+                        .catch((err) => {
                           console.log("登录失败", err);
                         });
                     }
-                  }
+                  },
                 });
 
                 // 可以将 res 发送给后台解码出 unionId
@@ -61,10 +75,10 @@ App({
 
                 store.update();
                 // console.log(store.data.userInfo);
-              }
+              },
             });
           }
-        }
+        },
       });
     }
 
@@ -72,12 +86,13 @@ App({
     store.getUserLocation();
   },
   globalData: {
-    userInfo: null
+    userInfo: null,
+    credit: 20,
   },
 
   // 引入请求接口
   ajax,
 
   // 腾讯地图
-  qqMap: qqmapsdk
+  qqMap: qqmapsdk,
 });

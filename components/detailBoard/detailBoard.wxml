@@ -1,4 +1,7 @@
 <view class="board">
+    <!-- <view bindtap="toGuide">
+        <image src="../../public/images/position.png" mode="aspectFill" style="display:inline-block;width: 50rpx;height: 50rpx" />
+    </view> -->
     <text class="name" style="width:{{isNeedWrap?80:100}}%">{{name}}</text>
     <scroll-view class="scrollBoard" scroll-y="{{true}}" enable-flex="{{true}}">
         <text class="msg type">{{type}}</text>
@@ -8,7 +11,9 @@
             简介
             <my-line style="width: 580rpx"></my-line>
         </view>
-        <text class="introduction">{{introduction}}</text>
+        <text class="" class="{{introduction === '暂无简介'? 'introduction_empty': 'introduction'}}">
+            {{introduction}}
+        </text>
         <view class="fengexian pic">
             相册
             <my-line style="width: 580rpx"></my-line>

@@ -9,6 +9,6 @@
         <view class="pull">
             <image class="pullImg" src="../../public/images/down.png" bindtap="closeBuildingDetailTap" />
         </view>
-        <my-board class="board" name="{{building_detail.name}}" type="{{building_detail.type}}" period="{{building_detail.period}}" site="{{building_detail.site}}" introduction="{{building_detail.introduction}}" picList="{{building_detail.picList}}" isNeedWrap="{{true}}"></my-board>
+        <my-board class="board" name="{{building_detail.name}}" type="{{building_detail.type}}" period="{{building_detail.period}}" site="{{building_detail.site}}" _introduction="{{building_detail.introduction}}" picList="{{building_detail.picList}}" isNeedWrap="{{true}}"></my-board>
     </view>
 </view>

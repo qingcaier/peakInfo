@@ -115,7 +115,7 @@
   /* vertical-align: middle; */
   font-size: 36rpx;
 
-  max-width: 300rpx;
+  max-width: 600rpx;
 
   letter-spacing: 2rpx; /*字间距*/
   display: block; /*内联对象需加*/

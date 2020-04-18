@@ -81,5 +81,10 @@ Component({
 
   methods: {
     // showOrderType(type) {}
+    onClick: function() {
+      let myEventDetail = {};
+      let myEventOption = {};
+      this.triggerEvent("onClick", myEventDetail, myEventOption);
+    }
   }
 });

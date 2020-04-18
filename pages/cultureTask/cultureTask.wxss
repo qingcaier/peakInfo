@@ -73,15 +73,16 @@ page {
 .photoBoard {
   display: flex;
   flex-direction: column;
-  align-items: center;
+  /* align-items: center; */
   margin-top: 30rpx;
 }
 
 .photoContain {
   box-sizing: border-box;
+  align-self: center;
   width: 90%;
   height: 500rpx;
-  border: 1rpx solid red;
+  /* border: 1rpx solid red; */
 }
 
 .matchPhoto {

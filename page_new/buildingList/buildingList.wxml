@@ -15,7 +15,7 @@
             <mp-icon icon="location" color="black" size="{{25}}"></mp-icon>
             {{business_acts[0].title}}
         </view>
-        <mp-icon extClass="go-map" icon="arrow" color="black" size="{{20}}"></mp-icon>
+        <mp-icon extClass="go-map" icon="arrow" color="black" size="{{20}}" bindtap="toMap"></mp-icon>
     </view>
     <!-- <view class="my_swiper"> -->
     <!-- 下拉菜单 -->
@@ -57,7 +57,7 @@
     </view> -->
     <view class="buildings">
         <view class="one" wx:for="{{buidings}}" wx:key="index">
-            <view bindtap="goInfor" data-id=" {{item._id}}" class="buildBord">
+            <view bindtap="goInfor" data-id="{{item._id}}" class="buildBord">
                 <view class="imgBord">
                     <image class="img" mode="aspectFit" src="{{item.firstDisplayPic}}"></image>
                 </view>

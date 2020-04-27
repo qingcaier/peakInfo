@@ -1,12 +1,20 @@
-const baseUrl = "http://192.168.101.45:3000/miniprogram";
+const baseUrl = "http://192.168.1.38:3000/miniprogram";
+// const baseUrl = "http://192.168.101.45:3000/miniprogram";
 const base = {
   checkLogin: baseUrl + "/checkLogin",
   userlogin: baseUrl + "/userLogin",
   createOrder: baseUrl + "/api/createOrder",
+  getOrderData: baseUrl + "/api/orderDetail",
+  getShopData: baseUrl + "/api/shopDetail",
+  getUserData: baseUrl + "/api/userDetai",
+
+
   checkNeightAct: baseUrl + "/api/checkNeightAct",
   checkActByDistance: baseUrl + "/api/checkActByDistance",
   checkActOrder: baseUrl + "/api/checkActOrder",
   getqiniuyun: baseUrl + "/api/qiniuyun", //七牛云凭证
+
+
   searchHistoricalData: baseUrl + "/api/searchHistoricalData",
   getAllType: baseUrl + "/api/getAllType",
   getSingleDetail: baseUrl + "/api/getSingleDetail",

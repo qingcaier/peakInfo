@@ -59,7 +59,7 @@ Page({
     var that = this;
     //建立连接
     wx.connectSocket({
-      url: 'ws://localhost:3001'//app.appData.socket
+      url: 'ws://localhost:3000/chat'//app.appData.socket
     })
     //监听WebSocket连接打开事件。
     wx.onSocketOpen(function (res) {

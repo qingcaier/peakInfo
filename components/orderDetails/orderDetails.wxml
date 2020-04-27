@@ -1,37 +1,45 @@
 <view class="order">
     <view class="orderTitle">{{orderData.title}}</view>
     <view class="buy">
-        买{{orderData.current_count}}
-        <text hidden="{{orderData.act_type=='1'}}">件</text>
-        <text hidden="{{orderData.act_type=='0'}}">元</text>
+        买{{orderData.total_count}}
+        <text hidden="{{orderData.act_type==1}}">件</text>
+        <text hidden="{{orderData.act_type==0}}">元</text>
         <view class="msg">
             <view class="need">
-                差{{orderData.total_count-orderData.current_count}}
-                <text hidden="{{orderData.act_type=='1'}}">件</text>
-                <text hidden="{{orderData.act_type=='0'}}">元</text>
+                差{{orderData.total_count-orderData.initiator.count}}
+                <text hidden="{{orderData.act_type==1}}">件</text>
+                <text hidden="{{orderData.act_type==0}}">元</text>
             </view>
             <view class="ddl">
+                <!-- <text>有效期:</text> -->
                 有效期:
-                <text hidden="{{orderData.time.day=='0'}}">{{orderData.time.day}}天</text>
-                <text hidden="{{orderData.time.hour=='0'}}">{{orderData.time.hour}}小时</text>
-                <text hidden="{{orderData.time.minute=='0'}}">{{orderData.time.minute}}分钟</text>
+                <text hidden="{{orderData.valid_time.day==0}}">{{orderData.valid_time.day}}天</text>
+                <text hidden="{{orderData.valid_time.hour==0}}">
+                    {{orderData.valid_time.hour}}小时
+                </text>
+                <text hidden="{{orderData.valid_time.minute==0}}">
+                    {{orderData.valid_time.minute}}分钟
+                </text>
             </view>
         </view>
     </view>
     <view class="black_line"></view>
     <view class="storePosition">
-        <view class="name">{{storeData.name}}</view>
-        <view class="position">{{storeData.position}}</view>
-        <view class="distance">距离{{storeData.distance}}</view>
-        <view class="join">{{orderData.joinNumber}}人在团</view>
+        <view class="name">{{shopData.business_name}}</view>
+        <view class="position">{{shopData.address}}</view>
+        <view class="distance">
+            <text hidden="{{distance>1000}}">距离{{distance}}米</text>
+            <text hidden="{{distance<=1000}}">距离{{distance}}千米</text>
+        </view>
+        <!-- <view class="join">{{orderData.joinNumber}}人在团</view> -->
     </view>
     <view class="black_line"></view>
     <view class="maker">
         <view class="icon">
-            <image class="icon_image" mode="aspectFit" src="{{makerData.icon}}"></image>
+            <image class="icon_image" mode="aspectFit" src="{{makerData.avatarUrl}}"></image>
         </view>
-        <view class="makerName">{{makerData.name}}</view>
-        <view class="success_order">已拼{{makerData.success_order}}单</view>
+        <view class="makerName">{{makerData.nickName}}</view>
+        <view class="success_order">已拼{{makerData.init_order.length}}单</view>
     </view>
     <view class="detail">{{orderData.detail}}</view>
     <view>
@@ -45,7 +53,7 @@
             </block>
         </swiper>
     </view>
-    <view class="time">有限期：{{orderData.set_time}}</view>
+    <view class="time">有限期：{{orderData.init_time}}</view>
     <view class="time">
         <text decode="{{true}}" space="{{true}}">&emsp;&emsp;至：{{orderData.end_time}}</text>
     </view>

@@ -1,6 +1,6 @@
 <!-- pages/joinOrder/joinOrder.wxml -->
 <view>
-    <v-order someData="123"></v-order>
+    <v-order orderId="{{order_id}}"></v-order>
     <view wx:if="{{true}}" class="all_btn">
         <button class="btn" size="mini" type="primary" bindtap="joinOrder">参与拼单</button>
     </view>

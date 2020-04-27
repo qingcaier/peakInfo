@@ -11,6 +11,9 @@ const ajax = {
   // 创建拼单
   createOrder: (data) => https._post({ url: base.createOrder, data }),
 
+  //获取拼单数据
+  getOrderData: (data) => https._post({ url: base.getOrderData, data }),
+
   // 返回线下拼单附近商家活动
   checkNeightAct: (data) => https._post({ url: base.checkNeightAct, data }),
 
@@ -19,14 +22,24 @@ const ajax = {
     https._post({ url: base.checkActByDistance, data }),
 
   // 根据商家查询对应拼单
-  checkActOrder: (data) =>
-    https._post({
-      url: base.checkActOrder,
-      data,
-    }),
+  checkActOrder: (data) => https._post({ url: base.checkActOrder, data, }),
+
+  // 根据id查询商家
+  getShopData: (data) => https._post({ url: base.getShopData, data, }),
 
   //七牛云凭证
   getQiniuyun: () => https._get({ url: base.getqiniuyun }),
+
+  // 获取拼单发起者的信息 
+  getUserData: (data) => https._post({ url: base.getUserData, data, }),
+
+
+
+
+
+
+
+
 
   //获取所有建筑类型
   getAllType: (data) => https._post({ url: base.getAllType, data }),

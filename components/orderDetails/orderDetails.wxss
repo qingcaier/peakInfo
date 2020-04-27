@@ -18,7 +18,10 @@
   justify-content: space-between;
 }
 /* .ddl{border: 1px solid tomato;display: inline;} */
-.ddl text {
+.ddl{
+  line-height: 1rpx;
+
+  display: flex;
   word-break: keep-all;
   word-wrap: break-word;
 }

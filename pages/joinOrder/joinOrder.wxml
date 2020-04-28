@@ -1,6 +1,7 @@
 <!-- pages/joinOrder/joinOrder.wxml -->
 <view>
-    <v-order orderId="{{order_id}}"></v-order>
+    <!-- 传三个对象过去 -->
+    <v-order orderData="{{orderData}}" shopData="{{shopData}}" makerData="{{makerData}}"></v-order>
     <view wx:if="{{true}}" class="all_btn">
         <button class="btn" size="mini" type="primary" bindtap="joinOrder">参与拼单</button>
     </view>

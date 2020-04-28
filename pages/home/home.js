@@ -341,7 +341,7 @@ create(store, {
       url: "../joinOrder/joinOrder",
       success: res => {
         // 通过eventChannel向被打开页面传送数据
-        res.eventChannel.emit("dataFromHome", {
+        res.eventChannel.emit("dataFormFather", {
           data: {
             order_id
           }
@@ -520,7 +520,7 @@ create(store, {
 
   // 地图视野变化事件
   regionchange(e) {
-    console.log(e);
+    // console.log(e);
     if (e.type !== "end") {
       return;
     }

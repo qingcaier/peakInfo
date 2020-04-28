@@ -11,7 +11,6 @@
                 <text hidden="{{orderData.act_type==0}}">元</text>
             </view>
             <view class="ddl">
-                <!-- <text>有效期:</text> -->
                 有效期:
                 <text hidden="{{orderData.valid_time.day==0}}">{{orderData.valid_time.day}}天</text>
                 <text hidden="{{orderData.valid_time.hour==0}}">
@@ -31,7 +30,6 @@
             <text hidden="{{distance>1000}}">距离{{distance}}米</text>
             <text hidden="{{distance<=1000}}">距离{{distance}}千米</text>
         </view>
-        <!-- <view class="join">{{orderData.joinNumber}}人在团</view> -->
     </view>
     <view class="black_line"></view>
     <view class="maker">
@@ -53,9 +51,10 @@
             </block>
         </swiper>
     </view>
-    <view class="time">有限期：{{orderData.init_time}}</view>
+    <view class="time">有限期：{{update_time}}</view>
     <view class="time">
-        <text decode="{{true}}" space="{{true}}">&emsp;&emsp;至：{{orderData.end_time}}</text>
+        <text decode="{{true}}" space="{{true}}">&emsp;&emsp;
+        至：{{endTime}}</text>
     </view>
     <view class="black_line"></view>
 </view>

@@ -42,7 +42,7 @@ create(store, {
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: async function() {
+  onLoad: async function () {
     try {
       let locationInfo = await this.getUserLocation();
       let location = locationInfo.location,
@@ -94,12 +94,12 @@ create(store, {
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
-  onReady: function() {
+  onReady: function () {
     // this.testCot = this.selectComponent("#test");
   },
 
   // 获取用户当前位置经纬度
-  getUserLocation: function() {
+  getUserLocation: function () {
     return new Promise((resolve, reject) => {
       // 获取自身位置（地址逆解析）
       app.qqMap.reverseGeocoder({
@@ -209,7 +209,7 @@ create(store, {
       url: "../joinOrder/joinOrder",
       success: res => {
         // 通过eventChannel向被打开页面传送数据
-        res.eventChannel.emit("acceptDataFromOpenerPage", {
+        res.eventChannel.emit("dataFormFather", {
           data: {
             order_id
           }
@@ -226,7 +226,7 @@ create(store, {
   // },
 
   // 点击获取更多商家下的拼单
-  onGetMore: async function(e) {
+  onGetMore: async function (e) {
     // console.log(e);
 
     // wx.setStorageSync("localToken", resp.data.localToken);
@@ -283,24 +283,24 @@ create(store, {
   /**
    * 生命周期函数--监听页面显示
    */
-  onShow: function() {},
+  onShow: function () { },
 
   /**
    * 生命周期函数--监听页面隐藏
    */
-  onHide: function() {
+  onHide: function () {
     wx.removeStorageSync("localActList");
   },
 
   /**
    * 生命周期函数--监听页面卸载
    */
-  onUnload: function() {},
+  onUnload: function () { },
 
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
-  onPullDownRefresh: function() {
+  onPullDownRefresh: function () {
     this.setData({
       refresh: false,
       currentPage: 1
@@ -311,7 +311,7 @@ create(store, {
   /**
    * 页面上拉触底事件的处理函数
    */
-  onReachBottom: async function() {
+  onReachBottom: async function () {
     // this.setData({
     //   currentPage: ++this.data.currentPage
     // });
@@ -359,5 +359,5 @@ create(store, {
   /**
    * 用户点击右上角分享
    */
-  onShareAppMessage: function() {}
+  onShareAppMessage: function () { }
 });

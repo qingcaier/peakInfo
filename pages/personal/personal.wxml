@@ -21,14 +21,26 @@
           <image wx:if="{{userInfo.gender}}" class="gender" src="{{boy}}" />
           <image wx:else class="gender" src="{{girl}}" />
         </view>
-        <view class="joined-order">已拼{{needUser.joined_order}}单</view>
+        <view class="joined-order">已拼{{userInfo.joined_order.length}}单</view>
       </view>
     </view>
   </view>
-  <view class="black_line"></view>
-  <view class="user_orders" bindtap="goMyOrder">
-    <view class="">我的拼单</view>
-    <view class="">{{needUser.exit_order}}</view>
+  <!-- <view class="black_line"></view> -->
+  <view class="user_orders" bindtap="goMyOrder" data-index="0">
+    <view class="">进行的拼单</view>
+    <view class="">{{running_order.length}}</view>
   </view>
-  <view class="black_line"></view>
+  <view class="user_orders" bindtap="goMyOrder" data-index="1">
+    <view class="">完成的拼单</view>
+    <view class="">{{end_order.length}}</view>
+  </view>
+  <view class="user_orders" bindtap="goMyOrder" data-index="2">
+    <view class="">取消的拼单</view>
+    <view class="">{{cansel_order.length}}</view>
+  </view>
+  <view class="user_orders" bindtap="goMyOrder" data-index="3">
+    <view class="">过期的拼单</view>
+    <view class="">{{over_ddl_order.length}}</view>
+  </view>
+  <!-- <view class="black_line"></view> -->
 </view>

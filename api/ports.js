@@ -33,6 +33,9 @@ const ajax = {
   // 获取拼单发起者的信息 
   getUserData: (data) => https._post({ url: base.getUserData, data, }),
 
+  // 获取用户相关的订单
+  checkMyOrder: (data) => https._post({ url: base.checkMyOrder, data, }),
+
 
 
 

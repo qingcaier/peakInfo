@@ -13,12 +13,11 @@ Component({
   properties: {
     businessName: String,
     address: String,
-
     _distance: Number
   },
 
   observers: {
-    _distance: function() {
+    _distance: function () {
       let distance = "";
       if (this.data._distance >= 1000) {
         distance =
@@ -35,7 +34,7 @@ Component({
 
   methods: {
     // showOrderType(type) {}
-    onTap: function() {
+    onTap: function () {
       this.setData({
         isClicked: !this.data.isClicked
       });

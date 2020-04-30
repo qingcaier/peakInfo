@@ -7,6 +7,7 @@ const base = {
   getOrderData: baseUrl + "/api/orderDetail",
   getShopData: baseUrl + "/api/shopDetail",
   getUserData: baseUrl + "/api/userDetai",
+  checkMyOrder: baseUrl + "/api/checkMyOrder",
 
 
   checkNeightAct: baseUrl + "/api/checkNeightAct",

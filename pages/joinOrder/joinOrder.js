@@ -73,6 +73,7 @@ Page({
       // "state": 0,
       // "__v": 0
     },
+    canJoin: true,//显示拼单按钮
 
   },
 
@@ -86,7 +87,14 @@ Page({
     // 监听 
     eventChannel.on('dataFormFather', (res) => {
       that.setData({ orderId: res.data.order_id })
-      console.log(res.data.order_id)
+
+
+      that.setData({ canJoin: res.data.canJoin })
+      console.log(888, that.data.canJoin, res.data.canJoin);
+      //如果是从用户信息那边进来，就不显示参加按钮吧
+
+      that.setData({ canJoin: false })//如果是从用户信息那边进来，就不显示参加按钮吧
+      // console.log(res.data.order_id)
       that.getOrderData(that.data.orderId).then(data_o => {
         console.log(data_o);
         that.setData({ orderData: data_o });

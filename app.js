@@ -49,10 +49,11 @@ App({
                           userInfo: res.userInfo,
                         })
                         .then((resp) => {
-                          // console.log(resp.data.data);
+
+                          console.log(resp.data.data);
 
                           //自己数据库的用户信息
-                          store.data.localUserInfo = resp.data.dat;
+                          store.data.localUserInfo = resp.data.data;
 
                           wx.setStorageSync("localToken", resp.data.localToken); // 存储token
                           store.data.hasUserInfo = true; // 登录成功

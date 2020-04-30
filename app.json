@@ -20,7 +20,8 @@
     "page_new/giftForm/giftForm",
     "page_new/mallHome/mallHome",
     "page_new/buildingList/buildingList",
-    "page_new/login/login"
+    "page_new/login/login",
+    "WeUI/half-screen-dialog/half-screen-dialog"
   ],
   "permission": {
     "scope.userLocation": {

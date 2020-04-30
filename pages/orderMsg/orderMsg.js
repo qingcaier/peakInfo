@@ -71,11 +71,12 @@ Page({
 
           try {
             app.ajax.createOrder(that.data.formData).then((res) => {
-
-              // console.log("订单入库：", res);
-              that.setData({
-                isComplete: true
-              });
+              console.log(res);
+              if (res.data.state.status == 200) {
+                that.createSuccess();
+              } else {
+                throw (res.data.state)
+              }
             });
           } catch (err) {
             console.log(err);
@@ -110,26 +111,32 @@ Page({
       // content: '完成拼单，是否确认？',
       success: function (res) {
         if (res.confirm) {
-          console.log("点击确认回调");
-          //**这里进行api请求 */
-          that.setData({
-            isCancel: true
-          });
+          that.goHome();
         } else {
           console.log("点击取消回调");
         }
       }
     });
   },
-  /**
-     * @method goHome 
-     * @description 拼单完成返回首页 
-     */
-  goHome() {
-    wx.navigateTo({
-      url: "/pages/remActRouter/remActRouter",
+  createSuccess() {
+    let that = this;
+    wx.showModal({
+      title: "新建拼单完成",
+      showCancel: false,
+      success: function (res) {
+        if (res.confirm) {
+          that.goHome();
+
+        }
+      }
     });
   },
+  goHome() {
+    wx.switchTab({
+      url: "/pages/home/home", //此处跳转无返回
+    });
+  },
+
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

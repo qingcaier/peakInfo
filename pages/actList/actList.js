@@ -211,7 +211,8 @@ create(store, {
         // 通过eventChannel向被打开页面传送数据
         res.eventChannel.emit("dataFormFather", {
           data: {
-            order_id
+            order_id: order_id,
+            canJoin: true
           }
         });
       }
@@ -343,7 +344,7 @@ create(store, {
       } else {
         this.setData({
           actList: this.data.actList.concat(actList),
-          currentPage: this.data.currentPage++
+          currentPage: ++this.data.currentPage
         });
         console.log("222", this.data.actList);
       }

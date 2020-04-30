@@ -120,10 +120,10 @@ Component({
       let that = this;
       if (that.data.orderData.update_time && that.data.orderData.end_time) {
         var update_t = that.butyTime(that.data.orderData.update_time);
-        console.log(222, update_t);
+        // console.log(222, update_t);
         that.setData({ update_time: update_t });
         var endT = that.makeTime(that.data.orderData.end_time);
-        console.log(333, endT);
+        // console.log(333, endT);
         that.setData({ endTime: endT });
       }
       if (that.data.shopData.loc) {

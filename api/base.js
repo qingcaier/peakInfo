@@ -8,13 +8,13 @@ const base = {
   getShopData: baseUrl + "/api/shopDetail",
   getUserData: baseUrl + "/api/userDetai",
   checkMyOrder: baseUrl + "/api/checkMyOrder",
-
+  getChatHome: baseUrl + "/api/chatHome",
+  updateChat: baseUrl + "/api/updateChat",
 
   checkNeightAct: baseUrl + "/api/checkNeightAct",
   checkActByDistance: baseUrl + "/api/checkActByDistance",
   checkActOrder: baseUrl + "/api/checkActOrder",
   getqiniuyun: baseUrl + "/api/qiniuyun", //七牛云凭证
-
 
   searchHistoricalData: baseUrl + "/api/searchHistoricalData",
   getAllType: baseUrl + "/api/getAllType",

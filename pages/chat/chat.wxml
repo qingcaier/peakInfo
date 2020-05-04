@@ -1,13 +1,12 @@
 <view class='homeView'>
   <scroll-view scroll-y style="height:500px;" scroll-top='{{scrolltop}}'>
     <view class='listView'>
-      <block wx:for="{{serverMsg}}" wx:key='*this'>
+      <block wx:for="{{chatData.msgInfor}}" wx:key='*this'>
         <!--  -->
-        <view wx:if="{{item.user_id!=myInfo.userId}}" class='leftView'>
+        <view wx:if="{{item.user_id!=userInfo._id}}" class='leftView'>
           <view class='name'>{{item.name}}</view>
           <view class='imgmsgleft'>
             <view>
-              <!-- 我这用的是自己另一个服务的图片 -->
               <image class='touimg' src='{{item.avatarUrl}}'></image>
             </view>
             <view>{{item.msg}}</view>
@@ -18,7 +17,6 @@
           <view class='imgmsg'>
             <view>{{item.msg}}</view>
             <view>
-              <!-- 我这用的是自己另一个服务的图片 -->
               <image class='touimg' src='{{item.avatarUrl}}'></image>
             </view>
           </view>

@@ -35,6 +35,11 @@ const ajax = {
 
   // 获取用户相关的订单
   checkMyOrder: (data) => https._post({ url: base.checkMyOrder, data, }),
+  // 获取订单的聊天信息
+  getChatHome: (data) => https._post({ url: base.getChatHome, data, }),
+  // 更新聊天信息
+  updateChat: (data) => https._post({ url: base.updateChat, data, }),
+
 
 
 

@@ -90,10 +90,9 @@ Page({
 
 
       that.setData({ canJoin: res.data.canJoin })
-      console.log(888, that.data.canJoin, res.data.canJoin);
+      // console.log(888, that.data.canJoin, res.data.canJoin);
       //如果是从用户信息那边进来，就不显示参加按钮吧
 
-      that.setData({ canJoin: false })//如果是从用户信息那边进来，就不显示参加按钮吧
       // console.log(res.data.order_id)
       that.getOrderData(that.data.orderId).then(data_o => {
         console.log(data_o);
@@ -134,7 +133,7 @@ Page({
         .then(
           res => {
             orderObj = res.data.data;
-            resolve(orderObj);
+            resolve(orderObj[0]);//后台改成返回数组了
           }
         ).catch(
           err => {

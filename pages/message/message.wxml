@@ -1,7 +1,7 @@
 <view>
     <view class="black_line"></view>
     <view wx:for="{{orderList}}" wx:key="index">
-        <my-cell bindtap="goChat" class="orderCell" img="{{item.img}}" title="{{item.title}}" detail="{{item.detail}}" _typeNumber="{{item._typeNumber}}" _remainCount="{{item._remainCount}}" _validTime="{{item._validTime}}"></my-cell>
+        <my-cell bindtap="goChat" data-orderid="{{item._id}}" class="orderCell" img="{{item.picture[0]|| '../../public/images/store.png'}}" title="{{item.title}}" detail="{{item.detail}}" _typeNumber="{{item.act_type}}" _remainCount="{{item.total_count- item.participant_id.current_count}}" _validTime="{{item.remain_time}}"></my-cell>
         <view class="black_line"></view>
     </view>
 </view>

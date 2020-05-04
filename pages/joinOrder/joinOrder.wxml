@@ -5,4 +5,5 @@
     <view wx:if="{{canJoin}}" class="all_btn">
         <button class="btn" size="mini" type="primary" bindtap="joinOrder">参与拼单</button>
     </view>
+    <view>{{canJoin}}</view>
 </view>

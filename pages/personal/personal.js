@@ -8,10 +8,31 @@ Page({
     // wxloginText: "微信登录",
     userInfo: {
     },
-    running_order: [],
-    end_order: [],
-    cansel_order: [],
-    over_ddl_order: [],
+    allOrderData: {
+      init_order: {
+        all: [],
+        order_0: [],
+        order_1: [],
+        order_2: [],
+        order_3: [],
+      },
+      joined_order: {
+        ll: [],
+        order_0: [],
+        order_1: [],
+        order_2: [],
+        order_3: [],
+      },
+      exit_order: {
+        ll: [],
+        order_0: [],
+        order_1: [],
+        order_2: [],
+        order_3: [],
+      },
+
+
+    },
     canIUse: wx.canIUse("button.open-type.getUserInfo")
   },
 
@@ -24,13 +45,13 @@ Page({
   },
 
   onLoad: function () {
-    console.log(store);
+    // console.log(store);
     let that = this;
 
     this.setData({
       userInfo: store.data.localUserInfo
     });
-    console.log("用户", store.data.localUserInfo);
+    // console.log("用户", store.data.localUserInfo);
     if (store.data.localUserInfo) {
       that.checkMyOrder(store.data.localUserInfo.openid)
     }
@@ -40,11 +61,9 @@ Page({
     let that = this;
     // console.log(openid);
     try {
-      app.ajax.checkMyOrder({ openid: openid, myOrder: 0 }).then((res) => {
-        that.setData({ running_order: res.data.data.order_0 })
-        that.setData({ end_order: res.data.data.order_1 })
-        that.setData({ cansel_order: res.data.data.order_2 })
-        that.setData({ over_ddl_order: res.data.data.order_3 })
+      app.ajax.checkMyOrder().then((res) => {
+        that.setData({ allOrderData: res.data.data.orderArr })
+        // console.log(res.data.data.orderArr);
       })
     } catch (error) {
       console.log(error);
@@ -55,11 +74,11 @@ Page({
   goMyOrder: function (e) {
     let that = this;
     // console.log(e);
-    let sign = e.currentTarget.dataset["index"];
-    // console.log(sign);
-    let orderArr = [that.data.running_order, that.data.end_order,
-    that.data.cansel_order, that.data.over_ddl_order
-    ];
+    let sign = e.currentTarget.dataset["obj"];
+    let type = e.currentTarget.dataset["objtype"];//小写
+    // console.log(sign, type);
+    let orderArr = that.data.allOrderData[sign][type];
+    // console.log(orderArr);
     // console.log(orderArr);
     wx.navigateTo({
       url: "../myOrder/myOrder",
@@ -67,7 +86,7 @@ Page({
         // 通过eventChannel向被打开页面传送数据
         res.eventChannel.emit("dataFormPerson", {
           data: {
-            orderArr: orderArr[sign]
+            orderArr: orderArr
           }
         });
       }

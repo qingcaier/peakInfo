@@ -184,6 +184,7 @@ create(store, {
     });
   },
   onShow: async function () {
+    console.log("home onshow");
     // this.getUserLocation();
     // let userLocation = await this.getUserLocation();
 

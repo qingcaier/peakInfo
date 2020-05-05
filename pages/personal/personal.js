@@ -44,7 +44,7 @@ Page({
     // })
   },
 
-  onLoad: function () {
+  onShow: function () {
     // console.log(store);
     let that = this;
 
@@ -55,7 +55,6 @@ Page({
     if (store.data.localUserInfo) {
       that.checkMyOrder(store.data.localUserInfo.openid)
     }
-
   },
   checkMyOrder(openid) {
     let that = this;

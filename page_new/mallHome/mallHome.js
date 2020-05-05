@@ -1,11 +1,11 @@
-const app = getApp();
+const app = getApp(); import store from "../../store.js";
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    user: {
+    userInfo: {
       name: "小行家",
       count: "2000",
     },
@@ -40,6 +40,7 @@ Page({
    */
   onLoad: function (options) {
     let that = this;
+    that.setData({ userInfo: store.data.localUserInfo })
     app.ajax.getGiftList().then(
       res => {
         // console.log(res.data.data)

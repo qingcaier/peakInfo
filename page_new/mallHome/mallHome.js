@@ -54,7 +54,8 @@ Page({
       }).catch(err => { console.log(err) });
   },
   onShow: function () {
-    this.getUserData(store.data.localUserInf.openid).then(res => {
+    let that = this;
+    this.getUserData(store.data.localUserInfo.openid).then(res => {
       console.log("onshow UserData:", res);
       that.setData({ userInfo: res })
     }).catch(err => {

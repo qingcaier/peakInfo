@@ -1,4 +1,5 @@
 // page_new/giftForm/giftForm.js
+import store from "../../store.js";
 Page({
 
   /**
@@ -12,6 +13,15 @@ Page({
       // credit: "xxx",
       // inventory: "xx",
       // picture: "http://cdn.cdlshow.xyz/gift_3.png"
+    },
+    getGiftData: {
+      openid: "",
+      giftID: "",
+      receivedName: "",
+      receivedSite: '',
+      receivedPhoneNum: "",
+      deliveryState: 0,
+      // time
     }
   },
 
@@ -19,25 +29,31 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    let _this = this;
+    let that = this;
     that.setData({ userCount: store.data.localUserInfo.credit })
     const eventChannel = this.getOpenerEventChannel()
     eventChannel.on('giftData', function (data) {
       console.log(data);
-      _this.setData({
+      that.setData({
         gift: data
       })
     })
   },
   buyGift() {
 
-  },
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
+    let that = this;
 
   },
+  // 双向绑定输入框
+  formInputChange(e) {
+    const { field } = e.currentTarget.dataset;
+    this.setData({
+      [`getGiftData.${field}`]: e.detail.value,
+    });
+    // console.log(e);
+    // console.log(this.data.validateData);
+  },
+
 
   /**
    * 生命周期函数--监听页面显示

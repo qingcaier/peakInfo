@@ -17,22 +17,22 @@
         <view class="">扣除：{{gift.price}}</view>
         <view class="table">
             <view class="one-input">
-                <view class="key">姓名：</view>
+                <!-- <view class="key">姓名：</view> -->
                 <view class="input">
-                    <input placeholder="" />
+                    <input bindinput="formInputChange" data-field="receivedName" placeholder="收件人" />
                 </view>
             </view>
             <view class="one-input">
-                <view class="key">电话：</view>
+                <!-- <view class="key">电话：</view> -->
                 <view class="input">
-                    <input placeholder="" />
+                    <input bindinput="formInputChange" data-field="receivedPhoneNum" placeholder="联系电话" />
                 </view>
             </view>
             <view class="one-input">
-                <view class="key">地址：</view>
+                <!-- <view class="key"></view> -->
                 <view class="input" style="">
                     <!-- <input placeholder="" /> -->
-                    <textarea style="width: 100%;" bindblur="bindTextAreaBlur" auto-height />
+                    <textarea bindinput="formInputChange" data-field="receivedSite" placeholder="收件地址" style="width: 100%;" auto-height />
                 </view>
             </view>
         </view>

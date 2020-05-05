@@ -44,6 +44,7 @@ Page({
     eventChannel.on('dataFormMessage', (res) => {
       that.setData({ chatData: res.data.chatData })
       console.log(that.data.chatData);
+
     })
     wx.setNavigationBarTitle({
       title: that.data.chatData.name
@@ -51,8 +52,9 @@ Page({
     that.setData({ userInfo: store.data.localUserInfo })
     var interval = setInterval(function () {
       that.getChatData()
-    }, 2000) //循环间隔 单位ms
+    }, 3000) //循环间隔 单位ms
     that.setData({ timer: interval })
+
   },
   //销毁轮询器
   onUnload: function () {
@@ -62,7 +64,7 @@ Page({
   getChatData() {
     let that = this;
     console.log("获取新消息");
-    app.ajax.getChatHome({ order_id: that.data.chatData.orderid }).then((res) => {
+    app.ajax.getChatHome({ order_id: that.data.chatData.order_id }).then((res) => {
       if (res.data.state.status == 200) {
         that.setData({ "chatData.msgInfor": res.data.data.msgInfor })
         console.log(res.data.data.msgInfor);

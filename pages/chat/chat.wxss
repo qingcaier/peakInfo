@@ -18,11 +18,12 @@
   align-items: center;
 }
 
-.imgmsgleft>view:last-child {
+
+/* .imgmsgleft>view:last-child {
   border: solid 1px gray;
   padding: 10px;
   border-radius: 6px;
-}
+} */
 
 .imgmsg {
   display: flex;
@@ -30,13 +31,64 @@
   align-items: center;
 }
 
-.imgmsg>view:first-child {
-  border: solid 1px gray;
+/* .imgmsg>view:first-child {
+  margin-right: 15px;
   padding: 10px;
   border-radius: 6px;
-  background-color: green;
+  background-color: #dddddd;
+} */
+.chat-bubble-left {}
+.chat-bubble-left:before {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 0;
+  left: -20px;
+  top:5px;
+  border: 10px solid;
+  border-color:transparent #dddddd transparent  transparent ;
+}
+.chat-bubble-left:after {
+ content: '';
+ position: absolute;
+ width: 0;
+ height: 0;
+ left:-16px;
+ top:7px;
+ border: 8px solid;
+ border-color:transparent #dddddd transparent  transparent ;
 }
 
+.chat-bubble{
+  position: relative;
+  margin:12px;
+  padding:5px 8px;
+  word-break: break-all;
+  background:#dddddd;
+  border-radius: 5px;
+  max-width:180px;
+}
+.chat-bubble-right {}
+.chat-bubble-right:before {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 0;
+  right: -20px;
+  top:5px;
+  border: 10px solid;
+  border-color:transparent transparent transparent #dddddd;
+}
+.chat-bubble-right:after {
+ content: '';
+ position: absolute;
+ width: 0;
+ height: 0;
+ right:-16px;
+ top:7px;
+ border: 8px solid;
+ border-color:transparent transparent transparent #dddddd ;
+}
 .touimg {
   width: 50px;
   height: 50px;
@@ -49,18 +101,33 @@
 
 .sendView {
   display: flex;
-  width: 100%;
-  position: fixed;
-  bottom: 0px;
-  border-top: 1px #ededed solid;
-  background-color: white;
+justify-content: center;
+width: 100%;
+position: fixed;
+bottom: 0px;
+border-top: 1px #ededed solid;
+background-color: rgba(0,0,0,0.1);
+height: 50px;
+padding: 0 10px;
+
 }
 
 .sendView>button {
   width: 20%;
+  height: 40px;
+margin: auto;
+font-size: 15px;
+line-height: 40px;
+
 }
 
 .sendView>input {
-  width: 80%;
-  height: auto;
+  
+  width: 65%;
+height: 40px;
+margin: auto 0;
+background-color: #fff;
+border-radius: 5px;
+padding: 0 5px;
+
 }

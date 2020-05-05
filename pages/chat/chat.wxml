@@ -9,13 +9,13 @@
             <view>
               <image class='touimg' src='{{item.avatarUrl}}'></image>
             </view>
-            <view>{{item.msg}}</view>
+            <view class="chat-bubble chat-bubble-left">{{item.msg}}</view>
           </view>
         </view>
         <view wx:else class='rightView'>
           <view class='name'>{{item.name}}</view>
           <view class='imgmsg'>
-            <view>{{item.msg}}</view>
+            <view class="chat-bubble chat-bubble-right">{{item.msg}}</view>
             <view>
               <image class='touimg' src='{{item.avatarUrl}}'></image>
             </view>
@@ -26,6 +26,6 @@
   </scroll-view>
   <view class='sendView'>
     <input bindinput='sendTextBind' placeholder="输入聊天内容" value='{{sendText}}' />
-    <button bindtap='sendBtn' type="primary">发送</button>
+    <button size="mini" bindtap='sendBtn' type="primary">发送</button>
   </view>
 </view>

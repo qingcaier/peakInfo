@@ -3,7 +3,13 @@
     <!-- 传三个对象过去 -->
     <v-order orderData="{{orderData}}" shopData="{{shopData}}" makerData="{{makerData}}"></v-order>
     <view wx:if="{{canJoin}}" class="all_btn">
-        <button class="btn" size="mini" type="primary" bindtap="joinOrder">参与拼单</button>
+        <button class="btn" size="mini" type="primary" bindtap="open">参与拼单</button>
     </view>
-    <view>{{canJoin}}</view>
 </view>
+<mp-dialog show="{{dialogShow}}" bindbuttontap="tapDialogButton" buttons="{{buttons}}">
+    <view class="input-text">
+        <view>您准备买</view>
+        <input bindinput="formInputChange" value="{{count}}" class="input" type="number" placeholder="" />
+        <view>{{orderData.act_type?'元':'件'}}</view>
+    </view>
+</mp-dialog>

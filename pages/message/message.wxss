@@ -12,3 +12,14 @@
     background-color: rgba(0, 0, 0, 0.2);
     margin: 20rpx 0;
   }
+  .all{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    background-color: rgba(0,0,0,0.1);
+    
+  }
+  .borde{
+    width: 97%;
+
+  }

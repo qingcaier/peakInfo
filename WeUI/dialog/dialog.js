@@ -82,12 +82,12 @@ module.exports =
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 17);
+/******/ 	return __webpack_require__(__webpack_require__.s = 20);
 /******/ })
 /************************************************************************/
 /******/ ({
 
-/***/ 17:
+/***/ 20:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -100,31 +100,13 @@ Component({
     addGlobalClass: true
   },
   properties: {
-    closabled: {
-      // 是否具有关闭标签
-      type: Boolean,
-      value: true
-    },
     title: {
-      // 标题，也可以通过 slot 自定义
-      type: String,
-      value: ''
-    },
-    subTitle: {
-      // 副标题，也可以通过 slot 自定义
+      // 弹窗标题，也可以通过 slot 自定义
       type: String,
       value: ''
     },
     extClass: {
       // 弹窗 class
-      type: String,
-      value: ''
-    },
-    desc: {
-      type: String,
-      value: ''
-    },
-    tips: {
       type: String,
       value: ''
     },
@@ -149,21 +131,28 @@ Component({
 
     }
   },
-  methods: {
-    close(e) {
-      const {
-        type
-      } = e.currentTarget.dataset;
+  data: {
+    innerShow: false
+  },
 
-      if (this.data.maskClosable || type === 'close') {
-        this.setData({
-          show: false
-        }); // 关闭弹窗回调事件
-
-        this.triggerEvent('close');
+  ready() {
+    const buttons = this.data.buttons;
+    const len = buttons.length;
+    buttons.forEach((btn, index) => {
+      if (len === 1) {
+        btn.className = 'weui-dialog__btn_primary';
+      } else if (index === 0) {
+        btn.className = 'weui-dialog__btn_default';
+      } else {
+        btn.className = 'weui-dialog__btn_primary';
       }
-    },
+    });
+    this.setData({
+      buttons
+    });
+  },
 
+  methods: {
     buttonTap(e) {
       const {
         index
@@ -172,7 +161,18 @@ Component({
         index,
         item: this.data.buttons[index]
       }, {});
-    }
+    },
+
+    close() {
+      const data = this.data;
+      if (!data.maskClosable) return;
+      this.setData({
+        show: false
+      });
+      this.triggerEvent('close', {}, {});
+    },
+
+    stopEvent() {}
 
   }
 });

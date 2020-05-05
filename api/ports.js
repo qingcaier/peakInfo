@@ -10,6 +10,8 @@ const ajax = {
 
   // 创建拼单
   createOrder: (data) => https._post({ url: base.createOrder, data }),
+  // 用户参与拼单
+  joinOrder: (data) => https._post({ url: base.joinOrder, data }),
 
   //获取拼单数据
   getOrderData: (data) => https._post({ url: base.getOrderData, data }),

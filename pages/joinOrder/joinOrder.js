@@ -6,6 +6,7 @@ Page({
    */
   data: {
     orderId: "",
+    count: 0,
     orderData: {
       // title: "", // 拼单标题
       // act_type: 1, //拼单类型
@@ -73,7 +74,23 @@ Page({
       // "state": 0,
       // "__v": 0
     },
-    canJoin: true,//显示拼单按钮
+    canJoin: true,//显示拼单按钮,
+    dialogShow: false,//显示 参与拼单的输入
+    // buttons: [{ text: '取消' }, { text: '确定' }],
+    buttons: [
+      {
+        type: 'default',
+        className: '',
+        text: '取消',
+        value: 0
+      },
+      {
+        type: 'primary',
+        className: '',
+        text: '确认',
+        value: 1
+      }
+    ]
 
   },
 
@@ -112,13 +129,66 @@ Page({
     })
   },
   joinOrder() {
+    let that = this;
+    let obj = { order_id: that.data.orderId, count: that.data.count };
+    console.log(obj);
+    app.ajax.joinOrder(obj).then(res => {
+      if (res.data.state.status == 200) {
+        wx.showModal({
+          title: "成功参加拼单",
+          showCancel: false,
+          success: function (res) {
+            // if (res.confirm) {
+            //   that.goHome();
+
+            // }
+          }
+        });
+      }
+    })
+  },
+  // 双向绑定输入框
+  formInputChange(e) {
+    this.setData({
+      count: parseInt(e.detail.value),
+    });
 
   },
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
+  tapDialogButton(e) {
 
+    if (e.detail.index) {
+      this.joinOrder();
+    }
+    this.setData({
+      dialogShow: false
+    })
+  },
+  //先判断是否参加了
+  open: function () {
+    let that = this;
+    let hasJoin = false;
+    for (let item of that.data.makerData.init_order) {
+      if (item == that.data.orderId) {
+        hasJoin = true;
+      }
+    }
+    for (let item of that.data.makerData.joined_order) {
+      if (item == that.data.orderId) {
+        hasJoin = true;
+      }
+    }
+    if (hasJoin) {
+      wx.showModal({
+        title: "不能重复参加拼单",
+        showCancel: false,
+        success: function (res) {
+        }
+      });
+    } else {
+      this.setData({
+        dialogShow: true
+      })
+    }
   },
   /**
       * @method getOrderData 
@@ -190,3 +260,4 @@ Page({
 
 
 })
+

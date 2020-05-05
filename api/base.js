@@ -4,6 +4,7 @@ const base = {
   checkLogin: baseUrl + "/checkLogin",
   userlogin: baseUrl + "/userLogin",
   createOrder: baseUrl + "/api/createOrder",
+  joinOrder: baseUrl + "/api/joinOrder",
   getOrderData: baseUrl + "/api/orderDetail",
   getShopData: baseUrl + "/api/shopDetail",
   getUserData: baseUrl + "/api/userDetai",

@@ -53,6 +53,14 @@ Page({
         }
       }).catch(err => { console.log(err) });
   },
+  onShow: function () {
+    this.getUserData(store.data.localUserInf.openid).then(res => {
+      console.log("onshow UserData:", res);
+      that.setData({ userInfo: res })
+    }).catch(err => {
+      console.log("错误", err);
+    })
+  },
   getGift(e) {
     let num = e.currentTarget.dataset['index'];
     let _this = this;
@@ -72,51 +80,25 @@ Page({
     })
   },
   /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-
+  * @method getUserData 
+  * @description 获取拼单发起者的信息 
+  * @param { String } openid 用户的openid
+  * @return { Object } makerData
+  */
+  getUserData(openid) {
+    return new Promise((resolve, reject) => {
+      var makerObj = {};
+      app.ajax.getUserData({ user_openid: openid })
+        .then(
+          res => {
+            makerObj = res.data.data;
+            resolve(makerObj);
+          }
+        ).catch(
+          err => {
+            reject(err);
+          }
+        )
+    })
   },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
-  }
 })

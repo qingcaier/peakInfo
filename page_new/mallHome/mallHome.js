@@ -57,10 +57,22 @@ Page({
     let that = this;
     this.getUserData(store.data.localUserInfo.openid).then(res => {
       console.log("onshow UserData:", res);
-      that.setData({ userInfo: res })
+      that.setData({ userInfo: res });
+      store.data.localUserInfo = res;
     }).catch(err => {
       console.log("错误", err);
     })
+    app.ajax.getGiftList().then(
+      res => {
+        // console.log(res.data.data)
+        if (!res.data.data) {
+          console.log("找不到")
+        } else {
+          that.setData({
+            giftData: res.data.data
+          })
+        }
+      }).catch(err => { console.log(err) });
   },
   getGift(e) {
     let num = e.currentTarget.dataset['index'];

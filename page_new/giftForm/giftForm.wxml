@@ -1,11 +1,11 @@
 <!-- page_new/giftForm/giftForm.wxml -->
 <view>
-    <view class="one" wx:for="{{gift}}" wx:key="title">
+    <view class="one" wx:key="title">
         <view class="buildBord">
             <view class="imgBord">
-                <image class="img" mode="aspectFit" src="{{item.url}}"></image>
+                <image class="img" mode="aspectFit" src="{{gift.url}}"></image>
             </view>
-            <view class="title">{{item.title}}</view>
+            <view class="title">{{gift.title}}</view>
         </view>
     </view>
     <view class="form">

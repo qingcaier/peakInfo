@@ -51,6 +51,7 @@ const ajax = {
 
 
 
+
   //获取所有建筑类型
   getAllType: (data) => https._post({ url: base.getAllType, data }),
 
@@ -108,6 +109,7 @@ const ajax = {
 
   //16. 兑换礼品，记录历史并扣除积分
   exchangeGift: (data) => https._post({ url: base.exchangeGift, data }),
+
 };
 
 export default ajax;

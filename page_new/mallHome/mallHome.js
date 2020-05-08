@@ -10,29 +10,7 @@ Page({
       count: "2000",
     },
     giftData: [
-      // {
-      //   title: "指南针拼图",
-      //   price: "2000",
-      //   inventory: "20",
-      //   url: "http://cdn.cdlshow.xyz/gift_1.png"
-      // },
-      // {
-      //   title: "小鹿公仔 ",
-      //   price: "2000",
-      //   inventory: "20",
-      //   url: "http://cdn.cdlshow.xyz/gift_2.png"
-      // },
-      // {
-      //   title: "乔巴公仔 ",
-      //   price: "2000",
-      //   inventory: "20",
-      //   url: "http://cdn.cdlshow.xyz/gift_3.png"
-      // }, {
-      //   title: "五羊公仔 ",
-      //   price: "2000",
-      //   inventory: "20",
-      //   url: "http://cdn.cdlshow.xyz/gift_4.png"
-      // }
+
     ]
   },
   /**
@@ -89,7 +67,10 @@ Page({
   },
   goMyGift() {
     wx.navigateTo({
-      url: "/page_new/giftHistory/giftHistory"
+      url: "/page_new/giftHistory/giftHistory",
+      // success:function(res){
+      //   res.eventChannel.emint()
+      // }
     })
   },
   /**

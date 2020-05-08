@@ -10,10 +10,10 @@ Page({
 
     gift: {
       // {
-      //   title: "指南针拼图",
-      //   price: "2000",
+      //   name: "指南针拼图",
+      //   credit: "2000",
       //   inventory: "20",
-      //   url: "http://cdn.cdlshow.xyz/gift_1.png"
+      //   picture: "http://cdn.cdlshow.xyz/gift_1.png"
       // }
     },
     getGiftData: {
@@ -39,13 +39,13 @@ Page({
   },
   buyGift() {
     let that = this;
-    if (that.data.userCount >= that.data.gift.price) {
+    if (that.data.userCount >= that.data.gift.credit) {
       let that = this;
       let obj = {
         openid: store.data.localUserInfo.openid,
         sumCredit: that.data.userCount,
         giftID: that.data.gift._id,
-        giftCredit: that.data.gift.price,
+        giftCredit: that.data.gift.credit,
         receivedName: that.data.getGiftData.receivedName,
         receivedPhoneNum: that.data.getGiftData.receivedPhoneNum,
         receivedSite: that.data.getGiftData.receivedSite,

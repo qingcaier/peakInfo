@@ -36,6 +36,8 @@ const base = {
   getGiftList: baseUrl + "/api/getGiftList",
   getExcHistory: baseUrl + "/api/getExcHistory",
   exchangeGift: baseUrl + "/api/exchangeGift",
+
+
 };
 
 export default base;

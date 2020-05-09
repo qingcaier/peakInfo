@@ -1,5 +1,5 @@
 <view class="bg">
-    <image mode="heightFix" src="../../public/picture/home_bg.png"></image>
+    <image mode="heightFix" src="../../public/picture/home.png"></image>
     <view class="button">
         <view class="btnArea">
             <button bindtap="goPage" data-index="0" class="btn">历史文化</button>

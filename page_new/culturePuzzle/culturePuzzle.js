@@ -340,7 +340,7 @@ create(store, {
     console.log(e);
 
     wx.navigateTo({
-      // url: `../../page_new/cultureMap/cultureMap?buildingID=${e.currentTarget.dataset.buildingid}`,
+      // url: `../../pages/cultureMap/cultureMap?buildingID=${e.currentTarget.dataset.buildingid}`,
       url: "../../page_new/buildingInfo/buildingInfo",
       success: (res) => {
         // 通过eventChannel向被打开页面传送数据

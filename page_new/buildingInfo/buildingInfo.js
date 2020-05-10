@@ -67,7 +67,7 @@ Page({
   toBuildingMap(e) {
     console.log(e);
     wx.navigateTo({
-      url: "../../pages/cultureMap/cultureMap",
+      url: "../../page_new/cultureMap/cultureMap",
       success: (res) => {
         // 通过eventChannel向被打开页面传送数据
         res.eventChannel.emit("buildId", {

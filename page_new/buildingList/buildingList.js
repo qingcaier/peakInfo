@@ -49,7 +49,7 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function(options) {
+  onLoad: function (options) {
     this.searchHistorical(this.data.searchBuildData);
     this.getAllType();
     this.setData({
@@ -80,7 +80,7 @@ Page({
   // 跳转到地图
   toMap() {
     wx.navigateTo({
-      url: "../../pages/cultureMap/cultureMap"
+      url: "../../page_new/cultureMap/cultureMap"
     });
   },
 
@@ -138,7 +138,7 @@ Page({
     };
   },
   //输入关键字
-  bindKeyInput: function(e) {
+  bindKeyInput: function (e) {
     var that = this;
     this.setData({
       keyWord: e.detail.value
@@ -146,7 +146,7 @@ Page({
     // that.debounce(that.search(), 1000)
   },
   //搜索
-  search: function() {
+  search: function () {
     console.log(this.data.keyWord);
     // var that = this;
     // console.log(value)
@@ -163,11 +163,11 @@ Page({
     this.setData({ noMore: false });
     this.searchHistorical(newReqData);
   },
-  goInfor: function(e) {
+  goInfor: function (e) {
     // console.log(e.currentTarget.dataset)
     wx.navigateTo({
       url: "/page_new/buildingInfo/buildingInfo",
-      success: function(res) {
+      success: function (res) {
         // 通过eventChannel向被打开页面传送数据
         res.eventChannel.emit("buildId", { ID: e.currentTarget.dataset.id });
       }
@@ -176,11 +176,11 @@ Page({
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
-  onReady: function() {},
+  onReady: function () { },
   /**
    * 页面上拉触底事件的处理函数
    */
-  onReachBottom: function() {
+  onReachBottom: function () {
     if (!this.data.noMore) {
       let newReqData = this.data.searchBuildData;
       newReqData.page++;
@@ -189,13 +189,13 @@ Page({
   },
 
   // 下拉切换
-  hideNav: function() {
+  hideNav: function () {
     this.setData({
       displays: "none"
     });
   },
   // 区域
-  tabNav: function(e) {
+  tabNav: function (e) {
     this.setData({
       displays: "block"
     });
@@ -208,7 +208,7 @@ Page({
     }
   },
   //选择类型
-  clickType: function(e) {
+  clickType: function (e) {
     console.log(e.target.dataset);
     this.setData({
       type_num: e.target.dataset.num
@@ -235,7 +235,7 @@ Page({
     this.searchHistorical(newReqData);
   },
   //选择地域
-  clickLocation: function(e) {
+  clickLocation: function (e) {
     console.log(e.target.dataset.name);
     this.setData({
       location_num: e.target.dataset.num
@@ -263,7 +263,7 @@ Page({
     this.searchHistorical(newReqData);
   },
   // 获取滚动条当前位置
-  onPageScroll: function(e) {
+  onPageScroll: function (e) {
     if (e.scrollTop > 100) {
       this.setData({
         floorstatus: true
@@ -275,7 +275,7 @@ Page({
     }
   },
   //回到顶部
-  goTop: function(e) {
+  goTop: function (e) {
     // 一键回到顶部
     if (wx.pageScrollTo) {
       wx.pageScrollTo({

@@ -25,7 +25,7 @@
 		}
 	},
 	"compileType": "miniprogram",
-	"libVersion": "2.10.1",
+	"libVersion": "2.10.4",
 	"appid": "wx645a7a6a138f6cd9",
 	"projectname": "PeakInfo",
 	"debugOptions": {

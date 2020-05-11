@@ -1,7 +1,11 @@
 <view class="routerContain">
+  
     <block wx:for="{{router}}" wx:key="index">
         <view class="routerContain__item" bindtap="routeTo" data-routerpath="{{item.routerPath}}">
             {{item.routerName}}
+              <image class="icon-img" mode="aspectFit"  src="{{item.pic}}"></image>
         </view>
+       
     </block>
+    <image  class="bg-img" mode="scaleToFill" src="../../public/picture/timg.jpg"></image>
 </view>

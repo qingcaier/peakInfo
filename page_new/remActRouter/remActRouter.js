@@ -1,4 +1,4 @@
-// pages/remActRouter/remActRouter.js
+// page_new/remActRouter/remActRouter.js
 Page({
   /**
    * 页面的初始数据
@@ -8,17 +8,20 @@ Page({
       {
         id: 0,
         routerName: "文化点打卡",
-        routerPath: "../../pages/cultureClock/cultureClock"
+        routerPath: "../../page_new/cultureClock/cultureClock",
+        pic: "../../public/picture/daka.jpg"
       },
       {
         id: 1,
         routerName: "密探寻宝",
-        routerPath: "../../pages/cultureTask/cultureTask"
+        routerPath: "../../page_new/cultureTask/cultureTask",
+        pic: "../../public/picture/mitan.png"
       },
       {
         id: 2,
         routerName: "文化拼图",
-        routerPath: "../../pages/culturePuzzle/culturePuzzle"
+        routerPath: "../../page_new/culturePuzzle/culturePuzzle",
+        pic: "../../public/picture/pintu.jpg"
       }
     ]
   },
@@ -26,17 +29,17 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function(options) {},
+  onLoad: function (options) { },
 
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
-  onReady: function() {},
+  onReady: function () { },
 
   /**
    * 生命周期函数--监听页面显示
    */
-  onShow: function() {},
+  onShow: function () { },
 
   // 点击路由跳转到相应页面
   routeTo(e) {
@@ -62,25 +65,25 @@ Page({
   /**
    * 生命周期函数--监听页面隐藏
    */
-  onHide: function() {},
+  onHide: function () { },
 
   /**
    * 生命周期函数--监听页面卸载
    */
-  onUnload: function() {},
+  onUnload: function () { },
 
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
-  onPullDownRefresh: function() {},
+  onPullDownRefresh: function () { },
 
   /**
    * 页面上拉触底事件的处理函数
    */
-  onReachBottom: function() {},
+  onReachBottom: function () { },
 
   /**
    * 用户点击右上角分享
    */
-  onShareAppMessage: function() {}
+  onShareAppMessage: function () { }
 });

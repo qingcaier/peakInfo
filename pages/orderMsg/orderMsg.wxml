@@ -1,10 +1,14 @@
 <view>
-    <v-order someData="123"></v-order>
+    <v-order orderData="{{orderData}}" shopData="{{shopData}}" makerData="{{makerData}}"></v-order>
     <view wx:if="{{!isComplete&&!isCancel}}" class="all_btn">
         <button class="btn" size="mini" type="default" bindtap="complete">完成拼单</button>
         <button class="btn" size="mini" type="default" bindtap="modify">修改拼单</button>
         <button class="btn" size="mini" type="default" bindtap="cancel">取消拼单</button>
     </view>
-    <view wx:if="{{isComplete}}" class="showText">已完成</view>
+    <!-- <view wx:if="{{isComplete}}" class="showText">已完成</view>
     <view wx:if="{{isCancel}}" class="showText">已取消</view>
+    
+    <view class="showText"  wx:if="{{isComplete||isCancel}}">
+        <button class="btn" type="primary" bindtap="goHome">返回首页</button>
+    </view> -->
 </view>

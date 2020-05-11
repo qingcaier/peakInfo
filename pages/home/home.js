@@ -9,7 +9,7 @@ const app = getApp();
 let mapContext;
 
 // 生成marker对象
-let createMarker = function(obj) {
+let createMarker = function (obj) {
   let calloutContent = "";
   if (obj.total_count) {
     switch (obj.act_type) {
@@ -74,7 +74,7 @@ let createMarker = function(obj) {
 // };
 
 // 距离截取(保留两位小数)
-let showDistance = function(distance) {
+let showDistance = function (distance) {
   if (distance >= 1000) {
     return Math.round((Math.round(distance) / 1000) * 100) / 100 + "km";
   } else {
@@ -117,7 +117,7 @@ create(store, {
       }
     ]
   },
-  onLoad: async function() {
+  onLoad: async function () {
     // onLoad: function() {
     // this.getUserLocation();
     mapContext = wx.createMapContext("map");
@@ -183,7 +183,8 @@ create(store, {
       // }
     });
   },
-  onShow: async function() {
+  onShow: async function () {
+    console.log("home onshow");
     // this.getUserLocation();
     // let userLocation = await this.getUserLocation();
 
@@ -196,9 +197,9 @@ create(store, {
     // });
     this.refreshMap();
   },
-  onReady: function() {},
+  onReady: function () { },
 
-  onHide: function() {
+  onHide: function () {
     this.setData({
       isSelected: false,
       mapSize: 100,
@@ -207,7 +208,7 @@ create(store, {
   },
 
   // 刷新地图
-  refreshMap: function(causedType) {
+  refreshMap: function (causedType) {
     mapContext.getScale({
       success: res => {
         console.log(res);
@@ -217,9 +218,9 @@ create(store, {
             console.log(response);
 
             let centerLocation = {
-                lng: response.longitude,
-                lat: response.latitude
-              },
+              lng: response.longitude,
+              lat: response.latitude
+            },
               scale = res.scale;
             if (causedType === "scale") {
               if (scale === 18 || scale === 3) {
@@ -253,7 +254,7 @@ create(store, {
   },
 
   // 获取用户当前位置经纬度
-  getUserLocation: function() {
+  getUserLocation: function () {
     return new Promise((resolve, reject) => {
       // 获取自身位置（地址逆解析）
       app.qqMap.reverseGeocoder({
@@ -341,9 +342,10 @@ create(store, {
       url: "../joinOrder/joinOrder",
       success: res => {
         // 通过eventChannel向被打开页面传送数据
-        res.eventChannel.emit("acceptDataFromOpenerPage", {
+        res.eventChannel.emit("dataFormFather", {
           data: {
-            order_id
+            order_id: order_id,
+            canJoin: true
           }
         });
       }
@@ -391,7 +393,7 @@ create(store, {
   // },
 
   // 发起拼单跳转
-  toCreateOrder: function() {
+  toCreateOrder: function () {
     wx.navigateTo({
       url: "../createOrder/createOrder"
     });
@@ -430,7 +432,7 @@ create(store, {
       this.setData({
         [`markers[${idx}].callout.content`]: ` ${
           targetAct.calloutContent
-        }  ${showDistance(targetAct.distance)} `,
+          }  ${showDistance(targetAct.distance)} `,
         // calloutContent + " " + showDistance(targetAct._distance),
         [`markers[${idx}].callout.color`]: "#000000",
         isSelected: true,
@@ -520,7 +522,7 @@ create(store, {
 
   // 地图视野变化事件
   regionchange(e) {
-    console.log(e);
+    // console.log(e);
     if (e.type !== "end") {
       return;
     }

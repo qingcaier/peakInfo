@@ -133,8 +133,8 @@ create(store, {
       }
     });
   },
-  onShow: function () {},
-  onReady: function () {},
+  onShow: function () { },
+  onReady: function () { },
 
   // 刷新地图
   refreshMap: function () {
@@ -147,9 +147,9 @@ create(store, {
             console.log(response);
 
             let centerLocation = {
-                lng: response.longitude,
-                lat: response.latitude,
-              },
+              lng: response.longitude,
+              lat: response.latitude,
+            },
               scale = res.scale;
             if (res.scale === 18 && res.scale === 3) {
               return;
@@ -699,7 +699,7 @@ create(store, {
             });
           } else {
             wx.showToast({
-              title: "挑战失败",
+              title: "挑战失败,图片不是很匹配",
               image: "../../public/images/avator.png",
               // success: res => {
 

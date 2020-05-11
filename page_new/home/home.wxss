@@ -11,7 +11,7 @@ image{
 .button{
 position: absolute;
     width: 100%;
-    bottom: 10%;
+    bottom: 14%;
     display: flex;
     /* border: 2rpx solid tomato; */
 }

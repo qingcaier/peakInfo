@@ -2,5 +2,5 @@
   "usingComponents": {
     "my-board": "/components/detailBoard/detailBoard"
   },
-  "navigationBarTitleText": "历史文化"
+  "navigationBarTitleText": "历史建筑"
 }

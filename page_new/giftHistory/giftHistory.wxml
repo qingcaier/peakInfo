@@ -1,30 +1,25 @@
 <!-- 下拉菜单 -->
-<view id="swiper-tab">
-    <view class="swiper-tab">
-        <view class="swiper-tab-list {{currentTab==0 ? 'on' : ''}}" data-current="0" bindtap="tabNav">
-            {{type}}
-            <i></i>
+<view id="history">
+    <view class="one-his" wx:for="{{historyData}}" wx:key="index">
+        <view class="picture-name">
+            <view class="picture">
+                <image class="img" mode="aspectFit" src="{{item.picture}}"></image>
+                <!-- <img src="{{item.picture}}" alt=""></img> -->
+            </view>
+            <view class="name">{{item.name}}-{{item.credit}}</view>
         </view>
-        <view class="swiper-tab-list {{currentTab==1 ? 'on' : ''}}" data-current="1" bindtap="tabNav">
-            {{location}}
-            <i></i>
+        <view class="all-infor">
+            <view class="user-name">收件人：{{item.receivedName}}</view>
+            <view class="user-addres">地址：{{item.receivedSite}}</view>
+            <view class="user-ihpone">电话:{{item.receivedPhoneNum}}</view>
+            <!-- <view class="time">{{new Date(item.time).toLocaleString}}</view> -->
+            <view class="time">兑换时间：{{item.time}}</view>
+            <view class="state">
+                <view>发货状态：</view>
+                <view style="{{item.deliveryState?'color:#ffab8d':''}}">
+                    {{item.deliveryState?"已发货":"未发货"}}
+                </view>
+            </view>
         </view>
     </view>
-    <swiper current="{{currentTab}}" duration="1000" class="swiper-item" style='display:{{displays}}'>
-        <swiper-item style="overflow-y: scroll;">
-            <view class="location_bottom" hidden="">
-                <view wx:for="{{nameList}}" wx:key="index" class="{{type_num == index?'slect_type':'no_choose'}}" data-num="{{index}}" bindtap="clickType" data-name=" {{item}}">
-                    {{item}}
-                </view>
-            </view>
-        </swiper-item>
-        <swiper-item style="overflow-y: scroll;">
-            <view class="location_bottom" hidden="">
-                <view wx:for="{{items}}" wx:key="index" class="{{location_num ==index?'slect_location':'no_choose'}}" data-num="{{index}}" bindtap="clickLocation" data-name=" {{item}}">
-                    {{item}}
-                </view>
-            </view>
-        </swiper-item>
-    </swiper>
 </view>
-<view class="swiper-beijing" bindtap="hideNav" style='display:{{displays}}'></view>

@@ -4,6 +4,7 @@
 function _get({ url, data }) {
   // if (token) {
   //为了用户体验，加一个loading效果
+
   wx.showLoading({ title: "加载中", mask: true });
 
   return new Promise((resolved, rejected) => {
@@ -101,7 +102,10 @@ function _get({ url, data }) {
 // 封装post请求
 function _post({ url, data }) {
   //为了用户体验，加一个loading效果
-  wx.showLoading({ title: "加载中", mask: true });
+  if (url.search(/chatHome/) == -1) {
+    wx.showLoading({ title: "加载中", mask: true });
+  }
+
   // if (token) {
   return new Promise((resolved, rejected) => {
     // data.token = token;

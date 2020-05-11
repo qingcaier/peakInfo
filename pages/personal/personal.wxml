@@ -21,14 +21,42 @@
           <image wx:if="{{userInfo.gender}}" class="gender" src="{{boy}}" />
           <image wx:else class="gender" src="{{girl}}" />
         </view>
-        <view class="joined-order">已拼{{needUser.joined_order}}单</view>
+        <view class="joined-order">已拼{{userInfo.joined_order.length}}单</view>
       </view>
     </view>
   </view>
-  <view class="black_line"></view>
-  <view class="user_orders" bindtap="goMyOrder">
-    <view class="">我的拼单</view>
-    <view class="">{{needUser.exit_order}}</view>
+  <view class="type">我创建的拼单</view>
+  <view class="user_orders" bindtap="goMyOrder" data-obj="init_order" data-objType="order_0">
+    <view class="">进行中</view>
+    <view class="">{{allOrderData.init_order.order_0.length}}</view>
   </view>
-  <view class="black_line"></view>
+  <view class="user_orders" bindtap="goMyOrder" data-obj="init_order" data-objType="order_1">
+    <view class="">已完成</view>
+    <view class="">{{allOrderData.init_order.order_1.length}}</view>
+  </view>
+  <view class="user_orders" bindtap="goMyOrder" data-obj="init_order" data-objType="order_2">
+    <view class="">已取消</view>
+    <view class="">{{allOrderData.init_order.order_2.length}}</view>
+  </view>
+  <view class="user_orders" bindtap="goMyOrder" data-obj="init_order" data-objType="order_3">
+    <view class="">已过期</view>
+    <view class="">{{allOrderData.init_order.order_3.length}}</view>
+  </view>
+  <view class="type">我加入的拼单</view>
+  <view class="user_orders" bindtap="goMyOrder" data-obj="joined_order" data-objType="order_0">
+    <view class="">进行中</view>
+    <view class="">{{allOrderData.joined_order.order_0.length}}</view>
+  </view>
+  <view class="user_orders" bindtap="goMyOrder" data-obj="joined_order" data-objType="order_1">
+    <view class="">已完成</view>
+    <view class="">{{allOrderData.joined_order.order_1.length}}</view>
+  </view>
+  <view class="user_orders" bindtap="goMyOrder" data-obj="joined_order" data-objType="order_2">
+    <view class="">已取消</view>
+    <view class="">{{allOrderData.joined_order.order_2.length}}</view>
+  </view>
+  <view class="user_orders" bindtap="goMyOrder" d data-obj="joined_order" data-objType="order_3">
+    <view class="">已过期</view>
+    <view class="">{{allOrderData.joined_order.order_3.length}}</view>
+  </view>
 </view>

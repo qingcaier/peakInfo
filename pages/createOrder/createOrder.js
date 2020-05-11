@@ -378,20 +378,41 @@ create(store, {
           this.data.formData
         );
         console.log("提交的总表单", form);
-        try {
-          await app.ajax.createOrder(form).then((res) => {
-            wx.navigateTo({
-              url: "../orderMsg/orderMsg",
+        wx.navigateTo({
+          url: "../orderMsg/orderMsg",
+          success: res => {
+            // 通过eventChannel向被打开页面传送数据
+            res.eventChannel.emit("dataFormCreate", {
+              data: {
+                form
+              }
             });
-            console.log(res);
-          });
-        } catch (err) {
-          console.log(err);
-          wx.showToast({
-            title: err.data.state.msg,
-            icon: "none",
-          });
-        }
+          }
+        });
+
+        // try {
+        //   await app.ajax.createOrder(form).then((res) => {
+        //     var order_id = res.data.data._id;
+        //     wx.navigateTo({
+        //       url: "../orderMsg/orderMsg",
+        //       success: res => {
+        //         // 通过eventChannel向被打开页面传送数据
+        //         res.eventChannel.emit("dataFormFather", {
+        //           data: {
+        //             order_id
+        //           }
+        //         });
+        //       }
+        //     });
+        //     console.log(res);
+        //   });
+        // } catch (err) {
+        //   console.log(err);
+        //   wx.showToast({
+        //     title: err.data.state.msg,
+        //     icon: "none",
+        //   });
+        // }
       }
     });
   },

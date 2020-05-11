@@ -1,18 +1,25 @@
 // page_new/giftForm/giftForm.js
+import store from "../../store.js"; const app = getApp();
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    user: {
-      count: "3888"
-    },
+    userCount: 0,
+
     gift: {
-      // name: "xxxxx",
-      // credit: "xxx",
-      // inventory: "xx",
-      // picture: "http://cdn.cdlshow.xyz/gift_3.png"
+      // {
+      //   name: "指南针拼图",
+      //   credit: "2000",
+      //   inventory: "20",
+      //   picture: "http://cdn.cdlshow.xyz/gift_1.png"
+      // }
+    },
+    getGiftData: {
+      receivedName: "",
+      receivedSite: '',
+      receivedPhoneNum: ""
     }
   },
 
@@ -20,22 +27,60 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    let _this = this;
+    let that = this;
+    that.setData({ userCount: store.data.localUserInfo.credit })
     const eventChannel = this.getOpenerEventChannel()
     eventChannel.on('giftData', function (data) {
-      console.log(data);
-      _this.setData({
-        gift: data
+      console.log(data.data);
+      that.setData({
+        gift: data.data
       })
     })
   },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-
+  buyGift() {
+    let that = this;
+    if (that.data.userCount >= that.data.gift.credit) {
+      let that = this;
+      let obj = {
+        openid: store.data.localUserInfo.openid,
+        sumCredit: that.data.userCount,
+        giftID: that.data.gift._id,
+        giftCredit: that.data.gift.credit,
+        receivedName: that.data.getGiftData.receivedName,
+        receivedPhoneNum: that.data.getGiftData.receivedPhoneNum,
+        receivedSite: that.data.getGiftData.receivedSite,
+      }
+      app.ajax.exchangeGift(obj).then(res => {
+        if (res.data.state.status == 200) {
+          // console.log(res.data);
+          wx.showModal({
+            title: "兑换成功",
+            showCancel: false,
+            success: function (res) {
+              wx.navigateTo({ url: "/page_new/mallHome/mallHome" })
+            }
+          });
+        }
+      })
+    } else {
+      wx.showModal({
+        title: "积分不足",
+        showCancel: false,
+        success: function (res) {
+        }
+      });
+    }
   },
+  // 双向绑定输入框
+  formInputChange(e) {
+    const { field } = e.currentTarget.dataset;
+    this.setData({
+      [`getGiftData.${field}`]: e.detail.value,
+    });
+    // console.log(e);
+    // console.log(this.data.validateData);
+  },
+
 
   /**
    * 生命周期函数--监听页面显示
@@ -44,38 +89,4 @@ Page({
 
   },
 
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
-  }
 })

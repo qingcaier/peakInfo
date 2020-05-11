@@ -1,43 +1,43 @@
 <!-- page_new/giftForm/giftForm.wxml -->
 <view>
-    <view class="one" wx:for="{{gift}}" wx:key="title">
+    <view class="one" wx:key="title">
         <view class="buildBord">
             <view class="imgBord">
-                <image class="img" mode="aspectFit" src="{{item.picture}}"></image>
+                <image class="img" mode="aspectFit" src="{{gift.picture}}"></image>
             </view>
-            <view class="title">{{item.name}}</view>
+            <view class="title">{{gift.name}}</view>
         </view>
     </view>
     <view class="form">
         <view class="black_line"></view>
         <view class="user">
             <image class="icon" src="/public/picture/count.png" />
-            <text class="name">我的积分：{{user.count}}</text>
+            <text class="name">我的积分：{{userCount}}</text>
         </view>
         <view class="">扣除：{{gift.credit}}</view>
         <view class="table">
             <view class="one-input">
-                <view class="key">姓名：</view>
+                <!-- <view class="key">姓名：</view> -->
                 <view class="input">
-                    <input placeholder="" />
+                    <input bindinput="formInputChange" data-field="receivedName" placeholder="收件人" />
                 </view>
             </view>
             <view class="one-input">
-                <view class="key">电话：</view>
+                <!-- <view class="key">电话：</view> -->
                 <view class="input">
-                    <input placeholder="" />
+                    <input bindinput="formInputChange" data-field="receivedPhoneNum" placeholder="联系电话" />
                 </view>
             </view>
             <view class="one-input">
-                <view class="key">地址：</view>
+                <!-- <view class="key"></view> -->
                 <view class="input" style="">
                     <!-- <input placeholder="" /> -->
-                    <textarea style="width: 100%;" bindblur="bindTextAreaBlur" auto-height />
+                    <textarea bindinput="formInputChange" data-field="receivedSite" placeholder="收件地址" style="width: 100%;" auto-height />
                 </view>
             </view>
         </view>
         <view class="btn">
-            <button class="sure">确认兑换</button>
+            <button bindtap="buyGift" class="sure">确认兑换</button>
         </view>
     </view>
 </view>

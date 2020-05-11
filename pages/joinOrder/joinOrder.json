@@ -1,5 +1,6 @@
 {
   "usingComponents": {
-    "v-order": "/components/orderDetails/orderDetails"
+    "v-order": "/components/orderDetails/orderDetails",
+    "mp-dialog": "/WeUI/dialog/dialog"
   }
 }

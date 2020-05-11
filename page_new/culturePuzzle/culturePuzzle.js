@@ -86,7 +86,7 @@ create(store, {
     }
     // this.refreshMap();
   },
-  onReady: function () {},
+  onReady: function () { },
 
   // 刷新地图
   refreshMap: function () {
@@ -99,9 +99,9 @@ create(store, {
             console.log(response);
 
             let centerLocation = {
-                lng: response.longitude,
-                lat: response.latitude,
-              },
+              lng: response.longitude,
+              lat: response.latitude,
+            },
               scale = res.scale;
             if (scale === 18 && scale === 3) {
               return;
@@ -401,7 +401,7 @@ create(store, {
     if (buildingHasExist === -1) {
       // 如果没有缓存该建筑详情
       // 发起详情请求
-      app.ajax
+      await app.ajax
         .getSingleDetail({
           dataID: targetBuilding._id,
         })
@@ -409,49 +409,6 @@ create(store, {
           console.log(res.data);
           let currentBuild_detail = res.data.data;
 
-          // let currentBuild_detail = {
-          //   _id: targetBuilding._id,
-          //   name: "华南土特产展览交流大会旧址手工业馆",
-          //   type: "重要历史事件及人物活动纪念地",
-          //   period: "1950-1970年代(1950-1979)",
-          //   site: "广州市荔湾区西堤二马路37号文化公园第七展馆",
-          //   introduction:
-          //     "华南土特产展览交流大会手工业馆是该展会的第七展馆， 建筑师为铁路局工程师郭尚德先生。展馆为一层，建筑面积 1470 平方米 . 平面采用中轴对称的“十字形”旋转 45 度布局，主入 口朝东面向广场，南、北、西侧均设有次出入口。由一个环形空 间统领四个矩形展览空间，展览路线流畅不重复，争取最大的展 览面积。环形大厅中央设有圆形庭院，利于展厅的采光通风、美 化环境，又可用作室外临时展场。手工业馆的立面造型朴素、简 洁大方，外墙刷米黄色石灰。环形大厅采用长条的高窗，矩形展 厅设水平带形高窗，入口出挑雨篷以纤细的柱子支撑，亲切自然。.",
-          //   picList: [
-          //     "http://cdn.cdlshow.xyz/GZ_01_0003_华南土特产展览交流大会旧址手工业馆/crop-建筑整体透视或立面2.jpg",
-          //     "http://cdn.cdlshow.xyz/GZ_01_0003_华南土特产展览交流大会旧址手工业馆/crop-细部1.jpg",
-          //     "http://cdn.cdlshow.xyz/GZ_01_0003_华南土特产展览交流大会旧址手工业馆/crop-细部3.jpg",
-          //     "http://cdn.cdlshow.xyz/GZ_01_0003_华南土特产展览交流大会旧址手工业馆/crop-周边环境1.jpg",
-          //   ],
-          //   icon: targetBuilding.iconPath,
-          //   // location: [113.250794, 23.109609]
-          //   location: [116.30527, 23.61248],
-          //   question: [
-          //     {
-          //       title: "您所在的建筑名字是？",
-          //       choices: ["霍芝庭公馆旧址", "纸行路42号居民", "礼兴街10号居民"],
-          //       answer: "霍芝庭公馆旧址",
-          //     },
-          //     {
-          //       title: "您所在的位置是？讲故事的就投入公婆的加热片我建个",
-          //       choices: [
-          //         "广州市越秀区解放北路22号 爱搜ID发窘阿伟斧头哥雄趣味·",
-          //         "广州市番禺区解放北路22号",
-          //         "广州市天河区解放北路22号",
-          //       ],
-          //       answer: "广州市番禺区解放北路22号",
-          //     },
-          //     {
-          //       title: "该地址是哪个时期的？",
-          //       choices: [
-          //         "中华民国（1911-1949）",
-          //         "清（1644-1911）",
-          //         "1950-1970年代",
-          //       ],
-          //       answer: "1950-1970年代",
-          //     },
-          //   ],
-          // };
 
           console.log("*****啊啊啊啊");
 
@@ -533,21 +490,23 @@ create(store, {
     //   // 避免用户重复点同一建筑，重复拉取详情
     //   return;
     // }
+    let that = this;
+
 
     await this.getBuildingDetail(e.markerId, e.type);
 
-    setTimeout(() => {
-      wx.navigateTo({
-        url: "../puzzlePage/puzzlePage",
-        // url: "../cultureMap/cultureMap?buildingId=sadfgrg"
-        success: (res) => {
-          // 通过eventChannel向被打开页面传送数据
-          res.eventChannel.emit("acceptDataFromOpenerPage", {
-            building_detail: this.data.building_detail,
-          });
-        },
-      });
-    }, 100);
+    // setTimeout(() => {
+    wx.navigateTo({
+      url: "/page_new/puzzlePage/puzzlePage",
+      // url: "../cultureMap/cultureMap?buildingId=sadfgrg"
+      success: (res) => {
+        // 通过eventChannel向被打开页面传送数据
+        res.eventChannel.emit("acceptDataFromOpenerPage", {
+          building_detail: that.data.building_detail,
+        });
+      },
+    });
+    // }, 1000);
   },
 
   // 地图视野变化事件

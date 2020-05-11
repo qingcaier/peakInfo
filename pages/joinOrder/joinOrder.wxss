@@ -12,3 +12,14 @@
     line-height: 80rpx;
     text-align: center;
 }
+.input{
+    border: 1rpx solid black;
+    border-radius: 20rpx;
+    margin: auto 0;
+    padding: 10rpx 15rpx;    
+    width: 30%;
+}
+.input-text{
+    display: flex;
+    justify-content: space-evenly;
+}

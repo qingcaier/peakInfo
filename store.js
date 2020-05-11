@@ -6,7 +6,7 @@ export default {
     canIUse: wx.canIUse("button.open-type.getUserInfo"),
 
     // 是否登录
-    ifLogin: function() {
+    ifLogin: function () {
       return this.hasUserInfo && this.canIUse;
     }
 
@@ -33,7 +33,7 @@ export default {
   globalData: [],
 
   // 判断是否有定位权限
-  getUserLocation: function() {
+  getUserLocation: function () {
     // let that = this;
     wx.getSetting({
       success: res => {
@@ -91,19 +91,19 @@ export default {
   },
 
   // 微信获得经纬度
-  getLocation: function(userLocation) {
+  getLocation: function (userLocation) {
     wx.getLocation({
       type: "gcj02",
       success: res => {
-        // console.log("getLocation:success", res);
-        // let latitude = res.latitude;
-        // let longitude = res.longitude;
-        // this.data.userLocation = {
-        //   latitude,
-        //   longitude
-        // };
-        // // app.ajax
-        // console.log("westore里存的位置", this.data.userLocation);
+        console.log("getLocation:success", res);
+        let latitude = res.latitude;
+        let longitude = res.longitude;
+        this.data.userLocation = {
+          latitude,
+          longitude
+        };
+        // app.ajax
+        console.log("westore里存的位置", this.data.userLocation);
       },
       fail: res => {
         console.log("getLocation:fail", res);
@@ -179,4 +179,6 @@ export default {
   // }
   //默认 false，为 true 会无脑更新所有实例
   // updateAll: true
+
+
 };

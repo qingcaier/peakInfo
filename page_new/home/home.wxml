@@ -1,9 +1,9 @@
 <view class="bg">
-    <image mode="heightFix" src="../../public/picture/home_bg.png"></image>
+    <image mode="scaleToFill" src="../../public/picture/home2.png"></image>
     <view class="button">
         <view class="btnArea">
-            <button bindtap="goPage" data-index="0" class="btn">历史文化</button>
-            <button class="btn" bindtap="goPage" data-index="1">记忆活动</button>
+            <button bindtap="goPage" data-index="0" class="btn">历史建筑</button>
+            <button class="btn" bindtap="goPage" data-index="1">文化活动</button>
         </view>
         <view class="btnArea">
             <button class="btn" bindtap="goPage" data-index="2">线下拼购</button>

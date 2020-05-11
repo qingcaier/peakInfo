@@ -2,7 +2,7 @@
     <map id="map" longitude="{{location.lng}}" latitude="{{location.lat}}" subkey="TFRBZ-KZZCX-GQ54B-T22GL-HDDES-ESFWM" markers="{{markers}}" scale="{{mapScale}}" show-location="{{true}}" bindregionchange="regionchange" bindcallouttap="callouttap" bindmarkertap="markertap" enable-zoom="{{!false}}" enable-scroll="{{!false}}">
         <!-- <cover-view class="createOrder-btn" bindtap="toCreateOrder">拼</cover-view> -->
         <!-- <cover-view class="callout" hidden="{{selected}}" style="{{calloutStyle}}">
-      {{distance}}
+      {{distance}} 
     </cover-view> -->
     </map>
     <view class="btnArea" bindtap="setMyPuzzle" hover-class="none">

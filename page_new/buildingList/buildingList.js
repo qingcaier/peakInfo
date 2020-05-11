@@ -90,9 +90,8 @@ Page({
     app.ajax
       .searchHistoricalData(searchBuildData)
       .then(res => {
-        console.log(res.data.data);
         if (!res.data.count) {
-          console.log("不存在 或者 没有了");
+          console.log("null");
         } else {
           let list = that.data.buidings;
           list = list.concat(res.data.data);

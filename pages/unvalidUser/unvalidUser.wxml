@@ -1,0 +1,6 @@
+<view class="msgBoard">
+    <icon type="warn" size="80" />
+    <view class="msgBoard__text">{{msg}}</view>
+    <view class="msgBoard__advice">{{help.advice}}</view>
+    <view class="msgBoard__email">邮箱：{{help.email}}</view>
+</view>

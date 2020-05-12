@@ -58,17 +58,21 @@ create(store, {
         })
         .then((res) => {
           console.log(res);
-          let result = res.data.state;
+          let result = res.data.isPuzzle;
 
-          // let result = {
-          //   status: 200,
-          //   msg: "成功！"
-          // };
-          if (result.status === 200) {
+          if (result) {
+            wx.showToast({
+              title: "已打卡",
+              icon: "none",
+            });
+          } else {
             this.setData({
               isShowSuccessTip: true,
             });
           }
+        })
+        .catch((err) => {
+          console.log(err);
         });
     }
   },

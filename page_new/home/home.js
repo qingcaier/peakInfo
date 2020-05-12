@@ -20,6 +20,7 @@ Page({
       .checkLogin()
       .then((res) => {
         console.log(res);
+        let userRight = res.data.userRight;
         if (res.data.state) {
           switch (sign) {
             case "0":
@@ -33,9 +34,15 @@ Page({
               });
               break;
             case "2":
-              wx.switchTab({
-                url: "/pages/home/home", //此处跳转无返回
-              });
+              if (!userRight) {
+                wx.switchTab({
+                  url: "/pages/home/home", //此处跳转无返回
+                });
+              } else {
+                wx.navigateTo({
+                  url: "/pages/unvalidUser/unvalidUser",
+                });
+              }
               break;
             case "3":
               wx.navigateTo({

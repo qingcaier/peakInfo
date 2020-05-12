@@ -1,6 +1,6 @@
-// const baseUrl = "http://192.168.1.38:3000/miniprogram";
+const baseUrl = "http://192.168.1.38:3000/miniprogram";
 // const baseUrl = "http://192.168.101.45:3000/miniprogram";
-const baseUrl = "http://192.168.2.104:3000/miniprogram";
+// const baseUrl = "http://192.168.2.104:3000/miniprogram";
 
 const base = {
   checkLogin: baseUrl + "/checkLogin",

@@ -715,6 +715,13 @@ create(store, {
       .then((res) => {
         console.log(res);
         let result = res.data.state;
+        let isPunch = res.data.punchState;
+        if (isPunch) {
+          wx.showToast({
+            title: "已打卡",
+            icon: "none",
+          });
+        }
 
         // let result = {
         //   status: 200,

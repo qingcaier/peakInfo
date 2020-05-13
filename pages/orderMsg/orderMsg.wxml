@@ -1,7 +1,7 @@
 <view>
     <v-order orderData="{{orderData}}" shopData="{{shopData}}" makerData="{{makerData}}"></v-order>
     <view wx:if="{{!isComplete&&!isCancel}}" class="all_btn">
-        <button class="btn" size="mini" type="default" bindtap="complete">完成拼单</button>
+        <button class="btn" size="mini" type="primary" bindtap="complete">确定拼单</button>
         <button class="btn" size="mini" type="default" bindtap="modify">修改拼单</button>
         <button class="btn" size="mini" type="default" bindtap="cancel">取消拼单</button>
     </view>

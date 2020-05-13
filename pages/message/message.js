@@ -29,15 +29,15 @@ Page({
       app.ajax.checkMyOrder().then((res) => {
 
         let orderArr = [];
-        if (res.data.state.status == 200
-          && res.data.data.orderArr.init_order.order_0.length > 0) {
+        if (res.data.state.status == 200 && res.data.data.orderArr.init_order.order_0.length > 0) {
           orderArr = res.data.data.orderArr.init_order.order_0;
+
           if (res.data.data.orderArr.joined_order.order_0.length > 0) {
             orderArr = orderArr.concat(res.data.data.orderArr.joined_order.order_0);
           }
-          if (res.data.data.orderArr.exit_order.order_0.length > 0) {
-            orderArr = orderArr.concat(res.data.data.orderArr.exit_order.order_0);
-          }
+          // if (res.data.data.orderArr.exit_order.order_0.length > 0) {
+          //   orderArr = orderArr.concat(res.data.data.orderArr.exit_order.order_0);
+          // }
 
         }
         that.setData({ orderList: orderArr })

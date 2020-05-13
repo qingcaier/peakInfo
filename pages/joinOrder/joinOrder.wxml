@@ -2,8 +2,16 @@
 <view>
     <!-- 传三个对象过去 -->
     <v-order orderData="{{orderData}}" shopData="{{shopData}}" makerData="{{makerData}}"></v-order>
-    <view wx:if="{{canJoin}}" class="all_btn">
+    <view wx:if="{{!operation}}" class="all_btn">
         <button class="btn" size="mini" type="primary" bindtap="open">参与拼单</button>
+    </view>
+    <view wx:elif="{{operation===1}}" class="all_btn">
+        <button class="btn" size="mini" type="warn" bindtap="quitOrder">退出拼单</button>
+    </view>
+    <view wx:elif="{{operation===2}}" class="all_btn">
+        <button class="btn" size="mini" type="primary" bindtap="endOrder">>完成拼单</button>
+        <button class="btn" size="mini" type="default" bindtap="modifyOrder">修改拼单</button>
+        <button class="btn" size="mini" type="warn" bindtap="cancelOrder">取消拼单</button>
     </view>
 </view>
 <mp-dialog show="{{dialogShow}}" bindbuttontap="tapDialogButton" buttons="{{buttons}}">

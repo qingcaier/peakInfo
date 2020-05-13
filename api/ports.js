@@ -12,7 +12,10 @@ const ajax = {
   createOrder: (data) => https._post({ url: base.createOrder, data }),
   // 用户参与拼单
   joinOrder: (data) => https._post({ url: base.joinOrder, data }),
-
+  // 用户退出拼单
+  exitOrder: (data) => https._post({ url: base.exitOrder, data }),
+  // 用户修改拼单
+  editOrder: (data) => https._post({ url: base.editOrder, data }),
   //获取拼单数据
   getOrderData: (data) => https._post({ url: base.getOrderData, data }),
 

@@ -6,43 +6,8 @@ Page({
    */
   data: {
     orderList: [
-      // {
-      //   img: "../../public/images/store.png",
-      //   title: "缺200，满500减200！！！",
-      //   detail: "走过路过千万别错过，以纯满500减200，现差200，求拼单！！！",
-
-      //   _typeNumber: 1,
-      //   _remainCount: 200,
-      //   _validTime: 1582939162423
-      // },
-      // {
-      //   img: "../../public/images/store.png",
-      //   title: "缺200，满500减200！！！",
-      //   detail: "走过路过千万别错过，以纯满500减200，现差200，求拼单！！！",
-
-      //   _typeNumber: 1,
-      //   _remainCount: 200,
-      //   _validTime: 1582939162423
-      // },
-      // {
-      //   img: "../../public/images/store.png",
-      //   title: "缺200，满500减200！！！",
-      //   detail: "走过路过千万别错过，以纯满500减200，现差200，求拼单！！！",
-
-      //   _typeNumber: 1,
-      //   _remainCount: 200,
-      //   _validTime: 1582939162423
-      // },
-      // {
-      //   img: "../../public/images/store.png",
-      //   title: "缺200，满500减200！！！",
-      //   detail: "走过路过千万别错过，以纯满500减200，现差200，求拼单！！！",
-
-      //   _typeNumber: 1,
-      //   _remainCount: 200,
-      //   _validTime: 1582939162423
-      // }
-    ]
+    ],
+    operation: 0
   },
 
   /**
@@ -55,11 +20,13 @@ Page({
     // 监听 
     eventChannel.on('dataFormPerson', (res) => {
       that.setData({ orderList: res.data.orderArr })
+      that.setData({ operation: res.data.operation })
       console.log(that.data.orderList)
     })
   },
   goMsg(e) {
     console.log(e);
+    let _this = this;
     let order_id = e.currentTarget.dataset.orderid;
     wx.navigateTo({
       url: "../joinOrder/joinOrder",
@@ -68,7 +35,7 @@ Page({
         res.eventChannel.emit("dataFormFather", {
           data: {
             order_id: order_id,
-            canJoin: false
+            operation: _this.data.operation
           }
         });
       }

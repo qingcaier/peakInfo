@@ -76,7 +76,10 @@ create(store, {
       // "state": 0,
       // "__v": 0
     },
-    canJoin: true, //显示拼单按钮,
+
+    //operation，父组件传过来的判别条件
+    // 0 是参与拼单, 1是可以退出拼单, 2是可以修改、完成、取消
+    operation: 0,
     dialogShow: false, //显示 参与拼单的输入
     // buttons: [{ text: '取消' }, { text: '确定' }],
     buttons: [
@@ -106,8 +109,8 @@ create(store, {
     eventChannel.on("dataFormFather", (res) => {
       that.setData({ orderId: res.data.order_id });
 
-      that.setData({ canJoin: res.data.canJoin });
-      // console.log(888, that.data.canJoin, res.data.canJoin);
+      // that.setData({ canJoin: res.data.canJoin });
+      that.setData({ operation: res.data.operation });
       //如果是从用户信息那边进来，就不显示参加按钮吧
 
       // console.log(res.data.order_id)
@@ -182,7 +185,7 @@ create(store, {
       wx.showModal({
         title: "不能重复参加拼单",
         showCancel: false,
-        success: function (res) {},
+        success: function (res) { },
       });
     } else {
       this.setData({
@@ -190,6 +193,34 @@ create(store, {
       });
     }
   },
+  //参与者 退出拼单
+  quitOrder() {
+    let that = this;
+    app.ajax.exitOrder({ order_id: that.data.orderId }).then((res) => {
+      if (res.data.state.status == 200) {
+        wx.showModal({
+          title: "退出成功",
+          showCancel: false,
+          success: function (res) {
+            wx.switchTab({
+              url: "/pages/personnal/personnal", //此处跳转无返回
+            });
+          },
+        });
+      }
+      orderObj = res.data.data;
+      resolve(orderObj[0]); //后台改成返回数组了
+    })
+      .catch((err) => {
+        reject(err);
+      });
+  },
+  //创建者 完成拼单
+  endOrder() { },
+  //创建者 修改拼单
+  modifyOrder() { },
+  //创建者 取消拼单
+  cancelOrder() { },
   /**
    * @method getOrderData
    * @description 获取订单详细数据

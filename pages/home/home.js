@@ -345,6 +345,7 @@ create(store, {
         res.eventChannel.emit("dataFormFather", {
           data: {
             order_id: order_id,
+            canJoin: true,
             operation: 0
           }
         });

@@ -10,73 +10,15 @@ create(store, {
     orderId: "",
     count: 0,
     orderData: {
-      // title: "", // 拼单标题
-      // act_type: 1, //拼单类型
-      // total_count: 5, // 拼单总额
-      // initiator: {
-      //   openid: "",
-      //   count: 0
-      // },
-      // detail:
-      //   "", // 拼单详情
-      // valid_time: {
-      //   // 拼单有效时长
-      //   day: 0,
-      //   hour: 0,
-      //   minute: 10
-      // },
-      // // joinNumber: "1", //参与拼单的人数
-      // init_time: "2020-04-26T12:46:00.718Z",
-      // update_time: "2020-04-26T12:46:00.718Z",
-      // end_time: 1588251360718,
-      // picture: [
-      //   "https://res.wx.qq.com/wxdoc/dist/assets/img/0.4cb08bb4.jpg",
-      //   "https://res.wx.qq.com/wxdoc/dist/assets/img/0.4cb08bb4.jpg",
-      //   "https://res.wx.qq.com/wxdoc/dist/assets/img/0.4cb08bb4.jpg"
-      // ],
-      // business_act_id: "",
-      // state: 0,
-      // _id: "",
+
     },
     shopData: {
-      // "_id": "5ea5828867f8fa1b24d7155a",
-      // "act_id": "4413037398733196038",
-      // "business_name": "至能保险柜",
-      // "address": "北门街86号附近",
-      // "ad_info": {
-      //   "adcode": 450921,
-      //   "province": "广西壮族自治区",
-      //   "city": "玉林市",
-      //   "district": "容县"
-      // },
-      // "tel": " ",
-      // "loc": [
-      //   110.557722,
-      //   22.857187
-      // ],
-      // "__v": 0
+
     },
     makerData: {
-      // "_id": "5ea581c77fc60a49507b6dc2",
-      // "init_order": [
-      //   "5ea5828867f8fa1b24d7155b",
-      //   "5ea662b5c31d1828c0e58663"
-      // ],
-      // "joined_order": [],
-      // "exit_order": [],
-      // "openid": "ozQwo43V5q50SIBHDu-s4P7Gy_Ds",
-      // "nickName": "蔡东林",
-      // "avatarUrl": "",
-      // "gender": 1,
-      // "province": "Guangdong",
-      // "city": "Guangzhou",
-      // "country": "China",
-      // "credit": 0,
-      // "token": "",
-      // "state": 0,
-      // "__v": 0
-    },
 
+    },
+    canJoin: false,
     //operation，父组件传过来的判别条件
     // 0 是参与拼单, 1是可以退出拼单, 2是可以修改、完成、取消
     operation: 0,
@@ -101,7 +43,7 @@ create(store, {
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {
+  onShow: function (options) {
     let that = this;
     //	获取所有打开的EventChannel事件
     const eventChannel = this.getOpenerEventChannel();
@@ -109,7 +51,7 @@ create(store, {
     eventChannel.on("dataFormFather", (res) => {
       that.setData({ orderId: res.data.order_id });
 
-      // that.setData({ canJoin: res.data.canJoin });
+      that.setData({ canJoin: res.data.canJoin });
       that.setData({ operation: res.data.operation });
       //如果是从用户信息那边进来，就不显示参加按钮吧
 
@@ -202,25 +144,104 @@ create(store, {
           title: "退出成功",
           showCancel: false,
           success: function (res) {
+            console.log("*******");
             wx.switchTab({
-              url: "/pages/personnal/personnal", //此处跳转无返回
+              url: "/pages/personal/personal", //此处跳转无返回
             });
           },
         });
       }
-      orderObj = res.data.data;
-      resolve(orderObj[0]); //后台改成返回数组了
     })
       .catch((err) => {
-        reject(err);
+        wx.showModal({
+          title: "出问题了",
+          showCancel: false,
+          success: function (res) {
+
+          },
+        });
       });
   },
   //创建者 完成拼单
-  endOrder() { },
-  //创建者 修改拼单
-  modifyOrder() { },
+  endOrder() {
+    let that = this;
+    app.ajax.manageOrder(
+      {
+        order_id: that.data.orderId,
+        order_state: 1,
+      }
+    ).then((res) => {
+      if (res.data.state.status == 200) {
+        wx.showModal({
+          title: "拼单已完成",
+          showCancel: false,
+          success: function (res) {
+            console.log("*******");
+            wx.switchTab({
+              url: "/pages/personal/personal", //此处跳转无返回
+            });
+          },
+        });
+      }
+    })
+      .catch((err) => {
+        wx.showModal({
+          title: "出问题了",
+          showCancel: false,
+          success: function (res) {
+
+          },
+        });
+      });
+  },
+  //创建者 修改拼单 跳转到专用修改页
+  modifyOrder() {
+    let that = this;
+    wx.navigateTo({
+      url: "../modifyOrder/modifyOrder",
+      success: res => {
+        // 通过eventChannel向被打开页面传送数据
+        res.eventChannel.emit("modifyOrderFunction", {
+          data: {
+            orderDATA: that.data.orderData
+          }
+        });
+      }
+    });
+  },
   //创建者 取消拼单
-  cancelOrder() { },
+  // 这里取消拼单 是直接把拼单状态改为3
+  cancelOrder() {
+    let that = this;
+    app.ajax.manageOrder(
+      {
+        order_id: that.data.orderId,
+        order_state: 2,
+      }
+    ).then((res) => {
+      if (res.data.state.status == 200) {
+        wx.showModal({
+          title: "拼单已取消",
+          showCancel: false,
+          success: function (res) {
+            console.log("*******");
+            wx.switchTab({
+              url: "/pages/personal/personal", //此处跳转无返回
+            });
+          },
+        });
+      }
+    })
+      .catch((err) => {
+        wx.showModal({
+          title: "出问题了",
+          showCancel: false,
+          success: function (res) {
+
+          },
+        });
+      });
+  },
   /**
    * @method getOrderData
    * @description 获取订单详细数据

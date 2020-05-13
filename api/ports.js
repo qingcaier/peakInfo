@@ -16,6 +16,8 @@ const ajax = {
   exitOrder: (data) => https._post({ url: base.exitOrder, data }),
   // 用户修改拼单
   editOrder: (data) => https._post({ url: base.editOrder, data }),
+  // 更改拼单状态
+  manageOrder: (data) => https._post({ url: base.manageOrder, data }),
   //获取拼单数据
   getOrderData: (data) => https._post({ url: base.getOrderData, data }),
 

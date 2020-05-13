@@ -35,7 +35,8 @@ Page({
         res.eventChannel.emit("dataFormFather", {
           data: {
             order_id: order_id,
-            operation: _this.data.operation
+            operation: _this.data.operation,
+            canJoin: false,
           }
         });
       }

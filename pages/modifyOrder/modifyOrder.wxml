@@ -5,37 +5,18 @@
                 <mp-cell prop="title" title="" ext-class="title">
                     <input bindinput="formInputChange" data-field="title" class="weui-input" placeholder="写合适的标题能让更多人看到哦~" placeholder-class="plcolor" value="{{validateData.title}}" />
                 </mp-cell>
-                <mp-cell prop="" title="" ext-class="inp orderType">
-                    <picker class="weui-input select" bindchange="bindOrderTypeChange" data-fields="orderType" mode="selector" value="{{orderTypes[orderTypeIndex].value}}" range="{{orderTypes}}" range-key="{{'label'}}">
-                        <view>{{orderTypes[orderTypeIndex].label}}</view>
-                        <view class="arrow"></view>
-                    </picker>
-                </mp-cell>
-                <mp-cell prop="total_count" title="" ext-class="inp total_count">
-                    <input bindinput="formInputChange" data-field="total_count" class="weui-input" placeholder="您总共要多少元/件呢？" value="{{validateData.total_count}}" />
-                </mp-cell>
                 <mp-cell prop="current_count" title="" ext-class="inp current_count">
                     <input bindinput="formInputChange" data-field="current_count" class="weui-input" placeholder="您买了多少元/件呢？" value="{{validateData.current_count}}" />
                 </mp-cell>
             </mp-cells>
             <mp-cells ext-class="cells2">
                 <mp-cell prop="" title="" ext-class="">
-                    <mp-uploader title="上传图片" bindfail="uploadError" binddelete="deleteImg" bindsuccess="uploadSuccess" select="{{selectFile}}" bindselect="selectImg" upload="{{uploadFile}}" files="{{files}}" max-count="5"></mp-uploader>
+                    <mp-uploader title="增加图片" bindfail="uploadError" delete="{{false}}" binddelete="deleteImg" bindsuccess="uploadSuccess" select="{{selectFile}}" bindselect="selectImg" upload="{{uploadFile}}" files="{{files}}" max-count="5"></mp-uploader>
                 </mp-cell>
             </mp-cells>
         </view>
         <view class="form2">
             <mp-cells>
-                <mp-cell ext-class="location">
-                    <image class="locationImg" src="../../public/images/position.png" />
-                    <view class="locationText">{{userAddress}}</view>
-                </mp-cell>
-                <mp-cell prop="business_name" ext-class="business_name">
-                    <picker class="weui-input select" bindchange="bindBusinessActChange" data-field="business_act" value="{{business_actIndex}}" range="{{business_acts}}" range-key="{{'title'}}">
-                        <view>{{business_acts[business_actIndex].title}}</view>
-                        <view class="arrow arrow1"></view>
-                    </picker>
-                </mp-cell>
                 <mp-cell prop="detail">
                     <textarea class="weui-textarea" bindinput="formInputChange" data-field="detail" placeholder="请输入文本" style="height: 5em" value="{{validateData.detail}}" maxlength='500' />
                     <view class="weui-textarea-counter">{{validateData.detail.length}}/500</view>
@@ -63,7 +44,18 @@
             </mp-cells>
         </view>
     </mp-form>
+    <!-- <view>
+        <swiper class="picture_swiper">
+            <block wx:for="{{formData.picture}}" wx:key="*this">
+                <swiper-item>
+                   
+                    <image mode="aspectFit" src="{{item}}"></image>
+                  
+                </swiper-item>
+            </block>
+        </swiper>
+    </view> -->
     <view class="weui-btn-area">
-        <button class="weui-btn" type="warn" bindtap="submitForm">确定</button>
+        <button class="weui-btn" type="warn" bindtap="submitForm">确定修改</button>
     </view>
 </view>

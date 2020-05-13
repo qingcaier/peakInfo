@@ -9,6 +9,7 @@ const base = {
   joinOrder: baseUrl + "/api/joinOrder",
   exitOrder: baseUrl + "/api/exitOrder",
   editOrder: baseUrl + "/api/editOrder",
+  manageOrder: baseUrl + "/api/manageOrder",
   getOrderData: baseUrl + "/api/orderDetail",
   getShopData: baseUrl + "/api/shopDetail",
   getUserData: baseUrl + "/api/userDetai",

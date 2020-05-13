@@ -21,7 +21,8 @@
     "page_new/mallHome/mallHome",
     "page_new/buildingList/buildingList",
     "page_new/login/login",
-    "pages/unvalidUser/unvalidUser"
+    "pages/unvalidUser/unvalidUser",
+    "pages/modifyOrder/modifyOrder"
   ],
   "permission": {
     "scope.userLocation": {

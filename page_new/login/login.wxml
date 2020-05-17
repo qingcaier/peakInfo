@@ -1,5 +1,5 @@
 <view class="bg">
-    <image class="bg__image" mode="heightFix" src="../../public/picture/home_bg.png"></image>
+    <image class="bg__image" mode="heightFix" src="../../public/picture/home2.png"></image>
     <view class="bg__loginButton">
         <!-- <image class="wxlogo" src="{{wxlogo}}" /> -->
         <!-- <view> -->

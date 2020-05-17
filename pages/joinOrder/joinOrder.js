@@ -168,6 +168,7 @@ create(store, {
   open: function () {
     let that = this;
     let hasJoin = false;
+    console.log(store.data);
     for (let item of store.data.localUserInfo.init_order) {
       if (item == that.data.orderId) {
         hasJoin = true;
